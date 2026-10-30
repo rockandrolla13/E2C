@@ -1,0 +1,17 @@
+market_premium_bp,premium_type,yu_raw,both_as_coded,both_sibling_on_adjusted
+0,"this bond only, 100",long bond,no trade,no trade
+0,"this bond only, 200",long bond,no trade,no trade
+0,"whole issuer, 100",long bond,long bond,long bond
+0,"whole issuer, 200",long bond,long bond,long bond
+50,"this bond only, 100",long bond,no trade,no trade
+50,"this bond only, 200",long bond,no trade,no trade
+50,"whole issuer, 100",long bond,no trade,no trade
+50,"whole issuer, 200",long bond,long bond,long bond
+100,"this bond only, 100",long bond,no trade,no trade
+100,"this bond only, 200",long bond,no trade,no trade
+100,"whole issuer, 100",long bond,no trade,no trade
+100,"whole issuer, 200",long bond,long bond,long bond
+200,"this bond only, 100",long bond,no trade,no trade
+200,"this bond only, 200",long bond,long bond,no trade
+200,"whole issuer, 100",long bond,no trade,no trade
+200,"whole issuer, 200",long bond,long bond,long bond

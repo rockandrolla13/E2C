@@ -1,0 +1,40 @@
+issuer,model_z_bp,case,should_trade,yu_raw,peer_only,sibling_only,both,both_correct,yu_correct
+low spread,20.705729782516222,Nothing happening,no trade,no trade,no trade,no trade,no trade,True,True
+low spread,20.705729782516222,"True mispricing, 100 bp",long bond,long bond,long bond,long bond,long bond,True,True
+low spread,20.705729782516222,"True mispricing, 200 bp",long bond,long bond,long bond,long bond,long bond,True,True
+low spread,20.705729782516222,"True richness, 60 bp",no trade,no trade,no trade,no trade,no trade,True,True
+low spread,20.705729782516222,"Market-wide stress, 100 bp",no trade,long bond,no trade,long bond,no trade,True,False
+low spread,20.705729782516222,"Market-wide stress, 200 bp",no trade,long bond,no trade,long bond,no trade,True,False
+low spread,20.705729782516222,"This bond illiquid, 100 bp",no trade,long bond,long bond,no trade,no trade,True,False
+low spread,20.705729782516222,"This bond illiquid, 200 bp",no trade,long bond,long bond,no trade,no trade,True,False
+low spread,20.705729782516222,"Whole issuer illiquid, 100 bp",no trade,long bond,long bond,long bond,long bond,False,False
+low spread,20.705729782516222,"Whole issuer illiquid, 200 bp",no trade,long bond,long bond,long bond,long bond,False,False
+low spread,20.705729782516222,Mispricing 150 in stress 100,long bond,long bond,long bond,long bond,long bond,True,True
+low spread,20.705729782516222,Mispricing 150 in stress 200,long bond,long bond,long bond,long bond,long bond,True,True
+low spread,20.705729782516222,Mispricing 150 and bond illiquid 100,long bond,long bond,long bond,long bond,long bond,True,True
+base,170.02811601134005,Nothing happening,no trade,no trade,no trade,no trade,no trade,True,True
+base,170.02811601134005,"True mispricing, 100 bp",long bond,long bond,long bond,long bond,long bond,True,True
+base,170.02811601134005,"True mispricing, 200 bp",long bond,long bond,long bond,long bond,long bond,True,True
+base,170.02811601134005,"True richness, 60 bp",short bond,short bond,short bond,short bond,short bond,True,True
+base,170.02811601134005,"Market-wide stress, 100 bp",no trade,long bond,no trade,long bond,no trade,True,False
+base,170.02811601134005,"Market-wide stress, 200 bp",no trade,long bond,no trade,long bond,no trade,True,False
+base,170.02811601134005,"This bond illiquid, 100 bp",no trade,long bond,long bond,no trade,no trade,True,False
+base,170.02811601134005,"This bond illiquid, 200 bp",no trade,long bond,long bond,no trade,no trade,True,False
+base,170.02811601134005,"Whole issuer illiquid, 100 bp",no trade,long bond,long bond,long bond,long bond,False,False
+base,170.02811601134005,"Whole issuer illiquid, 200 bp",no trade,long bond,long bond,long bond,long bond,False,False
+base,170.02811601134005,Mispricing 150 in stress 100,long bond,long bond,long bond,long bond,long bond,True,True
+base,170.02811601134005,Mispricing 150 in stress 200,long bond,long bond,no trade,long bond,no trade,False,True
+base,170.02811601134005,Mispricing 150 and bond illiquid 100,long bond,long bond,long bond,long bond,long bond,True,True
+high spread,491.33333044098725,Nothing happening,no trade,no trade,no trade,no trade,no trade,True,True
+high spread,491.33333044098725,"True mispricing, 100 bp",no trade,no trade,no trade,no trade,no trade,True,True
+high spread,491.33333044098725,"True mispricing, 200 bp",no trade,no trade,no trade,no trade,no trade,True,True
+high spread,491.33333044098725,"True richness, 60 bp",no trade,no trade,no trade,no trade,no trade,True,True
+high spread,491.33333044098725,"Market-wide stress, 100 bp",no trade,no trade,no trade,no trade,no trade,True,True
+high spread,491.33333044098725,"Market-wide stress, 200 bp",no trade,no trade,no trade,no trade,no trade,True,True
+high spread,491.33333044098725,"This bond illiquid, 100 bp",no trade,no trade,no trade,no trade,no trade,True,True
+high spread,491.33333044098725,"This bond illiquid, 200 bp",no trade,no trade,no trade,no trade,no trade,True,True
+high spread,491.33333044098725,"Whole issuer illiquid, 100 bp",no trade,no trade,no trade,no trade,no trade,True,True
+high spread,491.33333044098725,"Whole issuer illiquid, 200 bp",no trade,no trade,no trade,no trade,no trade,True,True
+high spread,491.33333044098725,Mispricing 150 in stress 100,no trade,long bond,no trade,long bond,no trade,True,False
+high spread,491.33333044098725,Mispricing 150 in stress 200,no trade,long bond,no trade,long bond,no trade,True,False
+high spread,491.33333044098725,Mispricing 150 and bond illiquid 100,no trade,long bond,long bond,long bond,long bond,False,False

@@ -1,0 +1,201 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage[T1]{fontenc}\usepackage{lmodern,booktabs,enumitem,amsmath}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\title{Scenario tables for the three uncertain bond choices}\author{Personal research}\date{30 October 2026}
+\begin{document}\sloppy\maketitle
+
+\section*{The answer}
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item \textbf{Illiquidity versus mispricing: keep both controls, but they have one blind spot.} In the test grid they cut false trades from 90\% to 30\%, and catch 59\% of true mispricing against 62\% for Yu's raw signal. They cannot see illiquidity across a whole issuer, because the sibling bond shares it. Only CDS or trade data can catch that.
+\item \textbf{Equity delta: real data points to the smaller delta.} On your real CDS panel, the equity-vol delta hedged better overall at 1, 4 and 13 weeks. Your workbook's asset-vol delta \emph{added} variance at 1 week (-14\%), against +7\% for the equity-vol delta. Neither hedge removes much: the best overall variance cut is 17\%.
+\item \textbf{Fitting $\bar L$: the +13\% is too kind for low-spread names.} On real names, a +40 bp premium moves the delta by a median +59\% under 100 bp, +22\% from 100 to 300 bp, and +6\% over 300 bp.
+\end{enumerate}
+
+\textbf{Decisions taken for the merged method:}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item Keep the peer and sibling checks as coded. Applying the sibling check to adjusted gaps closes one leak, but catches less true mispricing (56\% against 59\%).
+\item Replicating your workbook uses the asset-vol delta, because its formulas hold asset vol fixed. The bond method runs with the equity-vol delta as its baseline and reports the asset-vol delta beside it.
+\item The first bond test excludes names under 100 bp. There both model deltas add variance, and $\bar L$ is unstable.
+\end{itemize}
+
+\textbf{How far to trust this.} Tables tagged \textbf{BOND} use one made-up issuer and bond, from the worked example. They show how the method responds, not what happens in markets. Tables tagged \textbf{REAL CDS} use your master panel: weekly, 2002-09 to 2005-09, 170 names, before costs, in sample, and with GM and Ford already removed. That panel is CDS, not bonds, so it informs the bond choice only indirectly. No bond data has been tested.
+
+\textbf{To rerun:} \texttt{python3 scenario\_tables.py}, then \texttt{python3 build\_report.py}. Inputs are \texttt{e2c\_bond.py}, \texttt{worked\_example.py}, \texttt{e2c\_model.py} and \texttt{master\_panel.csv.gz}. Outputs are one CSV per table in \texttt{tables/}, and this document.
+
+\section*{Choice 1. Illiquidity versus mispricing}
+\textbf{Table 1A, BOND. What each control does.} Model Z is 170 bp, and the trigger is $\alpha=0.5$, so the market must be over 255 bp or under 113 bp. Premia are in bp. ``Right answer'' uses the true mispricing alone. The CSV holds the same cases for a low-spread and a high-spread issuer.
+{\small
+\begin{center}\begin{tabular}{lcccccc}\toprule
+Case & Right answer & Yu raw & Peer & Sibling & Both & Both right? \\ \midrule
+Nothing happening & -- & -- & -- & -- & -- & yes \\
+True mispricing, 100 bp & long & long & long & long & long & yes \\
+True mispricing, 200 bp & long & long & long & long & long & yes \\
+True richness, 60 bp & short & short & short & short & short & yes \\
+Market-wide stress, 100 bp & -- & long & -- & long & -- & yes \\
+Market-wide stress, 200 bp & -- & long & -- & long & -- & yes \\
+This bond illiquid, 100 bp & -- & long & long & -- & -- & yes \\
+This bond illiquid, 200 bp & -- & long & long & -- & -- & yes \\
+Whole issuer illiquid, 100 bp & -- & long & long & long & long & \textbf{NO} \\
+Whole issuer illiquid, 200 bp & -- & long & long & long & long & \textbf{NO} \\
+Mispricing 150 in stress 100 & long & long & long & long & long & yes \\
+Mispricing 150 in stress 200 & long & long & -- & long & -- & \textbf{NO} \\
+Mispricing 150 and bond illiquid 100 & long & long & long & long & long & yes \\
+\bottomrule\end{tabular}\end{center}}
+
+The ``NO'' rows are the blind spots. Whole-issuer illiquidity passes every control. Large market stress can also hide real mispricing, because subtracting log gaps shrinks it.
+
+\textbf{Table 1B, BOND. Error rates with measurement noise.} Equal weight over 8 mispricing values (three of them zero), 4 market premia and 5 premium types. The rates depend on this grid, which is my choice, so compare controls and do not read the levels as forecasts.
+{\small
+\begin{center}\begin{tabular}{lrrrrrr}\toprule
+Control & Caught, 0 bp & 25 bp & 50 bp & False trades, 0 bp & 25 bp & 50 bp \\ \midrule
+Yu raw & 62\% & 62\% & 62\% & 90\% & 86\% & 85\% \\
+Peer only & 60\% & 58\% & 56\% & 50\% & 49\% & 50\% \\
+Sibling only & 61\% & 60\% & 58\% & 65\% & 64\% & 62\% \\
+Both, as coded & 59\% & 55\% & 51\% & 30\% & 30\% & 32\% \\
+Both, sibling on adjusted gaps & 56\% & 51\% & 47\% & 25\% & 25\% & 28\% \\
+\bottomrule\end{tabular}\end{center}}
+
+
+\textbf{Table 1C, BOND. What the trade earns under each gap path.} Return on capital over the holding period, from the full backtest, with flat stock and rates. Capital is 0.5 per 1 of face. 1x cost is a 1\% bond round trip.
+{\small
+\begin{center}\begin{tabular}{lrrrr}\toprule
+What the gap does & 150 bp gap, 1x cost & 3x cost & 300 bp gap, 1x cost & 3x cost \\ \midrule
+closes in 30 days & +11.0\% & +6.6\% & +24.5\% & +19.8\% \\
+closes in 60 days & +11.7\% & +7.3\% & +25.5\% & +20.8\% \\
+closes in 120 days & +12.8\% & +8.4\% & +26.8\% & +22.1\% \\
+never closes & +1.9\% & -2.5\% & +3.4\% & -1.3\% \\
+doubles over 180 days & -9.3\% & -13.7\% & -18.5\% & -23.3\% \\
+\bottomrule\end{tabular}\end{center}}
+
+A premium that never closes mostly earns its carry, and higher costs turn that into a loss. The real damage comes if the gap keeps widening.
+
+\textbf{Table 1D, REAL CDS. Did the peer control help?} Overlapping 13-week holds, per 100 of notional, before costs. Hedged with the workbook delta. $\bar L$ is fitted on each name's first ten weeks, and the sector median is the peer gap. Equity vol is the workbook blend, not Yu's 1,000-day vol, so this is Yu-style and not a replication. t uses weekly means with Newey-West, 13 lags. A sibling test is not possible here, because each name has one CDS.
+{\small
+\begin{center}\begin{tabular}{lrrrrrr}\toprule
+Trades & Name-weeks & Share & Mean & Median & Hit rate & t \\ \midrule
+Yu raw signal, all & 13,331 & 86\% & -0.12 & -0.06 & 46\% & -0.6 \\
+Peer-adjusted signal, all & 11,586 & 74\% & +0.05 & +0.00 & 50\% & +1.5 \\
+Raw signal the peer control removes & 3,439 & 22\% & -0.23 & -0.13 & 42\% & -1.5 \\
+Raw signal, stress weeks (top quartile of median gap) & 3,802 & 24\% & +0.06 & +0.08 & 56\% & +0.4 \\
+Peer-adjusted, stress weeks & 3,365 & 22\% & -0.02 & -0.00 & 50\% & -0.0 \\
+Your workbook signal, all & 5,680 & 36\% & +0.10 & +0.11 & 56\% & +0.4 \\
+Your workbook signal, long credit & 3,082 & 20\% & -0.04 & +0.05 & 53\% & -0.5 \\
+Your workbook signal, short credit & 2,598 & 17\% & +0.27 & +0.21 & 60\% & +1.1 \\
+Raw signal, wide side only (+1) & 12,970 & 83\% & -0.13 & -0.06 & 46\% & -0.5 \\
+Raw signal, tight side only (-1) & 361 & 2\% & +0.47 & +0.17 & 54\% & +0.9 \\
+\bottomrule\end{tabular}\end{center}}
+
+\textbf{This is inconclusive.} The trades the peer control removes averaged -0.23 (t = -1.5). That points the right way, but no row is statistically significant. The raw signal also fires on 86\% of name-weeks, so it barely selects anything. Your workbook's signal is more selective, at 36\%. This fixed-hold measure is cruder than your workbook's weekly rebuild, so it does not replace the workbook's own backtest.
+
+\section*{Choice 2. Which equity delta}
+\textbf{What your files settle.} Your workbooks bump the share price with asset vol held fixed (\texttt{cds\_greeks}, step S12). The recompute matches all 19,489 rows. So your method used the asset-vol delta. That settles what you did, not which is better.
+
+\textbf{Table 2A, BOND. How far apart the deltas are.} Stock hedge per \$10mm face. The quoted 2.2x is this grid's base row (2.2x). The gap grows with spread and maturity.
+{\small
+\begin{center}\begin{tabular}{lrrrrrrr}\toprule
+Issuer & S & Equity vol & Years & Model Z (bp) & Asset vol held (\$k) & Equity vol held (\$k) & Ratio \\ \midrule
+low spread & 60.4 & 28\% & 2.0 & 5 & 56 & 41 & 1.4x \\
+low spread & 60.4 & 28\% & 4.8 & 21 & 344 & 209 & 1.6x \\
+low spread & 60.4 & 28\% & 9.0 & 45 & 827 & 435 & 1.9x \\
+base & 30.2 & 38\% & 2.0 & 126 & 751 & 462 & 1.6x \\
+base & 30.2 & 38\% & 4.8 & 170 & 1,430 & 638 & 2.2x \\
+base & 30.2 & 38\% & 9.0 & 189 & 1,836 & 630 & 2.9x \\
+high spread & 15.1 & 55\% & 2.0 & 619 & 1,724 & 849 & 2.0x \\
+high spread & 15.1 & 55\% & 4.8 & 489 & 1,984 & 571 & 3.5x \\
+high spread & 15.1 & 55\% & 9.0 & 409 & 2,013 & 339 & 5.9x \\
+\bottomrule\end{tabular}\end{center}}
+
+
+\textbf{Table 2B, BOND. Hedge P\&L when the hedge is wrong.} Long \$10mm of the bond, short the hedge, one instant stock move, in \$ thousands. AV is the asset-vol delta and EV is the equity-vol delta. The left three columns assume bond prices really move with asset vol held fixed, and the right three assume equity vol held fixed.
+{\small
+\begin{center}\begin{tabular}{lrrrrrr}\toprule
+Stock & AV hedge & EV hedge & None & AV hedge & EV hedge & None \\ \midrule
+-50\% & -532 & -925 & -1,244 & +177 & -216 & -535 \\
+-30\% & -163 & -399 & -590 & +177 & -58 & -249 \\
+-20\% & -67 & -224 & -352 & +134 & -23 & -151 \\
+-10\% & -16 & -94 & -158 & +73 & -5 & -69 \\
++10\% & -14 & +65 & +129 & -83 & -4 & +59 \\
++20\% & -51 & +106 & +234 & -173 & -16 & +111 \\
++30\% & -107 & +129 & +320 & -270 & -34 & +157 \\
+Default & -3,638 & -4,423 & -5,061 & -3,638 & -4,423 & -5,061 \\
+\bottomrule\end{tabular}\end{center}}
+
+Each hedge works in its own world, and fails in the other. In default, either hedge leaves most of the loss in place: the bond loses about \$5,061k, and the better hedge recovers only about \$1,423k.
+
+\textbf{Table 2C, REAL CDS. Which delta hedged better.} Long protection plus long stock, with no rebalancing. AV and EV are the asset-vol and equity-vol deltas. ``Var cut'' is the fall in variance from adding the hedge, and ``Abs cut'' is the fall in mean absolute P\&L. A negative number means the hedge made things worse. ``Fitted slope'' is an in-sample flat hedge, for reference.
+{\footnotesize
+\begin{center}\begin{tabular}{rlrrrrrrrr}\toprule
+Weeks & Spread & N & AV delta & EV delta & Fitted slope & Var cut AV & Var cut EV & Abs cut AV & Abs cut EV \\ \midrule
+1 & All & 16,960 & 0.060 & 0.037 & 0.035 & -14\% & +7\% & -33\% & -7\% \\
+1 & under 100 bp & 13,362 & 0.050 & 0.032 & 0.008 & -72\% & -20\% & -59\% & -25\% \\
+1 & 100 to 300 bp & 2,773 & 0.131 & 0.067 & 0.054 & -11\% & +6\% & -20\% & +1\% \\
+1 & over 300 bp & 825 & 0.225 & 0.081 & 0.117 & -8\% & +12\% & -16\% & +5\% \\
+4 & All & 12,235 & 0.059 & 0.036 & 0.051 & +12\% & +16\% & -10\% & +4\% \\
+4 & under 100 bp & 9,782 & 0.050 & 0.032 & 0.012 & -58\% & -12\% & -36\% & -9\% \\
+4 & 100 to 300 bp & 1,924 & 0.130 & 0.067 & 0.081 & +7\% & +17\% & +3\% & +12\% \\
+4 & over 300 bp & 529 & 0.221 & 0.085 & 0.183 & +22\% & +17\% & +12\% & +11\% \\
+13 & All & 4,837 & 0.059 & 0.037 & 0.045 & +10\% & +17\% & +1\% & +11\% \\
+13 & under 100 bp & 3,933 & 0.051 & 0.033 & 0.019 & -47\% & -4\% & -15\% & +5\% \\
+13 & 100 to 300 bp & 703 & 0.126 & 0.067 & 0.076 & -4\% & +15\% & +10\% & +14\% \\
+13 & over 300 bp & 201 & 0.210 & 0.088 & 0.177 & +11\% & +16\% & +20\% & +18\% \\
+\bottomrule\end{tabular}\end{center}}
+
+Under 100 bp, which is 79\% of the 1-week sample, both model deltas are far above the fitted slope and mostly add variance. Over 300 bp the result is mixed, and the asset-vol delta sometimes does better.
+
+\section*{Choice 3. Fitting $\bar L$ to bond spreads}
+\textbf{Table 3A, BOND. A premium in the fit window.} The fit absorbs a liquidity premium into $\bar L$, which moves the hedge. The +40 and -40 rows reproduce the quoted +13\% and -16\%. Hedge figures are per \$10mm face. ``Fit status'' is the code's own flag: above $\bar L = 1$ it asks for review, and at the bound it rejects.
+{\small
+\begin{center}\begin{tabular}{rrlrrrrr}\toprule
+Premium (bp) & $\bar L$ & Fit status & Model Z & Delta change & Stock hedge (\$k) & Hedge error (\$k) & 5y default prob. \\ \midrule
+-120 & 0.29 & ok & 50 & -60\% & 575 & -848 & 5\% \\
+-80 & 0.45 & ok & 90 & -36\% & 909 & -513 & 9\% \\
+-40 & 0.63 & ok & 130 & -16\% & 1,189 & -234 & 13\% \\
+-20 & 0.73 & ok & 150 & -8\% & 1,311 & -111 & 14\% \\
++0 & 0.84 & ok & 170 & +0\% & 1,423 & +0 & 16\% \\
++20 & 0.96 & ok & 190 & +7\% & 1,523 & +101 & 18\% \\
++40 & 1.08 & review & 210 & +13\% & 1,613 & +190 & 19\% \\
++80 & 1.33 & review & 250 & +24\% & 1,761 & +339 & 22\% \\
++120 & 1.61 & review & 290 & +31\% & 1,870 & +447 & 25\% \\
++200 & 2.21 & review & 371 & +39\% & 1,984 & +561 & 29\% \\
++300 & 3.00 & reject & 466 & +40\% & 1,986 & +563 & 35\% \\
+\bottomrule\end{tabular}\end{center}}
+
+
+\textbf{Table 3B, BOND. False signals when the premium changes after the fit.} There is no mispricing anywhere in this table, so \textbf{every signal is false}. Cells show market minus model in bp. L or S marks a long-bond or short-bond signal at $\alpha=0.5$. Lower-case l or s marks a signal that fires only at $\alpha=0.25$.
+{\small
+\begin{center}\begin{tabular}{rrrrrrrr}\toprule
+Premium in fit & -40 later & +0 later & +40 later & +80 later & +120 later & +200 later & +300 later \\ \midrule
+-40 & +0 & +40 l & +80 L & +120 L & +160 L & +240 L & +340 L \\
++0 & -40 s & +0 & +40 & +80 l & +120 L & +200 L & +300 L \\
++40 & -80 S & -40 & -0 & +40 & +80 l & +160 L & +260 L \\
++80 & -120 S & -80 s & -40 & -0 & +40 & +120 l & +220 L \\
++120 & -160 S & -120 S & -80 s & -40 & -0 & +80 l & +180 L \\
++200 & -241 S & -201 S & -161 S & -121 s & -81 s & -1 & +99 l \\
+\bottomrule\end{tabular}\end{center}}
+
+So a change of about 120 bp in the premium is enough to fire a false signal at $\alpha=0.5$ on this bond, and about 80 bp at $\alpha=0.25$.
+
+\textbf{Table 3C, REAL CDS. The same premium test on real names.} A premium is added to each name's first ten weekly spreads, then $\bar L$ is refitted and the delta recomputed. ``At bound'' is the share of fits that hit the code's limits. These ten weeks fall in late 2002, a stressed period, which may affect the fits.
+{\small
+\begin{center}\begin{tabular}{lrrrrrrrr}\toprule
+Spread & Premium (bp) & Names & Median delta change & 10th pct & 90th pct & $\bar L$ before & $\bar L$ after & At bound \\ \midrule
+under 100 bp & -40 & 67 & -66\% & -91\% & -47\% & 0.73 & 0.33 & 1\% \\
+under 100 bp & -20 & 92 & -39\% & -77\% & -23\% & 1.03 & 0.68 & 2\% \\
+under 100 bp & +20 & 93 & +32\% & +17\% & +87\% & 1.05 & 1.33 & 14\% \\
+under 100 bp & +40 & 93 & +59\% & +27\% & +192\% & 1.05 & 1.57 & 22\% \\
+under 100 bp & +80 & 93 & +101\% & +27\% & +301\% & 1.05 & 2.05 & 35\% \\
+100 to 300 bp & -40 & 51 & -24\% & -35\% & -11\% & 0.42 & 0.31 & 0\% \\
+100 to 300 bp & -20 & 51 & -12\% & -17\% & -5\% & 0.42 & 0.36 & 0\% \\
+100 to 300 bp & +20 & 51 & +11\% & +4\% & +18\% & 0.42 & 0.49 & 0\% \\
+100 to 300 bp & +40 & 51 & +22\% & +8\% & +35\% & 0.42 & 0.56 & 4\% \\
+100 to 300 bp & +80 & 51 & +41\% & +15\% & +67\% & 0.42 & 0.73 & 4\% \\
+over 300 bp & -40 & 26 & -7\% & -10\% & +0\% & 0.56 & 0.44 & 8\% \\
+over 300 bp & -20 & 26 & -3\% & -5\% & +0\% & 0.56 & 0.50 & 8\% \\
+over 300 bp & +20 & 26 & +3\% & -0\% & +5\% & 0.56 & 0.64 & 8\% \\
+over 300 bp & +40 & 26 & +6\% & -0\% & +9\% & 0.56 & 0.71 & 8\% \\
+over 300 bp & +80 & 26 & +12\% & -0\% & +18\% & 0.56 & 0.84 & 8\% \\
+\bottomrule\end{tabular}\end{center}}
+
+
+\end{document}
