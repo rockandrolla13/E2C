@@ -1,0 +1,14 @@
+# Source material stays local: former-employer files, third-party research, personal email
+evidence/
+ssrn-687436.pdf
+# Generated or large working files
+**/_work/
+**/pages/
+__pycache__/
+.pytest_cache/
+*.aux
+*.log
+*.out
+b.log
+# Checked-out branches
+worktrees/
