@@ -1,0 +1,181 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1.9cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,booktabs,longtable,array,enumitem,amsmath}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}\sloppy
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\f}[1]{\texttt{\detokenize{#1}}}
+\title{Capital structure arbitrage: method guide}
+\author{Merged from your files, Yu (2005) and Finkelstein (2002)}
+\date{30 October 2026}
+\begin{document}\maketitle
+
+\section*{The answer}
+\textbf{You have three related methods, at three stages.}
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item \textbf{Method A, your workbooks: rebuilt and tested.} It runs on CDS and reproduces your master workbook. Its gross Sharpe ratio of 2.51 has no hold-out, and it falls to 1.47 with a one-week lag and to 0.62 at 5\% of spread with real turnover.
+\item \textbf{Method B, Yu adapted to bonds: coded, not tried on real bonds.} The formulas reproduce CreditGrades Table C.1. The backtest loop has run only on made-up data.
+\item \textbf{Method C, Finkelstein across bonds, options and stock: planned, not built.} The deck gives a model and hedges, but no trading rule. Every signal and trade in the plan is an addition.
+\end{enumerate}
+\textbf{Recommended next step:} build work package WP1 of Method C. It needs no market data, and it also underpins the options leg that Methods A and B lack.
+
+\textbf{The main risk is the same in all three:} nothing shows that this makes money after costs on bonds. Treat every number below as a test target, not as an expected return.
+
+\section*{1. How the methods differ}
+{\footnotesize
+\begin{longtable}{@{}P{2.2cm}P{4.4cm}P{4.4cm}P{4.4cm}@{}}
+\toprule
+& A. Your workbooks & B. Yu on bonds & C. Finkelstein \\ \midrule\endhead
+Instruments & CDS and stock & Bond and stock & Bond, options and stock \\
+Fair value from & A weekly fit across names: $\ln(\text{Imp}/\text{Hist})$ on $\ln(S/D)$ & Each name against its own model spread & One model fitted to options, then priced on the bond \\
+Volatility & Blend of realised and put vols & 1,000-day realised & Option term structure \\
+Barrier $\bar L$ & Fixed 0.5 & Fitted on first days, then fixed & 0.5 by default; skew only if it clearly fits better \\
+Debt per share & CreditGrades Appendix B & Total liabilities over shares & Total liabilities over shares by default; the deck gives no formula \\
+Recovery & 0.40 & 0.50 & 0.40 proposed; deck uses 0.30 and 0.10 \\
+Rate & 5-year swap & 5-year Treasury & Treasury curve \\
+Signal & Log gap to fair vol $\times$ 30, beyond $\pm 6$ & Market beyond $(1+\alpha)\times$ model, $\alpha = 0.5$ & Not in the deck. Proposed: monthly rank on the bond-stock gap, then two gaps \\
+Hedge & Delta, asset vol held; weekly & Delta, held fixed at entry & Delta, plus puts for jump risk \\
+Exit & None: book rebuilt weekly & Convergence, 180 days, or value below zero & Not in the deck. Proposed: by time, not convergence \\
+Status & 26 tests pass, 1 slow test skipped & 161 tests pass & Check script only \\
+\bottomrule
+\end{longtable}}
+
+\section*{2. Method A: your workbooks}
+Full detail, with cell references and example rows: \f{own_models/05_io_spec.md}. Code: \f{own_models/e2c_model.py}. Run everything with \f{run_pipeline(inputs, params)}.
+
+\textbf{Inputs: one row per name per week, 26 columns.}
+\begin{itemize}[leftmargin=*,itemsep=0pt]
+\item Identity: date, ticker, sector.
+\item Balance sheet: short debt, long debt, other short and long liabilities, minority interest, preferred.
+\item Equity: price, market cap, realised vols at 30, 60, 90, 180 and 360 days, 162-week vol.
+\item Options, optional: put vols at 3, 6, 12 and 24 months.
+\item Credit and rates: 5-year CDS, 5-year swap.
+\item For P\&L: next date, next spread, next price.
+\end{itemize}
+
+{\footnotesize
+\begin{longtable}{@{}P{0.9cm}P{3.5cm}P{5.7cm}P{5.7cm}@{}}
+\toprule
+Step & Function & Takes & Gives \\ \midrule\endhead
+S01 & \f{debt_per_share} & Balance sheet, market cap, price & Debt per share \\
+S02 & \f{average_equity_vol} & Realised and put vols & Blended equity vol \\
+S03 & \f{historical_asset_vol} & Equity vol, price, debt per share & Historical asset vol \\
+S04--05 & \f{survival_probability}, \f{model_spread}, \f{risky_annuity} & T, S, D, asset vol, L, lambda, R, r & Survival, spread, annuity, CDS value \\
+S06 & \f{implied_asset_vol} & CDS spread and the same inputs & Implied asset vol \\
+S07 & \f{leverage_regression} & $\ln(\text{Imp}/\text{Hist})$, $\ln(S/D)$, each week & Weekly fit \\
+S08--09 & \f{fair_asset_vol}, \f{vol_residual} & Asset vol, leverage, fit, implied vol & Fair vol, residual \\
+S10 & \f{sector_adjusted_residual} & Residual, sector (optional) & Sector-adjusted residual \\
+S11 & \f{trade_signal} & Residual, spread & Long and short flags \\
+S12 & \f{cds_greeks} & Model inputs, spread & Annuity, delta, vega, rho, theta \\
+S13--14 & \f{trade_size}, \f{equity_hedge} & Flags, vega, delta, price & Sizes, hedge dollars and shares \\
+S15 & \f{weekly_pnl} & Sizes, hedge, next spread and price & Eight P\&L lines \\
+S16--18 & \f{stress_tests}, \f{name_risk}, \f{closed_trade_flag} & Positions, greeks & Stress, risk, closed flag \\
+S19--20 & \f{book_capital}, \f{weekly_return} & Weekly book & VaR, margin, capital, NAV, return \\
+S21 & \f{bid_offer_cost} & Closed share, stress & Cost estimate, not deducted \\
+S22 & \f{performance_summary} & Weekly returns & Sharpe, mean, vol, NAV, t-stat, drawdown \\
+\bottomrule
+\end{longtable}}
+
+\textbf{Fixed values:} T 5, L 0.5, lambda 0.3, R 0.4, residual scale 30, trigger $\pm 6$, target \$200k on 3 vol points, trade cap \$10M.
+
+\textbf{Not in your files, so you must choose:} CDS and swap sources, vol estimator, put moneyness, universe rule, balance-sheet lag, execution lag, exit rule, dividends and borrow. The balance sheets are not point in time, and GM and Ford were removed because the model has no solution for them.
+
+\textbf{Target numbers} in \f{12AdjE2C_Data_27_9_2005 (47.9MB, Alphadyne folder).xls}, sheet \f{Reg}: \f{CK6} Sharpe 2.5106, \f{CM6} ending NAV 1.7992, \f{BA7} total P\&L 20,477.8. I read these directly from the original file.
+
+\section*{3. Method B: Yu on bonds and equity vol}
+Full detail, 97 steps: \f{paper_method/02_bond_vol_method.md}. Code: \f{paper_method/e2c_bond.py}. Run everything with \f{run_bond_backtest(panel, config)}. Yu's extraction is in \f{paper_method/01_paper_extraction.md}.
+
+\textbf{Inputs:} issuer links and rating; bond terms; bond trade reports; share price, returns and dividends; total liabilities, shares and filing dates; Treasury curve; repo rates, cash rate and borrow fees. Optional: CDS, implied vol, event dates.
+
+{\footnotesize
+\begin{longtable}{@{}P{0.9cm}P{4.4cm}P{5.4cm}P{5.4cm}@{}}
+\toprule
+Part & Main functions & Takes & Gives \\ \midrule\endhead
+1 & \f{bond_terms_are_eligible}, \f{pick_bond_and_sibling} & Issuer and bond terms, trade counts & One bond and a sibling \\
+2 & \f{debt_per_share}, \f{historical_equity_vol}, \f{zero_curve_from_par_yields} & Accounts, returns, par yields & D, equity vol, zero curve \\
+3 & \f{clean_trade_reports}, \f{daily_clean_price}, \f{z_spread} & Trade reports, bond, curve & Market Z-spread \\
+4 & \f{survival}, \f{risky_bond_price}, \f{model_z_spread} & Firm, bond, curve, recovery & Model price, model Z-spread \\
+5 & \f{fit_barrier_on_bond} & First days of market Z-spreads & $\bar L$, fit error, status \\
+6 & \f{measured_round_trip}, \f{planning_round_trip} & Trades or rating & Round-trip cost \\
+7 & \f{entry_signal}, \f{peer_adjusted_signal}, \f{sibling_confirms}, \f{implied_vol_bond}, \f{decide_entry} & Market and model Z, peers, sibling, vol & Signal, credit-implied vol, entry decision \\
+8 & \f{bond_equity_delta}, \f{rate_hedge_face}, \f{build_position} & Firm, bond, curve & Face, shares, Treasury hedge \\
+9 & \f{daily_pnl} & Position, marks, carry & P\&L by leg \\
+10 & \f{bond_exit_reason} & Spreads, days held, value, events & Exit reason \\
+11 & \f{monthly_index}, \f{annual_sharpe}, \f{trade_summary} & Trades & Monthly returns, Sharpe, tables \\
+12 & \f{check_table_c1}, \f{check_no_lookahead}, \f{break_even_cost} & Panel, config & Pass or fail, break-even cost \\
+\bottomrule
+\end{longtable}}
+
+\textbf{Outputs:} market and model Z-spread; $\bar L$ and fit status; credit-implied vol; each trade's side, dates, exit, sizes, return and P\&L by leg; monthly returns, Sharpe, summaries, factor fit; break-even cost.
+
+\textbf{Warning from the paper.} Yu's Equations 14--15 print $G(T)$ where $G(\xi)$ is needed. Copied as printed, they give an annuity of 5.31, above the riskless cap of 4.42. The code uses the corrected form.
+
+\section*{4. Method C: Finkelstein on bonds, options and stock}
+Full plan, 23 pages: \f{finkelstein_plan/finkelstein_replication_plan.pdf}. Slide-by-slide extraction: \f{finkelstein_plan/01_deck_extraction.md}. No model code is built yet.
+
+\textbf{What the deck computes.} The stock is a shifted lognormal with a knock-out, and default is asset value touching a barrier. Options set the asset vol term structure. The output is a closed-form survival curve, which gives bond and CDS values and splits each put into a default part and a diffusion part.
+
+\textbf{Inputs:} stock price, dividends, shares, borrow fee; option quotes by strike and expiry, with open interest; bond terms, trades, rating, repo; balance sheet and filing times; Treasury yields and cash rate; event dates.
+
+\textbf{Outputs:} survival curve; model bond price and Z-spread; default and diffusion parts of each put; option-implied default probability; greeks and jump to default; three market gaps and a trade decision.
+
+\textbf{Base signal, changed after reading Chen, Chen and Li (2026).} The agent read that paper in full. It ranks names monthly on actual minus equity-implied bond spread, using CreditGrades with a payout drift, 3-year realised vol and no options. High-gap bonds outperform and high-gap stocks underperform. The bond premium is 5.28\% a year (t = 5.64) over the full sample, and 3.24\% (t = 2.69) on clean post-2002 data. The plan found no net-of-cost result in the paper. So trade T0, a monthly rank book, becomes the first trade to build, ahead of any fixed trigger. I have not checked these figures myself, because no copy of the paper is in your files.
+
+\textbf{The added idea:} three markets give two independent gaps, $G_{bs} = G_{bp} + G_{ps}$. If the bond is out of line against both stock and options, trade the bond. If bond and options agree against the stock, the fixed vol is probably stale, so do not trade. This decision table is an addition, not Finkelstein's.
+
+{\footnotesize
+\begin{longtable}{@{}P{1cm}P{7.2cm}P{2cm}P{6cm}@{}}
+\toprule
+Pack & Produces & Needs & Done when \\ \midrule\endhead
+WP1 & \f{fk_model.py} and tests & Nothing & Deck's model numbers pass, no market data \\
+WP2 & \f{fk_value.py}: bond, CDS, put split & WP1 & Matches \f{risky_bond_price} at flat vol \\
+WP3 & \f{fk_risk.py}: greeks and hedges & WP1, WP2 & Hedge tests pass \\
+WP6a & \f{fk_des.py}: rank-book replication, first real run, no options & WP2 & Signs match the paper; gross and net returns reported \\
+WP4 & \f{fk_options.py}: quotes to clean vols & WP1 & Synthetic quotes round-trip \\
+WP5 & \f{fk_calibrate.py} & WP1, WP4 & Fit test passes \\
+WP6 & \f{fk_gaps.py} & WP5, WP6a & Gaps run on a synthetic panel \\
+WP7 & \f{fk_trades.py}, \f{fk_backtest.py} & WP3, WP6 & P\&L legs sum to the account daily \\
+WP8 & \f{fk_american.py} & WP1 & American price error stated \\
+WP9 & First option run on 20--50 high-yield names & WP4--WP7 & Gaps, hedge slopes, and stability settled \\
+WP10 & Full backtest and report & WP8, WP9 & Net results at 1, 2 and 3 times cost \\
+\bottomrule
+\end{longtable}}
+
+\textbf{Stop rules from the plan:} stop if WP6a's net bond return at measured costs is zero or negative among large bonds, or if WP9's measured hedge slope is far from the model delta. A fixed trigger is a poor stop test: on GX the log gap is 0.02 to 0.08 on the deck's values, and 0.19 to 0.26 on the published settings.
+
+\textbf{Deck numbers, assuming a 5\% rate.} These reproduce: the GX skew table within 0.14 vol points, the barrier (6.01 fitted, 6 in the deck), the GX curve within 17 bp of chart readings, and all 12 hedge numbers within 7.2\%. These do not: the put prices at the printed 3\% rate (I get 5.24 and 2.93, against 4.92 and 2.72, which fit a rate near 4.7--4.9\%); the 1.42 default part (1.35 by the formula that gives 1.90); and slide 19's 22.2\% vol, slide 10's asset vol stability, and slide 21's 422 bp at $\lambda = 0$.
+
+\section*{5. What the tests across methods found}
+Tables and caveats: \f{scenarios/scenario_tables.pdf}. Real tests use your 2002--05 CDS panel, before costs and in sample. No real bond has been tested.
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item \textbf{Hedge size is the sharpest open conflict.} Your workbooks, CreditGrades and the Finkelstein deck all hold asset vol fixed, and the plan reproduces slide 21 that way. But on your real CDS, the smaller equity-vol delta cut variance by 7\%, 16\% and 17\% at 1, 4 and 13 weeks, against $-14$\%, 12\% and 10\% for the asset-vol delta. So: replicate with asset vol, and test bonds with both. Method C's WP9 measures this directly.
+\item \textbf{Low-spread names are unreliable.} Under 100 bp, both deltas mostly add variance, and a +40 bp premium moves the delta by a median +59\%. The first bond test leaves these names out. They were 79\% of the 1-week CDS sample, so this removes most of an investment-grade universe.
+\item \textbf{The liquidity checks have a blind spot.} Peer and sibling checks cut false trades in a made-up grid, but cannot see illiquidity across a whole issuer. On real CDS the peer check's benefit is not significant.
+\item \textbf{A delta hedge barely covers default.} In the scenario table, it recovers about \$1.4M of a \$5.1M loss on \$10M of bond. Finkelstein's put legs exist for this reason.
+\item \textbf{Costs may decide the result.} A rough estimate puts bond round trips at 1--3\% of capital, about the same as Yu's typical 1--3\% trade return.
+\end{enumerate}
+
+\section*{6. What is verified, and what is not}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item \textbf{Rerun by me today:} Method A 26 pass and 1 skipped. Method B 161 pass. Scenarios 6 pass. The Finkelstein check script gives identical output. The agent reports the skipped slow test passing when enabled, and I separately read its target cells from the workbook.
+\item \textbf{Code matching a source is not evidence of profit.} Method A's tests prove that it matches the workbook. Method B's tests prove that it matches CreditGrades and is internally consistent.
+\item \textbf{Edited tests.} While revising, the Method B agent changed some code behaviour and edited 4 of its original 81 tests. No earlier copy exists, so I could not compare them. The exit, peer and barrier tests I read assert specific values and do not look loosened, but I cannot prove that.
+\item \textbf{Unread or lost:} the \f{.MDI} file, the missing put-implied-spread add-in, the lost Minimum MTM formula, the \f{AK SCRAP} files and the large archives, and the scanned SDS notes (read only in part).
+\item \textbf{Ownership.} Several files look like work from former employers. This use is personal research, but check your rights before taking any of it elsewhere.
+\end{itemize}
+
+\section*{7. Where everything is}
+Each method is on its own git branch, off \f{main}. Each branch has a checkout under \f{E2C/worktrees/}.
+{\footnotesize
+\begin{longtable}{@{}P{4.2cm}P{3.6cm}P{9.2cm}@{}}
+\toprule
+Branch & Folder & What it holds \\ \midrule\endhead
+\f{method/workbook} & \f{worktrees/workbook} & Method A: spec, code, tests, test vectors, panels \\
+\f{method/yu-bonds} & \f{worktrees/yu-bonds} & Method B: paper extraction, 97 steps, code, tests, worked example \\
+\f{method/finkelstein} & \f{worktrees/finkelstein} & Method C: plan PDF, deck extraction, check script \\
+\f{compare/scenarios} & \f{worktrees/scenarios} & Scenario tables. Merges A and B, because it imports both \\
+\f{docs/lit-and-guide} & \f{worktrees/docs} & This guide and the literature review \\
+Not tracked & \f{evidence/} & The 55 downloaded files, the email index and the text of 21 emails \\
+\bottomrule
+\end{longtable}}
+\end{document}

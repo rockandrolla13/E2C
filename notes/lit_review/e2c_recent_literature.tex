@@ -1,0 +1,127 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,booktabs,longtable,array,enumitem,xurl}
+\usepackage[colorlinks=true,urlcolor=blue!60!black,linkcolor=black]{hyperref}
+\usepackage{xcolor}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{\nolinkurl{#1}}}
+\title{Capital structure arbitrage: the 20 most recent papers,\\and similar methods in your Documents folder}
+\author{Prepared for personal research}
+\date{30 October 2026}
+\begin{document}
+\maketitle
+
+\section*{The answer}
+\textbf{Read \emph{The Debt-Equity Spread} first.} Chen, Chen and Li (Journal of Finance, 2026) compute actual minus equity-implied credit spread and study corporate bonds and stocks together. That is the closest published relative of your bond version. The Finkelstein plan agent later read it in full: the model is CreditGrades with a payout drift, 3-year realised vol and no options, with monthly ranks. Details are in the plan.
+
+\textbf{Explicit capital structure arbitrage papers are rare.} OpenAlex returned only four papers since 2022 with that phrase in the title or abstract. The recent work has moved to three neighbours: equity options as credit hedges, cross-market return predictability, and richer structural models.
+
+\textbf{One paper cuts against the trade.} Doshi, Ericsson, Fournier and Seo (2024) find no evidence of mispricing between equity and credit index options under their structural model. A gap you measure may therefore be a model limitation, not an arbitrage. Their result is at index level.
+
+\textbf{Your own folder is already strong.} \texttt{Documents/Quant Credit/CapArb/} holds the closest method papers, and Section 3 ranks them.
+
+\section*{1. How this was searched, and its limits}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item Sources: OpenAlex and Semantic Scholar APIs, queried on 30 October 2026.
+\item Method: 14 keyword queries, then forward citations of core papers such as Yu (2006), Kapadia and Pu (2012), Carr and Wu (2011) and Friewald, Wagner and Zechner (2014). A further citation pass used papers found along the way, on OpenAlex only.
+\item Inclusion rule: the paper links equity, equity volatility or equity options to CDS or corporate bond pricing, through a structural model, a mispricing measure, a hedge or a cross-market trade. Papers using credit spreads only as an outcome for accounting or governance questions were excluded.
+\item Ranking: newest first, after applying the rule. Screening was by me, on title and abstract.
+\item Semantic Scholar was rate-limited. Two of its 14 keyword queries and some seed lookups failed, so its coverage is partial. Five of 18 first-pass seed titles also failed to match on OpenAlex.
+\item This is a targeted search, not a systematic review. A relevant paper may be missing. The harvest first missed Cao et al.\ (2023), which I noticed only because it was in your folder.
+\item \textbf{Annotations come from abstracts, not full text}, apart from the update on the Debt-Equity Spread above. Four papers had no abstract in OpenAlex, Semantic Scholar or Crossref, and they are marked. For those, I can say only what the title indicates.
+\end{itemize}
+
+\section*{2. The 20 most recent papers}
+``Why it matters'' is my reading of how each abstract relates to your replication. Dates are online or working-paper dates. ``2026'' alone means the sources give only the year.
+
+{\small
+\begin{longtable}{@{}P{0.5cm}P{1.3cm}P{5.6cm}P{9.2cm}@{}}
+\toprule
+\# & Date & Paper & What it says, and why it matters \\
+\midrule
+\endhead
+1 & 2026-08 & Chen, Roussanov, Wang, Zou. \emph{Common Risk Factors in the Returns on Stocks, Bonds (and Options), Redux}. NBER w35579. \doi{10.3386/w35579} & Finds a common factor structure across stocks, corporate bonds and options. It also measures segmentation between these markets. \textbf{Matters because} it covers your exact three instruments, and a factor-neutral residual would be a stricter test of a gap. \\
+2 & 2026-08 & Lin, Wang, Wu. \emph{Explaining the Momentum Spillover From Stocks to Bonds}. Emerald chapter. \doi{10.1108/s2514-465020260000014006} & Stock momentum spills into bonds, more strongly in speculative grade. Attributed to information diffusion, and costs do not explain it. \textbf{Matters because} a bond-versus-stock signal may partly be this effect. Control for it. \\
+3 & 2026 & Bemis. \emph{Implied Credit Spreads Under Heston Dynamics}. SSRN preprint. \doi{10.2139/ssrn.6798158} & Capital structure arbitrage with Heston dynamics calibrated to the SVI surface, so the implied spread reflects skew and kurtosis. Identifies a convexity hurdle that limits profit. \textbf{Matters because} it uses the option surface and names a cost test. It is a single-author preprint and not peer reviewed, as far as the record shows. \\
+4 & 2026 & Bahaji. \emph{Towards a Paradigm of Structural Factor Investing}. SSRN preprint. \doi{10.2139/ssrn.7066038} & Generalised CreditGrades-inspired model, with analytical sensitivities of stock returns and CDS spreads to common factors. US non-financials, 2010--2025. \textbf{Matters because} it is the most recent CreditGrades extension found, with a current sample. \\
+5 & 2026-06 & Chen, Chen, Li. \emph{The Debt-Equity Spread}. Journal of Finance. \doi{10.1111/jofi.70060} & Measure: actual minus equity-implied credit spread. It predicts stock and bond returns in opposite directions, and is unique among mispricing measures. High-DES firms tend to issue equity, retire debt, and see more insider selling. \textbf{Matters because} this is the bond version of the signal, published in a top journal. \\
+6 & 2026 & Hao, He, Wang, Wang. \emph{Factor Investing and the Integration of Corporate Bond and Equity Markets}. SSRN preprint. \doi{10.2139/ssrn.6588823} & Cross-market characteristics beat within-market ones (US, 2004--2022). The effect concentrates in illiquid, hard-to-arbitrage segments. \textbf{Matters because} the gain may sit where trading it is hardest. \\
+7 & 2025-09 & Cai, Wang, Zhang, Lin. \emph{Pricing path-dependent equity and credit derivatives within a general hybrid equity-credit framework}. JEDC. \doi{10.1016/j.jedc.2025.105178} & \emph{No abstract found.} Title indicates a numerical pricing method for a joint equity-credit model. \textbf{Possibly useful} for barrier-style pricing. Unverified. \\
+8 & 2025-05 & Rubesam, Zimmermann. \emph{Sideshow or center stage? Information transmission between CDS and equity markets}. JFI. \doi{10.1016/j.jfi.2025.101151} & \emph{No abstract found.} Title indicates a study of information flow between CDS and equity. It matched the phrase ``capital structure arbitrage'' in OpenAlex. \textbf{Read it} for who leads whom. \\
+9 & 2025-04 & Esquil, Lai. \emph{Is the CreditGrades Model Useful for Hedging CDSs?} Emerald chapter. \doi{10.1108/s2514-465020250000013005} & \emph{No abstract found.} Title indicates a direct test of CreditGrades hedges. \textbf{Read it}: it is the most direct recent test of your hedge ratio. \\
+10 & 2025-03 & Zhang, Shi, Han, Liu, Xu. \emph{The Term Structure of CDS Spreads and the Cross Section of Options Returns}. J.\ Futures Markets. \doi{10.1002/fut.22582} & Log CDS slope predicts delta-hedged straddle returns, especially when volatility is high. \textbf{Matters because} information runs from credit to options, not only the reverse. \\
+11 & 2025-03 & Hong, Park. \emph{Do changes in the implied volatility of stock options predict future changes in CDS spreads?} JDQS. \doi{10.1108/jdqs-12-2024-0048} & In Korea, rising implied volatility predicts rising CDS spreads. \textbf{Matters because} it extends Cao et al.\ (2023). You hold a copy. \\
+12 & 2025 & Fusari, Lamichhane. \emph{Structural Equity Option Pricing: Implications for Credit Risk}. SSRN preprint. \doi{10.2139/ssrn.5393252} & \emph{No abstract found.} Title indicates option pricing from a structural model, with credit implications. \textbf{Read it} for the options leg. \\
+13 & 2024-12 & Duong, Park. \emph{Understanding the Cross-Section of CDS Returns Using Equity Options}. J.\ Financial Research. \doi{10.1111/jfir.12446} & CDS sellers earn more where at-the-money implied vol is high, and where skew is steep given high vol. CDS returns are better explained than bond returns. \textbf{Matters because} it warns that an option signal may work less well on bonds. Date conflict: Semantic Scholar 2024-12, OpenAlex 2022. \\
+14 & 2024-10 & Siggelkow. \emph{Partial hedging in credit markets with structured derivatives}. JDQS. \doi{10.1108/jdqs-06-2024-0019} & Default triggered by the stock breaching a barrier, hedged partially with European puts. \textbf{Matters because} it has the same barrier idea as your options leg. \\
+15 & 2024-08 & Doshi, Ericsson, Fournier, Seo. \emph{The risk and return of equity and credit index options}. JFE. \doi{10.1016/j.jfineco.2024.103932} & Structural model fitted by MLE explains both index option markets out of sample, and finds no evidence of mispricing. \textbf{Matters because} it is the strongest counter-evidence. It concerns indices, not single names. \\
+16 & 2024-07 & Maglione. \emph{Introducing and testing the Carr model of default}. Quantitative Finance. \doi{10.1080/14697688.2024.2368081} & Structural model as simple as Merton, built to avoid vanishing short-term spreads. \textbf{Matters because} it addresses the same weakness that the CreditGrades random barrier addresses. A possible alternative. \\
+17 & 2024-03 & Avino, Salvador. \emph{Contingent Claims and Hedging of Credit Risk with Equity Options}. RAPS. \doi{10.1093/rapstu/raae005} & New put-option hedge ratios for credit exposures. They reduce volatility beyond stock hedges, and capture exposure that Merton equity hedges miss. Stock and puts can be combined using the smirk. \textbf{Matters because} it is direct input for hedging a bond with both options and cash equity. \\
+18 & 2024-02 & Bartram, Grinblatt, Nozawa. \emph{Book-to-Market, Mispricing, and the Cross Section of Corporate Bond Returns}. JFQA. \doi{10.1017/s0022109024000048} & Bond book-to-market predicts returns of 3--4\% a year on senior bonds, after controls that include structural-model equity hedges. It also has a method that avoids biased liquidity filters. \textbf{Matters because} that return method applies to any bond backtest. \\
+19 & 2023-10 & Maglione, Mancino. \emph{Assessing the Impact of Credit Risk on Equity Options}. Risks. \doi{10.3390/risks11100183} & A measure of how much default risk an option carries, comparable across names. Puts are more sensitive, and CDS and option markets look well integrated. \textbf{Matters because} it relates to Finkelstein's split of a put into its default part. \\
+20 & 2023-10 & B\'egin, Boudreault, Th\'eriault. \emph{Leveraging prices from credit and equity option markets}. J.\ Futures Markets. \doi{10.1002/fut.22465} & Extracts default intensity and recovery jointly from out-of-the-money puts and CDS, about 400 US firms, 2003--2019. \textbf{Matters because} it can replace a fixed recovery assumption, though it needs CDS. You hold a copy. \\
+\bottomrule
+\end{longtable}
+}
+
+\subsection*{Just below the cut, and still worth having}
+These are older than the top 20, but several are closer in method.
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item Chan, Kolokolova, Lin, Poon (2023), price convergence between CDS and puts, with a trading strategy. J.\ Empirical Finance. \doi{10.1016/j.jempfin.2023.03.008}. Copy in your LLMWikiGeneration raw folder.
+\item Cao, Goyal, Xiao, Zhan (Management Science, 2023 issue), implied volatility changes and corporate bond returns. \doi{10.1287/mnsc.2022.4379}. Copy in your CapArb folder. This is the key paper linking option volatility to bonds.
+\item Forte, Lovreta (2022), CDS-implied, historical and option-implied volatility compared. JCF. \doi{10.1016/j.jcorpfin.2022.102347}
+\item Chen, Hsieh (2022), an exact structural model for CDS. J.\ Fixed Income. \doi{10.3905/jfi.2022.1.149}
+\item Mercadier (2022), improves the E2C formula with CART and random forests, 82\% out-of-sample accuracy. \doi{10.1142/9789811260483_0003}. The only recent paper found that names E2C directly.
+\item Maglione (2022), cointegration between credit spreads, leverage and equity volatility. Computation. \doi{10.3390/computation10090155}. This supports the cointegration test in your own CSA Statistical Framework note.
+\item Shi, Chen, Guo, Xu, Yan (2022), CDS-implied volatility and trading strategies. IRFA. \doi{10.1016/j.irfa.2022.102295}. Copy in your raw folder.
+\item van Zundert, Driessen (2022), bond-implied expected stock returns. JBF. \doi{10.1016/j.jbankfin.2022.106447}
+\end{itemize}
+
+\section*{3. Similar methods in your Documents folder}
+\textbf{Search:} a full-text scan of 2,352 PDFs, first 40 pages each. Three more PDFs over 80 MB were skipped, and three had no extractable text. \textbf{Limit:} the scanned \texttt{SDS} documents have very poor OCR, so a text scan can miss them. The SDS items below were found by filename, and I have not read them. For all other rows I read only the opening pages. Many files also appear again in the \texttt{JFEC-combined-existing-2026-08-30} folder.
+
+{\small
+\begin{longtable}{@{}P{0.5cm}P{6.3cm}P{9.8cm}@{}}
+\toprule
+\# & File & Why it is similar \\
+\midrule
+\endhead
+\multicolumn{3}{@{}l}{\textbf{Closest: same method, in \texttt{Quant Credit/CapArb/}}} \\
+1 & \texttt{cap arb.pdf} (Alber, MSc dissertation, Cat\'olica, 2017) & CreditGrades capital structure arbitrage with a new way to identify mispricing triggers. Reports 2.3\% annualised alpha, 2008--2015, Europe. A worked replication of the model on CDS. \\
+2 & \texttt{phthesis.pdf} (Papadimitraki, Piraeus, 2018) & Argues the arbitrage should trade CDS against equity implied vol, not the stock, using deep out-of-the-money options. Directly relevant to your vol signal. \\
+3 & \texttt{cap arb perspective.pdf} (Avino, Lazar, J.\ Alternative Investments, 2020) & Rethinks the strategy through price discovery. \\
+4 & \texttt{s11156-013-0400-x.pdf} (Ju, Chen, Yeh, Yang, RQFA, 2015) & Capital structure arbitrage with a multi-period Geske-Johnson structural model. An alternative model family to CreditGrades. \\
+5 & \texttt{limited arb.pdf} (Kapadia, Pu, JFE, 2012) & Limited arbitrage between equity and credit. Cited widely on this topic. \\
+\multicolumn{3}{@{}l}{\textbf{Practitioner frameworks, in the SDS scanning folder}} \\
+6 & \texttt{A Framework For Credit-Equity Investing.PDF} (JPMorgan, 2007, 52 pages) & CEV model that implies a CDS spread from tradable equity instruments, giving a relative value signal and trade structures. Also in the top level of \texttt{Documents}. \\
+7 & \texttt{Automated Capital Structure Arbitrage Trading Strategy For Prop Trading Group.PDF} (15 pages) & Unread, because OCR is unusable. The title suggests a direct match. Worth opening by eye. \\
+8 & \texttt{Credit Grades Model Description.PDF} (1 page) & Unread, for the same reason. \\
+9 & \texttt{Empirical Models Of Single and Multi-Name Dect-Equity Relationship.PDF} (19 pages) & Unread, for the same reason. The title suggests a statistical debt-equity model, like your regression. \\
+10 & \texttt{Credit Derivatives Strategy - High Yeild Credit vs Equity Paradigm Shift.PDF} (Morgan Stanley, 2005) & Practitioner account of the European capital structure arbitrage cycle, written in the same period as your workbooks. \\
+\multicolumn{3}{@{}l}{\textbf{Options to bonds and credit}} \\
+11 & \texttt{EBSCO-FullText-08\_05\_2026.pdf} (Cao, Goyal, Xiao, Zhan, Management Science, 2023) & Implied vol changes and corporate bond returns. Closest for bond spreads and equity vol. \\
+12 & \texttt{jdqs-12-2024-0048.pdf} (Hong, Park, 2025) & Implied vol changes and CDS (Korea). Listed above as number 11. \\
+13 & \texttt{Int Rev Finance - 2018 - Da Fonseca \dots.pdf} & Co-movement of CDS spreads, equity returns and volatility. \\
+14 & \texttt{jrf-04-2014-0044.pdf} (Amadori, Bekkour, Lehnert, 2014) & Informational efficiency across stocks, options and CDS. Your three-market view, with CDS in place of bonds. \\
+15 & \texttt{Kalman Filter Statistical Arbitrage/Market co-movement between credit default swap curves and option.pdf} (Shi et al., 2022) & Index CDS curve against the S\&P 500 vol surface, using an unscented Kalman filter. \\
+\multicolumn{3}{@{}l}{\textbf{Bond leg: basis and liquidity}} \\
+16 & \texttt{CDS-bond basis and bond return predictability.pdf} (Kim, Li, Zhang, JEF, 2016) & The basis predicts bond returns. Relevant to separating basis from mispricing. \\
+17 & \texttt{1-s2.0-S1059056016303240-main.pdf} (Kim, IREF, 2017) & Liquidity difference between CDS and corporate bonds. \\
+18 & \texttt{ME\_2019082716502954.pdf} (Patan\`e, Tedesco, Zedda, 2019) & CDS-bond basis and price discovery in Europe. \\
+\bottomrule
+\end{longtable}
+}
+
+\section*{4. What this changes for the replication}
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item \textbf{Add the Debt-Equity Spread as a benchmark.} Once your bond signal exists, compare it with the published measure.
+\item \textbf{Test for a model artefact.} Doshi et al.\ imply that a gap may shrink under a better model. Run the signal under at least two models.
+\item \textbf{Add a cost hurdle before any backtest.} Bemis's convexity hurdle, and the bond cost estimate from the Yu work, both point the same way.
+\item \textbf{Use option hedge ratios as a second hedge.} Avino and Salvador directly support hedging with stock and puts together.
+\item \textbf{Control for known effects.} Stock-to-bond momentum and implied vol changes both predict bond returns. A new signal should show value beyond them.
+\end{enumerate}
+
+\end{document}

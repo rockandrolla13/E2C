@@ -1,0 +1,293 @@
+[
+ {
+  "sources": [
+   "S2"
+  ],
+  "title": "Managerial accounting",
+  "date": "2026-09-30",
+  "venue": "The Business &amp; Management Collection",
+  "doi": "10.2308/iace.2010.25.4.792",
+  "abstract": "it it shows how to use financial tools to accomplish a goal rather than describing the tools themselves it lays emphasis on the engineering aspects of derivatives how to create them rather than their pricing how they act in relation to other instruments the financial markets and financial market practices this volume explains ways to create financial tools and how the tools work together to achieve specific goals applications are illustrated using real world examples it presents three new chapters on financial engineering in topics ranging from commodity markets to financial engineering applications in hedge fund strategies correlation swaps structural models of default capital structure arbitrage contingent convertibles and how to incorporate counterparty risk into derivatives pricing poised midway between intuition actual events and financial mathematics this book can be used to solve problems in risk management taxation regulation and above all pricing a solutions manual enhances the text by presenting additional cases and solutions to exercises this latest edition of principles of financial engineering is ideal for financial engineers quantitative analysts in banks and investment houses and other financial industry professionals it is also highly recommended to graduate students in financial engineering and financial mathematics programs the third edition presents three new chapters on financial engineering in commodity markets financial engineering applications in hedge fund strategies correlation swaps structural models of default capital structure arbitrage contingent convertibles and how to incorporate counterparty risk into derivatives pricing among other topics additions clarifications and illustrations throughout the volume show these instruments at work instead of explaining how they should act the solutions manual enhances the text by presenting additional cases and solutions to exercises",
+  "authors": "Ray H. Garrison, E. Noreen, P. Brewer, Annie McGowan",
+  "cited": 281,
+  "key": "10.2308/iace.2010.25.4.792",
+  "score": 6
+ },
+ {
+  "sources": [
+   "OA"
+  ],
+  "title": "merton: A production-grade Python package for the Merton structural credit-risk model",
+  "date": "2026-05-20",
+  "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+  "doi": "10.5281/zenodo.20309589",
+  "abstract": "Announcing merton 1.0 merton 1.0 is the first stable release of a Python package built specifically to make the Merton (1974) structural credit-risk model \u2014 and its industry-standard descendants \u2014 production-quality and easy to use. We started from the observation that the Python ecosystem had no maintained, vectorized, well-calibrated implementation of the most important model in structural credit risk. finverse and riskoptima shipped basic single-firm math; creditriskengine was opaque about performance; modelrisk was alpha; QuantLib had no native Merton module at all. None of them bundled the extensions, portfolio engine, backtest harness, or Excel integration that practitioners actually need. merton ships those \u2014 and then some. What's in the box Single-firm calibration \u2014 five methods: Vassalou-Xing iterative MLE (default), Duan transformed-data MLE with survivorship correction, Jones-Mason-Rosenfeld, Bharath-Shumway naive, and KMV-iterative (Crosbie-Bohn). Plus an emcee-backed Bayesian MCMC calibrator under merton[mcmc]. Vectorized math primitives \u2014 distance_to_default, prob_of_default, implied_credit_spread, term_structure_pd. All closed-form, all NumPy-friendly, all backend-dispatchable. Equity Greeks \u2014 \u0394, \u0393, Vega, \u0398, \u03c1 closed-form; matching JAX-autodiff implementations under merton[jax] validate them automatically. Structural extensions \u2014 Black-Cox first-passage, Geske compound options, Longstaff-Schwartz stochastic rates, CreditGrades (RiskMetrics 2002), Leland-Toft endogenous default, Zhou jump-diffusion. Portfolio engine \u2014 Vasicek single-factor with closed-form Basel IRB capital; Gaussian, t, and Clayton copulas; Monte Carlo loss distribution with VaR / ES / economic capital. Climate stress \u2014 NGFS Phase V (2024) headline scenarios (net_zero_2050, delayed_transition, current_policies, fragmented_world); composable Scenario framework with carbon-price paths, sectoral PD multipliers, and chronic physical-risk parameters. Backtest harness \u2014 AUC, Brier, KS, accuracy ratio, Hosmer-Lemeshow, calibration curves, rolling-window and walk-forward validation. Excel integration \u2014 =MERTON_DD(equity, \u03c3E, debt, rf, T) in Excel Web, Mac (M365), and Windows via xlwings Server; classic xlwings UDF fallback for Windows desktop. Observability \u2014 opt-in OpenTelemetry tracing (merton.obs.enable(...)) that pipes spans to any OTLP backend (Datadog, Honeycomb, Tempo, Jaeger, \u2026). Modern Python \u2014 full type hints, Pydantic settings, structured logging, Apache-2.0, cross-platform wheels for Python 3.11\u20133.14 (including free-threaded 3.13t/3.14t). Performance Cold import merton: ~500 ms on a 2024 M-series MacBook. Single-firm fit: < 5 ms (typically ~1 ms once Numba is warmed). 10 000-firm \u00d7 2 520-day panel: < 60 s on 8 cores via the Numba backend. Portfolio Monte Carlo 5 000 firms \u00d7 100 000 sims: < 30 s with the CuPy GPU backend, < 5 min on CPU. API stability merton.__all__ is the public-API surface as of 1.0 and follows Semantic Versioning from this release onwards: Minor releases (1.x) add new functions/extras, never remove documented behaviour. Patch releases (1.x.y) fix bugs and improve performance. Major release (2.x) is the only place deprecation removals can land. Deprecations are emitted through merton._deprecation with the removal target stamped in. See {doc}../contributing/api-stability for the full contract. Installation pip install merton # CPU-only NumPy + Numba JIT pip install \"merton[excel]\" # Excel integration pip install \"merton[gpu]\" # CUDA GPU acceleration pip install \"merton[mcmc]\" # Bayesian calibration pip install \"merton[obs]\" # OpenTelemetry tracing pip install \"merton[all]\" # everything except [bloomberg] / [mlx] On macOS / Linux / Windows; Python 3.11+ (including the free-threaded 3.13t / 3.14t builds). A conda-forge feedstock PR is open; once merged, conda install -c conda-forge merton will be the conda path. What's next The 1.x roadmap focuses on: Hybrid structural/reduced-form model (Duffie-Saita-Wang). Polars-native zero-copy where pandas currently appears. io, diagnostics, and viz namespaces graduate from their current homes (FirmPanel, MertonResult.summary, merton.reports). CCAR and EBA packaged scenarios alongside the NGFS set. Optional PyO3 / nanobind for the hottest kernels if benchmarks warrant the maintenance cost. Credits and citing merton is built on the shoulders of foundational papers \u2014 Merton 1974, Black-Cox 1976, Geske 1977, Leland-Toft 1996, Zhou 1997, Vassalou-Xing 2004, Bharath-Shumway 2008, Crosbie-Bohn 2003, the CreditGrades 2002 technical document, and Longstaff-Schwartz 1995. The package's own citation metadata lives in CITATION.cff and a Zenodo DOI will be assigned on the 1.0 tag. We'd love feedback. Open an issue or a discussion on the repo, or email the maintainers. Happy modelling.",
+  "authors": "Kavy Upadhyay",
+  "oa": "https://doi.org/10.5281/zenodo.20309589",
+  "type": "software-paper",
+  "key": "10.5281/zenodo.20309589",
+  "score": 6
+ },
+ {
+  "sources": [
+   "OA",
+   "S2"
+  ],
+  "title": "Voluntary Disclosure and Capital Structure\u2014Evidence From Management Earnings Forecasts",
+  "date": "2026-04-02",
+  "venue": "Journal of Corporate Accounting & Finance",
+  "doi": "10.1002/jcaf.70035",
+  "abstract": "ABSTRACT We examine associations between management earnings forecasts and capital structure. We posit that incremental information in forecasts reduces capital providers\u2019 concerns about adverse selection. Pecking order theory suggests forecasts contribute differing amounts of information to different capital providers, shifting capital structure from trade credit to long\u2010term debt, and from long\u2010term debt to equity. Investment information risk theory submits that although creditors and equity holders share downside risk, creditors are more sensitive than equity holders to uncertainty related to the riskiness of firms\u2019 future investments because equity holders are the sole beneficiaries of investments\u2019 upside potential. Insomuch earnings forecasts provide investment information that is more meaningful to creditors, we expect a shift in capital structure from equity to credit as the forecast decreases outcome uncertainty. Using a sample of US\u2010listed firms from 2003 to 2019, we find support for the pecking order theory, that firms issuing management earnings forecasts exhibit higher levels of equity\u2010to\u2010credit financing and long\u2010term debt\u2010to\u2010trade credit financing. However, in cross\u2010sectional tests, we also find evidence supporting the investment information risk theory, that forecasts shift financing from equity to credit and among creditors, from long\u2010term debt to trade credit in firms with more growth opportunities. Our findings suggest firms\u2019 voluntary disclosures provide different amounts of incremental information to different capital providers, but that the relevance of the information provided may also differ across capital providers.",
+  "authors": "James N. Cannon, Y. Shi, Xiaoxiao Song",
+  "type": "article",
+  "key": "10.1002/jcaf.70035",
+  "score": 6
+ },
+ {
+  "sources": [
+   "OA",
+   "S2"
+  ],
+  "title": "Pricing path-dependent equity and credit derivatives within a general hybrid equity-credit framework: A unified CTMC approximation approach",
+  "date": "2025-09-16",
+  "venue": "Journal of Economic Dynamics and Control",
+  "doi": "10.1016/j.jedc.2025.105178",
+  "authors": "Ning Cai, Siyi Wang, Wei Zhang, Haohong Lin",
+  "type": "article",
+  "key": "10.1016/j.jedc.2025.105178",
+  "score": 7
+ },
+ {
+  "sources": [
+   "OA"
+  ],
+  "title": "Is the CreditGrades Model Useful for Hedging CDSs?",
+  "date": "2025-04-23",
+  "venue": "Advances in Pacific Basin business, economics and finance",
+  "doi": "10.1108/s2514-465020250000013005",
+  "authors": "Ricardo Esquil, Van Son Lai",
+  "type": "book-chapter",
+  "key": "10.1108/s2514-465020250000013005",
+  "score": 7
+ },
+ {
+  "sources": [
+   "OA"
+  ],
+  "title": "The Term Structure of Credit Default Swap Spreads and the Cross Section of Options Returns",
+  "date": "2025-03-27",
+  "venue": "Journal of Futures Markets",
+  "doi": "10.1002/fut.22582",
+  "abstract": "ABSTRACT This paper, using the natural logarithmic form credit default swap (log CDS) slope, examines the variation in cross\u2010sectional 1\u2010month ATM delta\u2010hedged straddle returns. Our analysis reveals that the log CDS slope significantly and positively predicts these returns, even when accounting for several key volatility mispricing factors. Further investigation shows that this predictive relationship exhibits a strong time\u2010varying pattern, closely linked to market conditions. In contrast, the relationship between notable volatility mispricing factors and straddle returns remains relatively stable over time. Constructing a long\u2010short quintile portfolio on straddle options confirms that trading performance improves when the past 12\u2010month market return is at a historically lower level, market volatility is at a historically higher level, and the VIX is elevated. Log CDS slope, as a proxy for excess jump risk premium, significantly predicts delta\u2010hedged option returns during periods of high volatility.",
+  "authors": "Hao Zhang, Yukun Shi, Dun Han, Pei Jose Liu",
+  "oa": "https://doi.org/10.1002/fut.22582",
+  "type": "article",
+  "key": "10.1002/fut.22582",
+  "score": 1
+ },
+ {
+  "sources": [
+   "OA"
+  ],
+  "title": "Do changes in the implied volatility of stock options predict future changes in CDS spreads?",
+  "date": "2025-03-09",
+  "venue": "Journal of Derivatives and Quantitative Studies \uc120\ubb3c\uc5f0\uad6c",
+  "doi": "10.1108/jdqs-12-2024-0048",
+  "abstract": "This study examines whether changes in the implied volatility of stock options have cross-sectional predictability for future changes in credit default swap (CDS) spreads in the Korean market. The major findings are as follows. First, in the CDS portfolio analysis, when buying a portfolio with the highest increases in implied volatility and selling a portfolio with the highest decreases and rebalancing monthly, the average change in future CDS spreads is positive and statistically significant. Second, the cross-sectional predictive regression analysis shows that the coefficients for changes in implied volatility are significant in most models. The magnitude of the coefficients remains generally stable regardless of the control variables. These findings provide further evidence supporting the perspective of Cao et al. (2023) that increases in implied volatility reflect information about increased default risk due to higher firm value volatility.",
+  "authors": "Changsoo Hong, Yuen Jung Park",
+  "cited": 1,
+  "oa": "https://www.emerald.com/jdqs/article-pdf/33/2/150/9846592/jdqs-12-2024-0048.pdf",
+  "type": "article",
+  "key": "10.1108/jdqs-12-2024-0048",
+  "score": 1
+ },
+ {
+  "sources": [
+   "OA",
+   "S2"
+  ],
+  "title": "The Untalked Debt Trap: Exploring Loan Inequality Among South Asian Farmers",
+  "date": "2025-02-12",
+  "venue": "International Journal For Multidisciplinary Research",
+  "doi": "10.36948/ijfmr.2025.v07i01.33382",
+  "abstract": "Despite being one of the most fertile regions in the world, South Asia\u2019s farmers bear the brunt of loan inequalities, even though they are the backbone of the economy in many of these nations. Countries like Bangladesh, Sri Lanka, India, and Pakistan are major agricultural producers, yet their farmers struggle to access formal credit and are forced to rely on lenders who charge exorbitant interest rates. This paper investigates the reasons for the systemic failure of loan inequality in the agricultural sector of South Asia, such as the issue of financial literacy, the fear of banks of default by the borrowers, and the monopolistic positions of large corporations. Moreover, it provides the various critical socio-economic impacts of inequality in the region, for example, the escalating suicide rates of farmers from financial stress. The paper urges policy makers to address these issues through the reformation of the financial system, more equity to credit, and that measures be put in place to shield the powerless farmers from such exploitation.",
+  "authors": "Arib Malik -",
+  "oa": "https://www.ijfmr.com/papers/2025/1/33382.pdf",
+  "type": "article",
+  "key": "10.36948/ijfmr.2025.v07i01.33382",
+  "score": 3
+ },
+ {
+  "sources": [
+   "OA"
+  ],
+  "title": "Investigating the VIX Index Relationship with High Yield & Investment Grade Bond Spreads: Exploring Structural Breaks & Threshold Effects",
+  "date": "2025-01-01",
+  "venue": "Journal of Business and Economic Studies",
+  "doi": "10.53462/vol29i2a1",
+  "abstract": "In this study, we investigate the relationship between implied equity volatility (VIX) and corporate bond spreads, covering both investment-grade and high-yield sectors. Our dataset spans three significant periods of recent volatility: the 2008/09 financial crisis, the COVID-19 pandemic, and the regional banking crisis of 2023. To identify structural breaks, we employ the Bai & Perron (1998, 2003) methodology and conduct ordinary least squares linear regression analyses (OLS). By examining structural breaks over time, our research offers a fresh perspective on the VIX-spread relationship. We also use threshold regressions to categorize VIX into low, intermediate, and elevated ranges, exploring how different volatility levels impact these interactions. Additionally, we introduce the Federal Funds Effective Rate (FEDL) as a moderator in this relationship. Our findings confirm multiple structural breaks in spread relationships and underscore the significant influence of both VIX levels and FEDL rates on the VIX-spread relationship. Our results reveal that implied volatility has a notably stronger association with high yield spreads during the most elevated levels of VIX when compared to investment grade. Furthermore, we demonstrate that changes in interest rates minimally affect high-yield bond spreads, regardless of the absolute level of FEDL.",
+  "authors": "Eric McAlley, Carolyne C. Soper",
+  "oa": "https://jbes.scholasticahq.com/article/146576.pdf",
+  "type": "article",
+  "key": "10.53462/vol29i2a1",
+  "score": 1
+ },
+ {
+  "sources": [
+   "OA"
+  ],
+  "title": "Investigating T\u00fcrkiye\u2019s financial nexus: A wavelet coherence analysis of sovereign CDS spreads, bond yields, stock index, and FX rates",
+  "date": "2024-12-30",
+  "venue": "Mathematical Modelling and Numerical Simulation with Applications",
+  "doi": "10.53391/mmnsa.1455355",
+  "abstract": "This article investigates the intricate relationships between sovereign credit default swaps (CDS) and various Turkish financial assets, including the US Dollar to Turkish Lira exchange rate (USDTRY), the Borsa Istanbul 100 (XU100) stock index, and government bond yields. Employing a rigorous wavelet coherence analysis that captures the timefrequency domain, this study utilizes daily data from November 2008 to July 2022 period containing important financial, economic and global health crises, such as Great Recession, European Debt Crises, and COVID-19 pandemic. The wavelet coherence results uncover that the causality between variables is contingent on both the frequency domain and evolves dynamically over time, with the most significant interdependencies manifesting in the medium term. Moreover, the analysis reveals that government bond yields, and their respective volatilities positively impact CDS spread and its volatility. Similarly, the USDTRY rate leads to positive changes in the CDS spread. By contrast, the volatility of CDS spreads positively influences foreign exchange volatility and the XU100 index volatility. The CDS spread negatively affects the XU100 index. Overall, the findings elucidate the direction of causality between Turkish CDS spread and retained Turkish financial assets and then provide valuable information on the predictive power of those securities for investors, financial risk managers, and policymakers.",
+  "authors": "\u015e\u00fckriye T\u00fcys\u00fcz, Mert G\u00fcl",
+  "cited": 5,
+  "oa": "https://dergipark.org.tr/en/download/article-file/3805945",
+  "type": "article",
+  "key": "10.53391/mmnsa.1455355",
+  "score": 1
+ },
+ {
+  "sources": [
+   "OA",
+   "S2"
+  ],
+  "title": "Book-to-Market, Mispricing, and the Cross Section of Corporate Bond Returns",
+  "date": "2024-02-12",
+  "venue": "Journal of Financial and Quantitative Analysis",
+  "doi": "10.1017/s0022109024000048",
+  "abstract": "Abstract Corporate bonds\u2019 book-to-market ratios predict returns computed from transaction prices. Senior bonds (even investment grade) with the 20% highest ratios outperform the 20% lowest by 3%\u20134% annually after non-parametrically controlling for numerous liquidity, default, microstructure, and priced-risk attributes: yield-to-maturity, bid\u2013ask spread, duration/maturity, credit spread/rating, past returns, coupon, size, age, industry, and structural model equity hedges. Spreads for all-bond samples are larger. An efficient bond market would not exhibit the observed decay in the ratio\u2019s predictive efficacy with implementation delays, small yield-to-maturity spreads, or similar-sized spreads across bonds with differing risks. A methodological innovation avoids liquidity filters and censorship that bias returns.",
+  "authors": "S\u00f6hnke M. Bartram, Mark S. Grinblatt, Yoshio Nozawa",
+  "cited": 21,
+  "oa": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/9F30CC8EE3077365BDF05E801333CB26/S0022109024000048a.pdf/div-class-title-book-to-market-mispricing-and-the-cross-section-of-corporate-bond-returns-div.pdf",
+  "type": "article",
+  "key": "10.1017/s0022109024000048",
+  "score": 1
+ },
+ {
+  "sources": [
+   "OA",
+   "S2"
+  ],
+  "title": "Examining the causal factors of banking achievements for Islamic banks in Jordanian Islamic banks: An analytical study",
+  "date": "2023-05-19",
+  "venue": "International Journal of Applied Economics Finance and Accounting",
+  "doi": "10.33094/ijaefa.v16i2.979",
+  "abstract": "This study focuses on examining the causal factors and determinants of financial banking achievements and performances for the working Jordanian Islamic Banks, including Safwa Islamic bank, International Islamic Arab Bank (IIAB), and Jordan Islamic Bank (JIB) during (2011 \u2013 2021). The study considered the most popular measurements for financial banking performances, namely Return on Equity (ROE), Return on Assets (ROA), and dividend yield (DY) as dependent variables. Additionally, the factors of independent variables were measured by quick liquidity ratio, investments and cash to the summation of total deposits, shareholders\u2019 equity to facilities of credit, and equity ratios. The findings showed a positive and significant influence and impact of investments and currency to the summation of aggregate deposits and equity ratio on return on equity, and a negative significant impact of shareholders\u2019 equity on return on equity. However, there was a negative but not significant influence of liquidity (quick) ratio on ROE. Furthermore, the findings indicated a positive and significant impact of investments and currency (cash) to aggregate banking deposits and equity ratio on return on assets, but there was a negative but not significant impact for liquidity quick ratio and shareholders\u2019 equity to credit facilities on return on assets. The liquidity (quick) ratio had a significant and negative impact on dividend yield. Although there was a positive but insignificant impact of investments and cash to the summation of total deposits and equity ratios on dividend yield, there was a greater negative and insignificant impact from shareholders\u2019 equity to credit facilities on dividend yield.",
+  "authors": "Abdullah Yusri Al Khatib, Sari Sulaiman Malahim, Ibrahim Marwan Khanji, Al\u2019a Ata Jaradat",
+  "cited": 1,
+  "oa": "http://onlineacademicpress.com/index.php/IJAEFA/article/download/979/749",
+  "type": "article",
+  "key": "10.33094/ijaefa.v16i2.979",
+  "score": 6
+ },
+ {
+  "sources": [
+   "OA"
+  ],
+  "title": "Price convergence between credit default swap and put option: New evidence",
+  "date": "2023-03-07",
+  "venue": "Journal of Empirical Finance",
+  "doi": "10.1016/j.jempfin.2023.03.008",
+  "abstract": "Credit default swaps and deep out-of-the-money put options can be used for credit protection, but these markets are not perfectly integrated, leading to different implied hazard rates. The differences in the implied hazard rates are linked to deviations between consensus rating-based hazard rate curves in the two markets, and a residual component related to market frictions. We show that both components diminish over time, but their convergence is asynchronous. A trading strategy based on a joint signal from the curve and residual differences outperforms a conventional trading approach that relies on the absolute differences between the implied hazard rates. Hedge funds are likely to exploit within-market inefficiencies and deviations from rating-based curve, but they do not seem to profit from market segmentation.",
+  "authors": "Ka Kei Chan, Olga Kolokolova, Ming\u2010Tsung Lin, Ser\u2010Huang Poon",
+  "oa": "https://doi.org/10.1016/j.jempfin.2023.03.008",
+  "type": "article",
+  "key": "10.1016/j.jempfin.2023.03.008",
+  "score": 1
+ },
+ {
+  "sources": [
+   "OA",
+   "S2"
+  ],
+  "title": "An Exact Structural Model for Evaluating Credit Default Swaps: Theory and Empirical Evidence",
+  "date": "2022-11-29",
+  "venue": "The Journal of Fixed Income",
+  "doi": "10.3905/jfi.2022.1.149",
+  "abstract": "Using structural models for credit default swaps has been difficult. Existing models all adopt shortcuts as approximations. In this article, we provide an accurate and efficient solution to the price of the credit default swap. The main result is a Theorem in section 2. In an empirical study, we show how our model can properly capture credit default swap exposure to interest rate volatility and asset volatility. Furthermore, we apply the new model to study (1) the interactions among market, credit, and interest risks; (2) the consistency with the reduced-form credit risk models; and (3) implications to capital structure arbitrage.",
+  "authors": "Ren\u2010Raw Chen, Pei-Lin Hsieh",
+  "type": "article",
+  "key": "10.3905/jfi.2022.1.149",
+  "score": 3
+ },
+ {
+  "sources": [
+   "OA"
+  ],
+  "title": "CDS Approximation Accuracy Improvement with Cart and Random Forest Algorithms Based on a Time Span Including the COVID-19 Pandemic Period",
+  "date": "2022-09-14",
+  "venue": "WORLD SCIENTIFIC eBooks",
+  "doi": "10.1142/9789811260483_0003",
+  "abstract": "This study uses decision tree and random forest regressions to improve the accuracy of an approximation of credit default swap (CDS) spreads called the Equity-to-Credit (E2C) formula based on a time span including the COVID-19 pandemic period. Certain sections are dedicated to explaining deeper important concepts in machine learning. Random forest regressions run with the E2C and selected additional financial data results in an accuracy in CDS approximations of 82% out-of-sample. The transparency property of these algorithms confirms that, for CDS spreads\u2019 forecasting, the most used feature is the E2C formula and to a lower extent companies\u2019 debt rating and size.",
+  "authors": "Mathieu Mercadier",
+  "oa": "https://doras.dcu.ie/32779/1/CDS%20approximation%20accuracy%20improvement%20with%20CART%20and%20Random%20Forest%20algorithms%20based%20on%20a%20time-span%20including%20the%20COVID-19%20pandemic%20period.pdf",
+  "type": "book-chapter",
+  "key": "10.1142/9789811260483_0003",
+  "score": 3
+ },
+ {
+  "sources": [
+   "OA"
+  ],
+  "title": "The information content of CDS implied volatility and associated trading strategies",
+  "date": "2022-07-11",
+  "venue": "International Review of Financial Analysis",
+  "doi": "10.1016/j.irfa.2022.102295",
+  "authors": "Yukun Shi, Ding Chen, Biao Guo, Yaofei Xu",
+  "cited": 3,
+  "oa": "https://www.sciencedirect.com/science/article/pii/S1057521922002502",
+  "type": "article",
+  "key": "10.1016/j.irfa.2022.102295",
+  "score": 8
+ },
+ {
+  "sources": [
+   "OA",
+   "S2"
+  ],
+  "title": "Investment Strategies of Hedge Funds",
+  "date": "2021-11-10",
+  "venue": "Oxford University Press eBooks",
+  "doi": "10.1093/oxfordhb/9780198840954.013.9",
+  "abstract": "Abstract This chapter reviews a number of different hedge fund strategies, including equity hedge, long/short, market neutral, relative value arbitrage, convertible arbitrage strategy, capital structure arbitrage strategy, fixed income arbitrage strategy, yield curve arbitrage strategy, other relative value arbitrage strategies, emerging markets strategies, global macro strategies, event driven strategies, distressed securities, and merger arbitrage strategies. In addition, the author discusses the growth and performance of different strategies, as well as fraud, fund failures, activism, and regulation.",
+  "authors": "Hany A. Shawky",
+  "cited": 3,
+  "type": "book-chapter",
+  "key": "10.1093/oxfordhb/9780198840954.013.9",
+  "score": 3
+ },
+ {
+  "sources": [
+   "OA"
+  ],
+  "title": "Informed trading or liquidity trading: a theoretical formulation",
+  "date": "2021-01-01",
+  "venue": "International Journal of Financial Markets and Derivatives",
+  "doi": "10.1504/ijfmd.2021.10036440",
+  "abstract": "This paper provides theoretical formulations of informed trading contrasted with liquidity trading. Informed trading occurs when traders flock to purchase or sell securities, based upon private information. In contrast, liquidity traders purchase or sell securities for their own inventory. Informed traders purchase in large volume over very short periods of time, with a definite direction of price movement. Liquidity trading consists of unlimited market entry of traders, reducing profit per trader, along with a long time period of investment in which the direction of price movement is uncertain, diminishing gains. This paper presents optimal trade prices for informed traders prior to stock mergers, whereupon traders have been observed short selling the acquirer stock, using the proceeds to purchase target stock, or to purchase put options. A capital structure arbitrage strategy is used for liquidity traders, with the trader purchasing or selling bonds at trade prices influenced by the market maker's prices. Proceeds from this strategy may be used to purchase equities.",
+  "authors": "Rebecca Abraham",
+  "cited": 1,
+  "type": "article",
+  "key": "10.1504/ijfmd.2021.10036440",
+  "score": 3
+ },
+ {
+  "sources": [
+   "OA",
+   "S2"
+  ],
+  "title": "Implied Asset Return Profiles, Firm Fundamentals, and Stock Returns",
+  "date": "2021-01-01",
+  "venue": "SSRN Electronic Journal",
+  "doi": "10.2139/ssrn.3795783",
+  "authors": "Jongsub Lee, Andy Naranjo, Stace Sirmans",
+  "cited": 4,
+  "oa": "https://doi.org/10.2139/ssrn.3795783",
+  "type": "preprint",
+  "abstract": "We introduce a novel approach to ascertain firms\u2019 unobserved asset return distribution implied by the joint pricing of equity and credit securities within a structural framework. Motivated by Q-theory, we propose a two-factor model that captures asset growth and risk-shifting effects on stock returns. We show that strong asset returns representing systematic growth options predict higher stock returns, whereas shifting risk from equity to credit forecasts lower stock returns. We also find that the performance of many popular stock market factors (that overlook the optionality of equity) are significantly improved after controlling for asset-level risk-shifting exposure.",
+  "key": "10.2139/ssrn.3795783",
+  "score": 3
+ }
+]

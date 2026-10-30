@@ -1,0 +1,1525 @@
+[
+ {
+  "seeds": [
+   "A Simple Robust Link B"
+  ],
+  "src": [
+   "S2"
+  ],
+  "title": "Pandemic exposure, credit market reactions, and corporate default risk",
+  "date": "2026-10-22",
+  "venue": "Applied Economics Letters",
+  "doi": "10.1080/13504851.2026.2750964",
+  "abstract": "We develop a theoretical model quantifying how firm-level pandemic exposure and sentiment, as informational shocks, affect a firm\u2019s credit spread and default risk. Consistent with model predictions, we find significantly positive impacts on single-name credit default swap (CDS) spreads from both pandemic exposure and negative pandemic sentiment. We also find that the positive sentiment has a negative impact on the CDS spreads only when the sentiment becomes more informative. We also find firm-level pandemic risk reduces CDS spread slope and increases credit spread volatility, indicating that pandemic risk tends to manifests as as short-term shock that results in short term credit spreads trading higher relative to longer term credit spreads and more uncertainty around credit status. JEL Classification: G10, G12, G14, G24, G32",
+  "authors": "Yun-Qi Li, Ze-Hua Zhang, Ran Zhao",
+  "key": "10.1080/13504851.2026.2750964",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Factors of Corporate Bonds Risk Premium",
+  "date": "2026-10-15",
+  "venue": "Finance: Theory and Practice",
+  "doi": "10.26794/2587-5671-2026-30-5-36-48",
+  "abstract": "One of the key indicators of a corporate bond issuer\u2019s credit risk is the credit spread. The credit spread is the difference in yield to maturity between a corporate bond and a government bond with similar duration. Since 2014, the Russian market has experienced several periods of stability and instability, during which the impact of various factors on credit spreads has varied. The aim of this study is to investigate the factors that influence the yield spread between corporate and government bonds on the Russian market, using switching models. The risk-free rate, the slope of the zero-coupon yield curve, the return of the Moscow Exchange index, the volatility of the Russian stock market, and the growth rate of oil prices are all considered variables of interest in this study. The Markov switching model, logistic regression, and threshold autoregression (TAR) are used as methods. The scientific novelty of this work lies in the modeling of credit spread changes in different regimes on the Russian bond market. It has been found that switching models can better explain changes in credit spread, according to the Akaike criterion. Additionally, stock market volatility can help predict switching between regimes. The level of the risk-free rate, the slope of the zero-coupon yield curve, the volatility, and the return of the stock market are all negatively correlated with the level of credit spread. However, the negative relationship between the stock index\u2019s return and credit spread is only observed during periods of high stock market volatility. Considering multiple regimes in the credit spread modeling allows assessing the impact of factors under consideration more accurately. The results obtained might be useful for investors to assess the risks associated with investing in bonds. This allows them to rebalance their portfolios at different times in order to achieve the desired level of risk. Based on these results, regulators will be able to adjust their policies, considering the specific economic circumstances of the time period.",
+  "authors": "A. V. Tinyakov, \u041c\u0438\u0440\u0437\u043e\u044f\u043d \u0410\u0448\u043e\u0442 \u0413\u0430\u043c\u043b\u0435\u0442\u043e\u0432\u0438\u0447, Yu.V. Kudryavtseva",
+  "oa": "https://financetp.fa.ru/jour/article/download/4706/1954",
+  "type": "article",
+  "key": "10.26794/2587-5671-2026-30-5-36-48",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "Long Rates, Life Insurers, and Credit Spreads",
+  "date": "2026-08-31",
+  "venue": "Review of Financial Studies",
+  "doi": "10.1093/rfs/hhag079",
+  "abstract": "Abstract This paper proposes a new channel through which long-term interest rates transmit to credit spreads. When life insurers carry negative duration gaps, higher rates reduce their liabilities more than assets. Rate increases therefore boost equity and risk-bearing capacity, lowering equilibrium credit spreads. Empirically, I test this channel with bond-level yields and a maturity-based discontinuity in bond ownership. Insurers\u2019 trades confirm the mechanism: after rates rise, insurers shift portfolios towards riskier, high-yield bonds. As rates increase, bonds more heavily held by life insurers experience greater spread reductions. The results show that institutional duration mismatch shapes credit spreads and corporate financing conditions.",
+  "authors": "Ziang Li",
+  "oa": "https://doi.org/10.2139/ssrn.4465485",
+  "type": "article",
+  "key": "10.1093/rfs/hhag079",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "THE EFFECT OF INFORMATIVE EVENTS IN A CONTINGENT CLAIMS PRICING FRAMEWORK: EVIDENCE FROM IPOS",
+  "date": "2026-08-07",
+  "venue": "Journal of Financial Management Markets and Institutions",
+  "doi": "10.1142/s2282717x26500039",
+  "abstract": "This paper examines how investors interpret initial public offering (IPO) announcements as informational signals for peer firms in the same industry. Using Merton\u2019s [(1974) On the pricing of corporate debt: The risk structure of interest rates, The Journal of Finance 29, 449\u2013470] contingent-claims framework, we analyze abnormal stock and bond price reactions to IPO announcements to distinguish whether investors primarily revise expected firm value or refine uncertainty about firm value. Across a sample of large IPOs, we document positive abnormal bond returns and negative abnormal equity returns, an asymmetric pattern consistent with IPOs reducing uncertainty about peer firms\u2019 future value distributions. Post-IPO, peer firms exhibit significant declines in realized and implied volatility, providing empirical support for this interpretation. These results suggest that IPOs convey information about industry conditions that is relevant to both senior and residual claims but is priced differently across security classes. The findings highlight the importance of analyzing debt and equity markets jointly to identify the informational content of IPO spillovers.",
+  "authors": "Jonathan Bitting, Alex Holcomb, Paul Mason",
+  "oa": "https://doi.org/10.1142/s2282717x26500039",
+  "type": "article",
+  "key": "10.1142/s2282717x26500039",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "Explaining the Momentum Spillover From Stocks to Bonds",
+  "date": "2026-08-04",
+  "venue": "Emerald Group Publishing Limited eBooks",
+  "doi": "10.1108/s2514-465020260000014006",
+  "abstract": "Abstract In addition to the momentum spillover from stocks to investment-grade bonds, this paper documents evidence of a more pronounced momentum spillover effect for speculative-grade bonds. The momentum spillover effect is significant in economic terms and is not a manifestation of stock or bond momentum effects. Transaction costs and trading frictions cannot explain the momentum spillover effect. The momentum spillover is attributable to the information diffusion from stock returns to bond returns.",
+  "authors": "Hai Lin, Junbo Wang, Chunchi Wu",
+  "type": "book-chapter",
+  "key": "10.1108/s2514-465020260000014006",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "Macroeconomic Factors Affecting the Corporate Bond Market in the Indian Scenario",
+  "date": "2026-06-24",
+  "venue": "IGI Global eBooks",
+  "doi": "10.4018/979-8-2600-2513-0.ch004",
+  "abstract": "The CBM is one of the significant financing instruments in the Indian financial system. The objective of the present study is to get a better apprehension of the relationship between CBM and macroeconomic variables, and also how they are affecting it. Using monthly observations from January 2007 to April 2019, which makes 148 observations for each variable. It is found that the CBM is affected by the exchange rate, international crude oil prices, and the wholesale price index of India in the long run as well as in the short run. While the equity market affects it in the short run only. Moreover, the Autoregressive Distributed Lag (ARDL) and Error Correction Model (ECM) models showed that the money supply does not have any significant relationship with the CBM in India.",
+  "authors": "G. N. Singh",
+  "type": "book-chapter",
+  "key": "10.4018/979-8-2600-2513-0.ch004",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B",
+   "How Profitable Is Capi",
+   "Limited Arbitrage betw",
+   "The Cross-Section of C"
+  ],
+  "src": [
+   "S2"
+  ],
+  "title": "The Debt\u2010Equity Spread",
+  "date": "2026-06-09",
+  "venue": "Journal of Finance",
+  "doi": "10.1111/jofi.70060",
+  "abstract": "\n \n We propose a measure of the valuation gap between debt and equity\u2014debt\u2010equity spread (DES)\u2014based on the difference between actual and equity\u2010implied credit spreads. DES predicts cross\u2010sectional stock and bond returns in opposite directions. This predictability is unique compared to existing mispricing measures and cannot be explained by exposures to various risk factors. High\u2010DES firms are more likely to issue equity and retire debt, and have more insider equity selling. These findings are consistent with DES capturing relative mispricing between debt and equity, and provide empirical support for the model of partially segmented markets in Greenwood, Hanson, and Liao (2018,\n Review of Financial Studies\n 31, 3307\u20133343).\n",
+  "authors": "Hui Chen, Zhi-Yao Chen, Jun E. Li",
+  "oa": "https://doi.org/10.1111/jofi.70060",
+  "key": "10.1111/jofi.70060",
+  "nseeds": 4
+ },
+ {
+  "seeds": [
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Forecasting sovereign CDS spreads in the MENA region: a hybrid deep learning and term structure approach",
+  "date": "2026-06-01",
+  "venue": "International Journal of Emerging Markets",
+  "doi": "10.1108/ijoem-05-2025-0968",
+  "abstract": "Purpose This study aims to enhance the forecasting of sovereign Credit Default Swap (CDS) spreads in the MENA region by developing a hybrid model that integrates deep learning algorithms with a structural term structure framework. Accurate CDS forecasting is critical for managing sovereign credit risk, especially in politically and economically unstable environments. Design/methodology/approach The paper proposes a hybrid forecasting framework combining Long Short-Term Memory (LSTM) and Gated Recurrent Unit (GRU) deep learning models with the Nelson-Siegel term structure model. The framework is tested on daily CDS data for seven MENA countries (2015\u20132024), incorporating macro-financial variables such as the S&P/Hawkamah ESG Pan Arab Index, US 10-Year Bond Yield, LBMA Gold Price, and OPEC Basket Price. The models are evaluated using RMSE, MSE, R2, and SHAP interpretability tools. Findings Empirical results show that hybrid models, particularly the GRU\u2013Nelson-Siegel variant, significantly outperform standalone LSTM and GRU models in predictive accuracy, especially during high-volatility episodes in Iraq, Egypt, and Tunisia. The inclusion of macro-financial indicators improves the model's responsiveness to market shocks, enhancing forecasting reliability and robustness under uncertain conditions. Originality/value This research contributes to the financial risk modeling literature by demonstrating the superiority of hybrid deep learning\u2013econometric models in forecasting sovereign credit risk in emerging markets. The study offers a practical and interpretable approach to risk assessment, supporting more informed decision-making for investors, policymakers, and credit analysts operating in volatile geopolitical environments. Furthermore, the practical implications of this study are particularly relevant for policymakers and financial institutions in emerging markets. The hybrid deep learning\u2013Nelson-Siegel framework enhances the early identification of sovereign risk deterioration, supporting proactive debt management and crisis prevention. By providing more accurate and timely forecasts of CDS spreads, the model can help central banks and regulatory authorities implement data-driven policies to strengthen financial stability. Investors can also leverage these predictive insights to optimize portfolio allocation, improve hedging efficiency, and better assess exposure to sovereign credit risk during volatile geopolitical periods.",
+  "authors": "Yesser Drira, Mouna Boujelb\u00e8ne Abbes",
+  "cited": 1,
+  "type": "article",
+  "key": "10.1108/ijoem-05-2025-0968",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "The co-pricing factor zoo",
+  "date": "2026-05-12",
+  "venue": "Journal of Financial Economics",
+  "doi": "10.1016/j.jfineco.2026.104295",
+  "abstract": "We analyze 18 quadrillion models for the joint pricing of corporate bond and stock returns. Strikingly, we find that equity and nontradable factors alone suffice to explain corporate bond risk premia once their Treasury term structure risk is accounted for, rendering the extensive bond factor literature largely redundant for this purpose. While only a handful of factors, behavioral and nontradable, are likely robust sources of priced risk, the true latent stochastic discount factor is dense in the space of observable factors. Consequently, a Bayesian Model Averaging Stochastic Discount Factor explains risk premia better than all low-dimensional models, in- and out-of-sample, by optimally aggregating dozens of factors that serve as noisy proxies for common underlying risks, yielding an out-of-sample Sharpe ratio of 1.5 to 1.8. This SDF, as well as its conditional mean and volatility, are persistent, track the business cycle and times of heightened economic uncertainty, and predict future asset returns.",
+  "authors": "Alexander Dickerson, Christian Julliard, Philippe Mueller",
+  "cited": 2,
+  "oa": "https://doi.org/10.1016/j.jfineco.2026.104295",
+  "type": "article",
+  "key": "10.1016/j.jfineco.2026.104295",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "Factor Investing and the Integration of Corporate Bond and Equity Markets",
+  "date": "2026-01-01",
+  "venue": "SSRN Electronic Journal",
+  "doi": "10.2139/ssrn.6588823",
+  "authors": "Xinlei Hao, Xin He, Junbo Wang, Yuanzhi Wang",
+  "oa": "https://doi.org/10.2139/ssrn.6588823",
+  "type": "preprint",
+  "key": "10.2139/ssrn.6588823",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "Price Rigidities and Credit Risk",
+  "date": "2025-12-29",
+  "venue": "Journal of Financial and Quantitative Analysis",
+  "doi": "10.1017/s0022109025102512",
+  "abstract": "Abstract We develop a capital structure model in which firms differ in their ability to adjust output prices. Firms with inflexible prices are more exposed to nominal and real shocks, leading to lower leverage, shorter debt maturity, higher cost of debt, tighter covenants, and greater precautionary cash holdings. Shocks to cash flow volatility raise the cost of debt more for firms with less pricing flexibility. We empirically confirm these predictions: Firms with inflexible prices experience significantly larger increases in credit spreads following monetary policy shocks and the 2008 Lehman Brothers bankruptcy, especially when they face high preshock rollover risk.",
+  "authors": "Patrick Augustin, Linxiao Cong, Alexandre Corhay, Michael Weber",
+  "cited": 9,
+  "oa": "https://doi.org/10.1017/s0022109025102512",
+  "type": "article",
+  "key": "10.1017/s0022109025102512",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Anchoring Credit Defau",
+   "Equity Volatility and ",
+   "Individual Stock-Optio"
+  ],
+  "src": [
+   "S2"
+  ],
+  "title": "Price Rigidities and Credit Risk",
+  "date": "2025-12-29",
+  "venue": "Social Science Research Network",
+  "doi": "10.2139/ssrn.3852082",
+  "abstract": "We develop a capital structure model in which firms differ in their ability to adjust output prices. Firms with inflexible prices are more exposed to nominal and real shocks, leading to lower leverage, shorter debt maturity, higher cost of debt, tighter covenants, and greater precautionary cash holdings. Shocks to cash flow volatility raise the cost of debt more for firms with less pricing flexibility. We empirically confirm these predictions: Firms with inflexible prices experience significantly larger increases in credit spreads following monetary policy shocks and the 2008 Lehman Brothers bankruptcy, especially when they face high preshock rollover risk.",
+  "authors": "Patrick Augustin, Linxiao Cong, A. Corhay, Michael Weber",
+  "cited": 4,
+  "oa": "https://doi.org/10.2139/ssrn.3852082",
+  "key": "10.2139/ssrn.3852082",
+  "nseeds": 3
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "The impact of equity dynamics on bond pricing",
+  "date": "2025-11-27",
+  "venue": "\u0424\u0438\u043d\u0430\u043d\u0441\u043e\u0432\u0430\u044f \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0430: \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u044b \u0438 \u0440\u0435\u0448\u0435\u043d\u0438\u044f",
+  "doi": "10.24891/jwqexu",
+  "abstract": "Subject. The article discusses credit spreads of local ruble-denominated bonds. Objectives. The purpose is to determine the impact of equity dynamics, expressed in terms of profitability and volatility, on the pricing of local ruble-denominated bonds at secondary auctions on the Russian market, expressed in the level of the credit spread. Methods. The study employs a linear regression model based on a sample of 49 issuers who placed 248 bond issues, with a total of 205,266 observations. Results. The study revealed that the degree of influence depends on issuer\u2019s credit quality. The lower the credit quality, the stronger the stock dynamics explains the credit spread dynamics. Thus, for first-tier issuers, the negative dynamics of equity capital does not reflect the increasing likelihood of bankruptcy due to extremely large \"distance to default.\" Accordingly, the share of the default factor in the credit spreads of their bonds is insignificant. However, when crisis events occur in the economy, default factors for all issuers will come to the fore, which is why the dynamics of stocks and bonds will move in the same direction. This explains the significant variation in the predictive power of the model for the same issuer. At the same time, the inclusion of credit rating does not significantly increase the predictive power of the model, which already takes into account the equity parameters. Conclusions. The dynamics of equity can be used to predict the future trajectory of credit spreads for high-risk issuers.",
+  "authors": "Kirill A. DARCHEV",
+  "type": "article",
+  "key": "10.24891/jwqexu",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "CEO Narcissism, Management Team Characteristics, and Corporate Credit Risk",
+  "date": "2025-11-16",
+  "venue": "Journal of Business Finance &amp Accounting",
+  "doi": "10.1111/jbfa.70026",
+  "abstract": "ABSTRACT We investigate whether and how CEO narcissism affects corporate credit risk, measured by bond yield spreads. Using 12,826 US corporate bond observations from 2008 to 2023 for this investigation, we find that CEO narcissism is significantly and positively associated with corporate credit risk through heightened asset value volatility and greater financial leverage. In addition, we explore new mechanisms related to management team characteristics, focusing on both CEO\u2010 and team\u2010level traits. Specifically, the positive association between CEO narcissism and corporate credit risk is more pronounced when the top management team has more shared working experience and when the CEO has a broader social network. These executive traits strengthen the CEO's risk\u2010taking incentives, thereby amplifying the effect of CEO narcissism on bondholders. Moreover, subordinate executives\u2019 relative power weakens the CEO narcissism effect because of the internal monitoring function, whereas CEO ownership intensifies the effect due to the debt\u2013equity conflict mechanism. Our results are robust after addressing endogeneity, controlling for CEO overconfidence, and employing alternative measures of CEO narcissism and firm credit risk.",
+  "authors": "Tsung\u2010Kang Chen, Yijie Tseng, Yun Hao, Yu\u2010Chun Lin",
+  "cited": 2,
+  "type": "article",
+  "key": "10.1111/jbfa.70026",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Option-Based Risk Valuation for NFT-Backed Loans",
+  "date": "2025-11-05",
+  "venue": "IEEE International Conference on Distributed Ledger Technologies (ICDLT)",
+  "doi": "10.1109/icdlt66400.2025.11466592",
+  "abstract": "This paper proposes an option-theoretic valuation framework for NFT-collateralized loans, extending the Merton structural credit risk model to account for the unique characteristics of NFT markets. By integrating the Black-Scholes model to represent borrower default as a put option and using a novel price benchmark - Composite Price - as reference for collateral valuation, the model evaluates loan viability under real-world market frictions. The model enables net present value (NPV)-based loan screening that prioritizes downside protection over exposure. Using 2,816 closed loans from major NFT lending platforms in 2024, an ex-ante screen that rejects $\\text{NPV} \\leq 0$ loans would have reduced deployed capital, lowered default rates and raised capital efficiency. After removing ex-post financial-inconsistent outcomes, the improvement is more pronounced. These results support the use of option-based NPV filters for risk management control by lenders in NFT lending platforms.",
+  "authors": "Daniel Costa, Francisco Resende, Pedro Granate, Armando Teixeira",
+  "type": "conference-paper",
+  "cited": 1,
+  "key": "10.1109/icdlt66400.2025.11466592",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B",
+   "The Cross-Section of C"
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "Systemic Credit Risk Premium: Insights from Credit Derivatives Markets",
+  "date": "2025-08-01",
+  "venue": "Finance and Economics Discussion Series",
+  "doi": "10.17016/feds.2023.055r1",
+  "abstract": "This study examines the market-implied premiums for bearing systemic credit risk by analyzing credit derivatives on the CDX North American Investment Grade portfolio from September 2005 to March 2021. We construct systemic credit risk premium (SCRP) as the difference between the observed prices of multi-name super-senior tranches and their synthetic counterparts valued from historical asset correlations implied by single-name CDS spreads. Our findings show that the fitted SCRP surged during the 2007-2009 financial crisis, remained stable for a period, declined gradually after 2016, and spiked again during the COVID-19 shock. The empirical analysis highlights that the estimated SCRP has significant implications for asset pricing, particularly in affecting investment opportunities for U.S. stock investors during periods of financial instability.",
+  "authors": "Kiwoong Byun, Baeho Kim, Dong Hwan Oh",
+  "oa": "https://www.federalreserve.gov/econres/feds/files/2023055r1pap.pdf",
+  "type": "article",
+  "key": "10.17016/feds.2023.055r1",
+  "nseeds": 2
+ },
+ {
+  "seeds": [
+   "Individual Stock-Optio"
+  ],
+  "src": [
+   "S2"
+  ],
+  "title": "Accounting and corporate failure: the evolving role of accounting information in bankruptcy prediction",
+  "date": "2025-07-29",
+  "venue": "Accounting and Business Research",
+  "doi": "10.1080/00014788.2025.2516273",
+  "abstract": "This paper reviews the extensive literature on the predictive power of accounting information for bankruptcy. Prior research demonstrates that financial statement information effectively predicts bankruptcy out-of-sample, both independently and in combination with market data. I discuss several attributes of accounting information that may enhance or impair its utility in bankruptcy prediction. Using a comprehensive dataset of bankruptcies from 1980 to 2023, I analyse how the role of accounting information in credit risk assessment has evolved over the past four decades. My findings reveal that the predictive power of models based solely on accounting information has remained stable over the most recent decades, whereas the predictive power of equity market information has shown a modest increase. Notably, the performance of accounting and market-based models does not always align. In periods of declining market information efficacy, accounting information often remains robust, mitigating the impact on combined models. Conversely, market information frequently offsets reductions in the predictive power of accounting data, underscoring the complementary strengths of these information sources.",
+  "authors": "Maria Correia",
+  "cited": 4,
+  "oa": "https://www.tandfonline.com/doi/pdf/10.1080/00014788.2025.2516273?needAccess=true",
+  "key": "10.1080/00014788.2025.2516273",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B",
+   "The Cross-Section of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Systemic Credit Risk Premium: Insights From Credit Derivatives Markets",
+  "date": "2025-07-01",
+  "venue": "Journal of Futures Markets",
+  "doi": "10.1002/fut.70003",
+  "abstract": "ABSTRACT This study examines the market\u2010implied premiums for bearing systemic credit risk by analyzing credit derivatives on the CDX North American Investment Grade portfolio from September 2005 to March 2021. We construct systemic credit risk premium (SCRP) as the difference between the observed prices of multiname super\u2010senior tranches and their synthetic counterparts valued from historical asset correlations implied by single\u2010name Credit Default Swap spreads. Our findings show that the fitted SCRP surged during the 2007\u20132009 financial crisis, remained stable for a period, declined gradually after 2016, and spiked again during the COVID\u201019 shock. The empirical analysis highlights that the estimated SCRP has significant implications for asset pricing, particularly in affecting investment opportunities for US stock investors during periods of financial instability.",
+  "authors": "Kiwoong Byun, Baeho Kim, Dong Hwan Oh",
+  "oa": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/fut.70003",
+  "type": "article",
+  "cited": 1,
+  "key": "10.1002/fut.70003",
+  "nseeds": 2
+ },
+ {
+  "seeds": [
+   "Equity Volatility and ",
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "Inflexibility and Corporate Credit Spreads",
+  "date": "2025-06-17",
+  "venue": "The Review of Corporate Finance Studies",
+  "doi": "10.1093/rcfs/cfaf009",
+  "abstract": "Abstract This paper studies the role of scale inflexibility in explaining corporate credit spreads. We find robust evidence that firms with higher inflexibility have higher credit spreads. To mitigate the endogeneity concern, we employ a regression discontinuity design that uses the exogenous variations in labor adjustment costs resulting from close-call union elections. Furthermore, contraction inflexibility is more prominent in influencing credit spreads than expansion inflexibility is. Additionally, inflexibility increases credit spreads due to increased cash flow volatility and financial distress risk. Our findings highlight the importance of a firm\u2019s ability to adapt to productivity shocks in fulfilling its debt obligations. (JEL G12, G30, G32)",
+  "authors": "Zhaofeng Xu, Zhe An, Abe de Jong, Ying Xia",
+  "oa": "https://academic.oup.com/rcfs/advance-article-pdf/doi/10.1093/rcfs/cfaf009/63508166/cfaf009.pdf",
+  "type": "article",
+  "key": "10.1093/rcfs/cfaf009",
+  "nseeds": 2
+ },
+ {
+  "seeds": [
+   "Limited Arbitrage betw",
+   "Risk and Return in Fix"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Economic links from bonds and cross-stock return predictability",
+  "date": "2025-05-27",
+  "venue": "Journal of Financial Economics",
+  "doi": "10.1016/j.jfineco.2025.104110",
+  "authors": "Jian Feng, Xiaolin Huo, Xin Liu, Yifei Mao",
+  "cited": 14,
+  "type": "article",
+  "abstract": "Identifying economically-linked firms through their corporate bonds\u2019 credit rating comovement, we find that a long-short strategy for stocks based on the link generates a risk-adjusted alpha of 0.62% per month, which cannot be explained by industry, customer-supplier, single-to multi-segment, foreign, technology, geographic, and shared analyst coverage links documented in the literature. The cross-return predictability is not significant in the bond market, and is mitigated in the presence of cross-holding investors. Furthermore, analysts update their forecasts sluggishly in response to news in bond-linked peer firms. Overall, our results are consistent with limited investor attention due to the market segmentation between the equity and bond markets.",
+  "key": "10.1016/j.jfineco.2025.104110",
+  "nseeds": 2
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B",
+   "How Profitable Is Capi",
+   "Limited Arbitrage betw",
+   "Risk and Return in Fix"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Sideshow or center stage? Information transmission between CDS and equity markets",
+  "date": "2025-05-10",
+  "venue": "Journal of Financial Intermediation",
+  "doi": "10.1016/j.jfi.2025.101151",
+  "authors": "Alexandre Rubesam, Paul Zimmermann",
+  "type": "article",
+  "key": "10.1016/j.jfi.2025.101151",
+  "nseeds": 4
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B",
+   "Anchoring Credit Defau",
+   "The Cross-Section of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "The Term Structure of Credit Default Swap Spreads and the Cross Section of Options Returns",
+  "date": "2025-03-27",
+  "venue": "Journal of Futures Markets",
+  "doi": "10.1002/fut.22582",
+  "abstract": "ABSTRACT This paper, using the natural logarithmic form credit default swap (log CDS) slope, examines the variation in cross\u2010sectional 1\u2010month ATM delta\u2010hedged straddle returns. Our analysis reveals that the log CDS slope significantly and positively predicts these returns, even when accounting for several key volatility mispricing factors. Further investigation shows that this predictive relationship exhibits a strong time\u2010varying pattern, closely linked to market conditions. In contrast, the relationship between notable volatility mispricing factors and straddle returns remains relatively stable over time. Constructing a long\u2010short quintile portfolio on straddle options confirms that trading performance improves when the past 12\u2010month market return is at a historically lower level, market volatility is at a historically higher level, and the VIX is elevated. Log CDS slope, as a proxy for excess jump risk premium, significantly predicts delta\u2010hedged option returns during periods of high volatility.",
+  "authors": "Hao Zhang, Yukun Shi, Dun Han, Pei Jose Liu",
+  "oa": "https://doi.org/10.1002/fut.22582",
+  "type": "article",
+  "key": "10.1002/fut.22582",
+  "nseeds": 3
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B",
+   "The Information Conten"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Do changes in the implied volatility of stock options predict future changes in CDS spreads?",
+  "date": "2025-03-09",
+  "venue": "Journal of Derivatives and Quantitative Studies \uc120\ubb3c\uc5f0\uad6c",
+  "doi": "10.1108/jdqs-12-2024-0048",
+  "abstract": "This study examines whether changes in the implied volatility of stock options have cross-sectional predictability for future changes in credit default swap (CDS) spreads in the Korean market. The major findings are as follows. First, in the CDS portfolio analysis, when buying a portfolio with the highest increases in implied volatility and selling a portfolio with the highest decreases and rebalancing monthly, the average change in future CDS spreads is positive and statistically significant. Second, the cross-sectional predictive regression analysis shows that the coefficients for changes in implied volatility are significant in most models. The magnitude of the coefficients remains generally stable regardless of the control variables. These findings provide further evidence supporting the perspective of Cao et al. (2023) that increases in implied volatility reflect information about increased default risk due to higher firm value volatility.",
+  "authors": "Changsoo Hong, Yuen Jung Park",
+  "cited": 1,
+  "oa": "https://www.emerald.com/jdqs/article-pdf/33/2/150/9846592/jdqs-12-2024-0048.pdf",
+  "type": "article",
+  "key": "10.1108/jdqs-12-2024-0048",
+  "nseeds": 2
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "The UBS\u2010Credit Suisse Merger: Helvetia's Gift",
+  "date": "2025-03-01",
+  "venue": "Journal of applied corporate finance",
+  "doi": "10.1111/jacf.12674",
+  "abstract": "The UBS- Credit Suisse (CS) merger in March 2023, one of the biggest banking unions in history, was an emergency rescue deal engineered by Swiss authorities to avoid more market-shaking turmoil in global banking. The merger resulted in a significant increase in the combined stakeholder net wealth, totaling 19.5 billion US dollars. This increase was distributed around the merger announcement through abnormal returns to UBS stockholders (7.95%) and CS bondholders (34.74%), equivalent to approximately 5.1 billion and 18.8 billion US dollars, respectively. In contrast, CS stockholders experienced negative abnormal stockholder returns of -55% (-4.4 billion USD) while the UBS bonds\u2019 value was not impacted by the merger. We infer that UBS stockholders received a wealth transfer from CS stockholders and that this transfer is likely explained by unusual restrictions on the number of bidders for CS. The observed effects on bondholders\u2019 wealth align with previous research on coinsurance and the implications of \u201ctoo-big-to-fail\u201d research findings. We conclude that the combined wealth effect, which cannot be attributed to the short-term abnormal returns on securities of the two banks, is externally driven. It appears to come at the expense of taxpayers: the merger-bailout has increased Switzerland\u2019s sovereign credit risk, resulting in an expected 6 to 7 billion US dollars in additional debt costs for the country.",
+  "authors": "Pascal B\u00f6ni, Tim Alexander Kroencke, Florin P. Vasvari",
+  "cited": 6,
+  "oa": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/jacf.12674",
+  "type": "article",
+  "key": "10.1111/jacf.12674",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B"
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "Structural Equity Option Pricing: Implications for Credit Risk",
+  "date": "2025-01-01",
+  "venue": "SSRN Electronic Journal",
+  "doi": "10.2139/ssrn.5393252",
+  "authors": "Nicola Fusari, Sujan Lamichhane",
+  "cited": 1,
+  "oa": "https://doi.org/10.2139/ssrn.5393252",
+  "type": "preprint",
+  "key": "10.2139/ssrn.5393252",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Investment portfolio management to meet or beat earnings expectations",
+  "date": "2024-12-28",
+  "venue": "Review of Accounting Studies",
+  "doi": "10.1007/s11142-024-09867-z",
+  "abstract": "Abstract Insurers can boost their earnings by accruing interest income from their corporate bond investments. We document that insurers have higher corporate bond investments as well as less equity and cash holdings, when their parents meet or just beat analysts\u2019 quarterly earnings forecasts, compared to when their parents miss or comfortably beat the forecasts. The investment in corporate bonds to boost earnings is more pronounced when bond offerings provide more opportunities for accruing interest income, when the parent\u2019s corporate governance is weaker, when the parent\u2019s managers have more equity incentives, when insurers face more competition, when other earnings management techniques are used, or when the insurance segment is more important to the parent. Finally, insurers suspected of helping their parents meet or beat earnings benchmarks experience worse investment performance in subsequent years, presumably because, by investing more in corporate bonds, the insurers forgo investment opportunities with higher longer-term returns.",
+  "authors": "Zhongwen Fan, Jia Qi Guo, Jeffrey Ng, Xiao Zhang",
+  "cited": 8,
+  "oa": "https://link.springer.com/content/pdf/10.1007/s11142-024-09867-z.pdf",
+  "type": "article",
+  "key": "10.1007/s11142-024-09867-z",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Bonds versus Equities: Information for Investment",
+  "date": "2024-10-20",
+  "venue": "The Journal of Finance",
+  "doi": "10.1111/jofi.13396",
+  "abstract": "ABSTRACT We provide a simple model of investment by a firm funded with debt and equity and empirical evidence to demonstrate that, once we control for the debt overhang problem with credit spreads, asset volatility is an unambiguously positive signal for investment, while equity volatility sends a mixed signal: Elevated volatility raises the option value of equity and increases investment for financially sound firms, but exacerbates debt overhang and decreases investment for firms close to default. Our study provides a simple unified understanding of the structural and empirical relationships between investment, credit spreads, equity versus asset volatility, leverage, and Tobin's .",
+  "authors": "Huifeng Chang, Adrien d\u2019Avernas, Andrea L. Eisfeldt",
+  "cited": 7,
+  "oa": "https://doi.org/10.1111/jofi.13396",
+  "type": "article",
+  "key": "10.1111/jofi.13396",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B",
+   "The Cross-Section of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Partial hedging in credit markets with structured derivatives: a quantitative approach using put options",
+  "date": "2024-10-18",
+  "venue": "Journal of Derivatives and Quantitative Studies \uc120\ubb3c\uc5f0\uad6c",
+  "doi": "10.1108/jdqs-06-2024-0019",
+  "abstract": "This study develops a novel method for mitigating credit risk through the use of structured derivatives, focusing in particular on the use of European put options as a strategic hedging tool. Inspired by the work of Merton (1974), our approach introduces the concept of default triggered by the stock price ST breaching a predefined barrier B. By establishing a distributional equivalence between an existing default model and P(ST<B) for a given time T, we demonstrate the potential for reducing the necessary capital allocation for a projected loss X(T) by partially hedging with a European put option. We formulate and solve an optimization problem w.r.t.\u00a0a specific risk measure to determine the optimal strike price for the option, and our numerical analysis confirms a reduction in the Solvency Capital Requirement (SCR) in markets with and without jumps. Our findings provide (insurance) companies with a pragmatic approach to mitigating losses while maintaining their current risk management framework.",
+  "authors": "Constantin Siggelkow",
+  "oa": "https://doi.org/10.1108/jdqs-06-2024-0019",
+  "type": "article",
+  "key": "10.1108/jdqs-06-2024-0019",
+  "nseeds": 2
+ },
+ {
+  "seeds": [
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "Duration-Based Valuation of Corporate Bonds",
+  "date": "2024-09-18",
+  "venue": "Review of Financial Studies",
+  "doi": "10.1093/rfs/hhae054",
+  "abstract": "Abstract We decompose corporate bond and equity index returns into duration-matched government bond returns and the excess returns over this duration-matched counterfactual, which we term duration-adjusted returns. Compared with previously used excess return definitions (ie, returns in excess of Treasury bills), our decomposition leads to markedly different return patterns and asset pricing implications. In particular, we find that investment-grade bonds earn a small credit risk premium, comparable in magnitude to the convenience yield, and that duration adjustment resolves the CAPM\u2019s failure to price corporate bonds. These findings highlight the importance of adjusting for nonstationary interest rate environments in asset pricing tests.",
+  "authors": "Jules H. van Binsbergen, Yoshio Nozawa, Michael Schwert",
+  "cited": 67,
+  "oa": "https://doi.org/10.2139/ssrn.3914422",
+  "type": "article",
+  "key": "10.1093/rfs/hhae054",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Measuring ESG risk premia with contingent claims",
+  "date": "2024-09-03",
+  "venue": "European Journal of Finance",
+  "doi": "10.1080/1351847x.2024.2394550",
+  "abstract": "We propose a contingent claims approach for estimating ESG risk premia from market information and market participants' decisions. To this end, we infer the asset value dynamics via the structural model of Merton [1974, \u201cOn the Pricing of Corporate Debt: The Risk Structure of Interest Rates.\u201d Journal of Finance 29: 449\u2013470.] for a large panel of S&P 500 firms using an estimation algorithm that utilizes the information embedded in stock market prices, CDS spreads, and default probabilities. We find a statistically significant relationship between the ESG score and the volatility and drift terms of the asset value process, suggesting that ESG factors are structurally connected to the value of the firm. We establish a mapping between ESG scores and the cost of equity and debt as implied by firm's contingent claims, and derive estimates of the ESG risk premium across different ESG and leverage profiles. In addition, we break down the ESG risk premia by industry, and demonstrate how practitioners can adjust the weighed average cost of capital of ESG laggard firms for valuation and decision making purposes.",
+  "authors": "Ioannis Michopoulos, Alexandros Bougias, Athanasios Episcopos, Efstratios Livanis",
+  "cited": 8,
+  "oa": "https://doi.org/10.2139/ssrn.4600795",
+  "type": "article",
+  "key": "10.1080/1351847x.2024.2394550",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "Payout Restrictions and Bank Risk-Shifting",
+  "date": "2024-09-01",
+  "venue": "Staff reports",
+  "doi": "10.59576/sr.1123",
+  "abstract": "What are the effects of payout restrictions on bank risk-shifting? To answer this question, we exploit the restriction policies imposed during the Covid-crisis on US banks as a natural experiment. Using a high-frequency differences-in-differences empirical strategy, we show that, when share buybacks are banned and dividends restricted, banks\u2019 equity prices fall while their CDS spreads and bond yields decline. These results indicate that payout restrictions shift risk from debtholders into equityholders. Consistent with a risk-shifting channel, we find that these effects revert once restrictions are lifted. Moreover, banks that are ex-ante more reliant on share buybacks than dividends in their payout policies, decrease risk-taking relative to banks that are ex ante more dividends reliant, with those effects reverting when the restrictions are relaxed. These results indicate that payout and risk-taking choices are complementary and that regulatory payout restrictions endogenously affect bank risk-shifting incentives.",
+  "authors": "Fulvia Fringuellotti, Thomas Kroen",
+  "cited": 4,
+  "oa": "https://doi.org/10.59576/sr.1123",
+  "type": "report",
+  "key": "10.59576/sr.1123",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B",
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "The risk and return of equity and credit index options",
+  "date": "2024-08-30",
+  "venue": "Journal of Financial Economics",
+  "doi": "10.1016/j.jfineco.2024.103932",
+  "authors": "Hitesh Doshi, Jan Ericsson, Mathieu Fournier, Sang Byung Seo",
+  "cited": 8,
+  "type": "article",
+  "abstract": "We develop a structural credit risk model, which allows us to price equity/credit indices and their options through the asset dynamics of index constituents. We estimate the model via MLE and find that equity and credit index option prices are well explained out-of-sample. Contrary to recent empirical findings, the two option markets are not inconsistently priced through the lens of our model. Returns on both options, while extreme, do not indicate any evidence of mispricing. Our analysis suggests that jointly addressing the pricing of various instruments requires a balance between three sources of systematic risk: asset, variance, and jump risks.",
+  "key": "10.1016/j.jfineco.2024.103932",
+  "nseeds": 2
+ },
+ {
+  "seeds": [
+   "Equity Volatility and ",
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Introducing and testing the Carr model of default",
+  "date": "2024-07-02",
+  "venue": "Quantitative Finance",
+  "doi": "10.1080/14697688.2024.2368081",
+  "abstract": "The Merton (On the pricing of corporate debt: The risk structure of interest rates. J. Finance, 1974, 29, 449\u2013470) model is often considered the simplest structural model of default. Its famous modification developed by KMV is also widely used and well understood by both practitioners and academics. However, as the underlying asset process is driven by a diffusion process, the Merton model suffers from the well-known issue of the vanishing of credit spreads for progressively shorter maturities. To overcome such shortfall, several modifications have been proposed in the literature; however, none of these, despite succeeding at better pricing spreads and explaining default dynamics, are able to retain the simplicity of the Merton model. In this paper, we propose a new structural model of default driven by an additive process whose pricing formulas are as simple as \u2013 if not even simpler than \u2013 those of the Merton model. We named such model the Carr model of default after Peter Carr, given his recent passing and the fact that the underlying asset distribution is the one introduced in Carr and Torricelli (Additive logistic processes in option pricing. Finance Stoch., 2021, 25, 689\u2013724) and Carr and Maglione (Compound option pricing and the Roll-Geske-Whaley formula under the conjugate-power Dagum distribution. J. Deriv., 2022, 31, 1\u201332). We first provide pricing formulas for the firm's claims and credit spreads, and then discuss a general theory of change of measure for such processes in order to introduce a distance-to-default version of this newly-introduced model. Finally, we empirically test the Carr versus the Merton model and document the far better ability of the Carr model to reproduce CDS spreads as well as explain their cross-sectional and time-series variation.",
+  "authors": "Federico Maglione",
+  "cited": 1,
+  "type": "article",
+  "key": "10.1080/14697688.2024.2368081",
+  "nseeds": 2
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Economic policy uncertainty and volatility of corporate bond credit spread: Evidence from China and the United States",
+  "date": "2024-05-07",
+  "venue": "International Review of Economics & Finance",
+  "doi": "10.1016/j.iref.2024.05.016",
+  "authors": "Maojun Zhang, Rongjia Zhang, Yang Zhao",
+  "cited": 9,
+  "type": "article",
+  "key": "10.1016/j.iref.2024.05.016",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Individual Stock-Optio"
+  ],
+  "src": [
+   "S2"
+  ],
+  "title": "From volatility to stability: understanding the role of macroeconomic factors in sovereign CDS spreads",
+  "date": "2024-04-26",
+  "venue": "Eurasian Economic Review",
+  "doi": "10.1007/s40822-024-00274-y",
+  "authors": "H. Alqaralleh",
+  "cited": 3,
+  "key": "10.1007/s40822-024-00274-y",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "S2"
+  ],
+  "title": "Readability of Pension Narrative Disclosures, Pension Regulatory Changes, and Corporate Credit Risk",
+  "date": "2024-03-07",
+  "venue": "The European Accounting Review",
+  "doi": "10.1080/09638180.2024.2322050",
+  "abstract": "We examine, using corporate bond yield spreads, whether and how the readability of pension narrative disclosures is associated with corporate credit risk. The empirical results show that lower readability of pension narrative disclosures is associated with higher bond yield spreads. This association is driven by theoretical mechanisms, including incomplete information, asset value volatility, and financial leverage. The implementation of SFAS No. 132R-1 and the Pension Protection Act (regulatory mechanisms) has strengthened this association. We also consider two potential mechanisms that weaken the association between the readability of pension narrative disclosures and bond yield spreads: bond seniority and collateralization and shorter duration of debt to pension liability. Furthermore, our results show that pension plan size strengthens this association, whereas the funded status, actual return on pension assets, and equity allocation of pension assets weaken this association. Lastly, the results still hold when considering endogeneity issues, controlling for the tones and the length of pension narrative disclosure, employing difference-in-differences analysis, and examining firms with defined-benefit pension plans only or those with newly issued bond observations.",
+  "authors": "Tsung-Kang Chen, Yi-Jie Tseng, Ruey-Ching Lin, Yu-Shun Hung",
+  "cited": 9,
+  "key": "10.1080/09638180.2024.2322050",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B",
+   "How Profitable Is Capi",
+   "Limited Arbitrage betw",
+   "Risk and Return in Fix",
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "Contingent Claims and Hedging of Credit Risk with Equity Options",
+  "date": "2024-03-06",
+  "venue": "The Review of Asset Pricing Studies",
+  "doi": "10.1093/rapstu/raae005",
+  "abstract": "Abstract Using contingent-claims valuation, we introduce novel hedge ratios for credit exposures using put options. Option hedge ratios are generally in line with the empirical sensitivities of credit spread changes to put option returns and, relative to stock hedge ratios, produce further reductions in volatility for a portfolio of North American firms. We show that option hedge ratios capture option-specific credit exposure related to the VIX index and the default spread, which is unaccounted for by Merton\u2019s (1974) equity hedge ratios alone. Combining stocks and put options for credit risk hedging can be done effectively using the volatility smirk. (JEL E43, E44, G10)",
+  "authors": "Davide Avino, Enrique Salvador",
+  "cited": 3,
+  "oa": "https://academic.oup.com/raps/advance-article-pdf/doi/10.1093/rapstu/raae005/56911889/raae005.pdf",
+  "type": "article",
+  "key": "10.1093/rapstu/raae005",
+  "nseeds": 5
+ },
+ {
+  "seeds": [
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Book-to-Market, Mispricing, and the Cross Section of Corporate Bond Returns",
+  "date": "2024-02-12",
+  "venue": "Journal of Financial and Quantitative Analysis",
+  "doi": "10.1017/s0022109024000048",
+  "abstract": "Abstract Corporate bonds\u2019 book-to-market ratios predict returns computed from transaction prices. Senior bonds (even investment grade) with the 20% highest ratios outperform the 20% lowest by 3%\u20134% annually after non-parametrically controlling for numerous liquidity, default, microstructure, and priced-risk attributes: yield-to-maturity, bid\u2013ask spread, duration/maturity, credit spread/rating, past returns, coupon, size, age, industry, and structural model equity hedges. Spreads for all-bond samples are larger. An efficient bond market would not exhibit the observed decay in the ratio\u2019s predictive efficacy with implementation delays, small yield-to-maturity spreads, or similar-sized spreads across bonds with differing risks. A methodological innovation avoids liquidity filters and censorship that bias returns.",
+  "authors": "S\u00f6hnke M. Bartram, Mark S. Grinblatt, Yoshio Nozawa",
+  "cited": 21,
+  "oa": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/9F30CC8EE3077365BDF05E801333CB26/S0022109024000048a.pdf/div-class-title-book-to-market-mispricing-and-the-cross-section-of-corporate-bond-returns-div.pdf",
+  "type": "article",
+  "key": "10.1017/s0022109024000048",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Individual Stock-Optio"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Do Credit Rating Agencies Learn from the Options Market?",
+  "date": "2024-01-19",
+  "venue": "Management Science",
+  "doi": "10.1287/mnsc.2023.4980",
+  "abstract": "Do credit rating agencies (CRAs) learn from the options market? We examine this question by exploring the relation between options trading activity and credit rating accuracy. We find that as options trading volume increases, credit ratings become more responsive to expected credit risk and exhibit greater ability to predict future defaults. We also find that CRAs rely more on the options market as a source of ratings-related information when firm default risk is higher, options trading is more informative, manager-provided information is of lower quality, and firm uncertainty is higher. Our results are robust to a number of sensitivity tests, including alternative measures of options trading and credit rating accuracy. We reach similar inferences using various approaches to address endogeneity issues, including difference-in-difference analyses and an instrumental variables approach. Overall, our findings are consistent with the view that CRAs incorporate unique information from the options market into their rating decisions which, in turn, improves credit rating accuracy. This paper was accepted by Brian Bushee, accounting. Supplemental Material: The online appendix and data files are available at https://doi.org/10.1287/mnsc.2023.4980 .",
+  "authors": "Paul Brockman, Musa Subasi, Jeff Jianfeng Wang, Eliza Xia Zhang",
+  "cited": 10,
+  "oa": "https://doi.org/10.2139/ssrn.4353906",
+  "type": "article",
+  "key": "10.1287/mnsc.2023.4980",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B",
+   "Equity Volatility and ",
+   "Individual Stock-Optio"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Assessing the Impact of Credit Risk on Equity Options via Information Contents and Compound Options",
+  "date": "2023-10-20",
+  "venue": "Risks",
+  "doi": "10.3390/risks11100183",
+  "abstract": "This work aims to develop a measure of how much credit risk is priced into equity options. Such a measure appears particularly appealing when applied to a portfolio of equity options, as it allows for the factoring in of firm-specific default dynamics, thus producing a comparable statistic across different equities. As a matter of fact, comparing options written on different equities based on their moneyness does offer much guidance in understanding which option offers a better hedging against default. Our newly-introduced measure aims to fulfil this gap: it allows us to rank options written on different names based on the amount of default risk they carry, incorporating firm-specific characteristics such as leverage and asset risk. After having computed this measure using data from the US market, several empirical tests confirm the economic intuition of puts being more sensitive to changes in the default risk as well as a good integration of the CDS and option markets. We further document cross-sectional sectorial differences based on the industry the companies operate in. Moreover, we show that this newly-introduced measure displays forecasting power in explaining future changes in the skew of long-term maturity options.",
+  "authors": "Federico Maglione, Maria Elvira Mancino",
+  "oa": "https://doi.org/10.3390/risks11100183",
+  "type": "article",
+  "key": "10.3390/risks11100183",
+  "nseeds": 3
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Leveraging prices from credit and equity option markets for portfolio risk management",
+  "date": "2023-10-12",
+  "venue": "Journal of Futures Markets",
+  "doi": "10.1002/fut.22465",
+  "abstract": "Abstract This study presents a firm\u2010specific methodology for extracting implied default intensities and recovery rates jointly from unit recovery claim prices\u2014backed by out\u2010of\u2010the\u2010money put options\u2014and credit default swap premiums, therefore providing time\u2010varying and market\u2010consistent views of credit risk at the individual level. We apply the procedure to about 400 firms spanning different sectors of the US economy between 2003 and 2019. The main determinants of default intensities and recovery rates are analyzed with statistical and machine learning methods linking default risk and credit losses to market, sector, and individual variables. Consistent with the literature, we find that individual volatility, leverage, and corporate bond market determinants are key factors explaining the implied default intensities and recovery rates. Then, we apply the framework in the context of credit risk management in applications, like, market\u2010consistent credit value\u2010at\u2010risk calculation and stress testing.",
+  "authors": "Jean\u2010Fran\u00e7ois B\u00e9gin, Mathieu Boudreault, Mathieu Th\u00e9riault",
+  "cited": 1,
+  "oa": "http://dx.doi.org/10.1002/fut.22465",
+  "type": "article",
+  "key": "10.1002/fut.22465",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "S2"
+  ],
+  "title": "Uncertain tone, asset volatility and credit default swap spreads",
+  "date": "2023-09-01",
+  "venue": "Journal of Contemporary Accounting &amp; Economics",
+  "doi": "10.1016/j.jcae.2023.100380",
+  "authors": "Hitesh Doshi, Saurin Patel, Srikanth Ramani, Matthew Sooy",
+  "cited": 5,
+  "key": "10.1016/j.jcae.2023.100380",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B",
+   "The Cross-Section of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Default Clustering Risk Premium and its Cross-Market Asset Pricing Implications",
+  "date": "2023-08-01",
+  "venue": "Finance and Economics Discussion Series",
+  "doi": "10.17016/feds.2023.055",
+  "abstract": "This study examines the market-implied premiums for bearing default clustering risk by analyzing credit derivatives contracts on the CDX North American Investment Grade (CDX.NA.IG) portfolio between September 2005 and March 2021. Our approach involves constructing a time series of reference tranche rates exclusively derived by single-name CDS spreads. The default clustering risk premium (DCRP) is captured by comparing the original and reference tranche spreads, with the former exceeding the latter when investors require greater compensation for correlated defaults at the portfolio level. The fitted DCRP level significantly increased in response to the 2007-9 global financial crisis and remained relatively stable for a period, followed by a gradual decline beginning in 2016. Notably, the COVID-19 shock caused another sharp rise in the DCRP level. Our empirical analysis finds that the estimated DCRP has significant implications for asset pricing, particularly in affecting the investment opportunities available to U.S. stock investors during times of instability in the financial system.",
+  "authors": "Kiwoong Byun, Baeho Kim, Dong Hwan Oh",
+  "oa": "https://doi.org/10.17016/feds.2023.055",
+  "type": "article",
+  "key": "10.17016/feds.2023.055",
+  "nseeds": 2
+ },
+ {
+  "seeds": [
+   "Limited Arbitrage betw"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Credit default swaps and firm risk",
+  "date": "2023-07-17",
+  "venue": "Journal of Futures Markets",
+  "doi": "10.1002/fut.22452",
+  "abstract": "Abstract This study investigates how initiating a credit default swap (CDS) affects firm risk. Using the firm value volatility as a measure of firm risk, we document that firm risk decreases following the commencement of CDS trading. Further analysis indicates that the empty creditor channel, which arises when a debt holder with CDS protection has no interest in preserving the company it provides funds, is the primary way of influence. Our findings reveal a significant impact of financial innovation on a firm's behavior. We also document that market frictions affect the degree of such effect.",
+  "authors": "Hai Lin, Binh Hoang Nguyen, Junbo Wang, Cheng Zhang",
+  "cited": 2,
+  "oa": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/fut.22452",
+  "type": "article",
+  "key": "10.1002/fut.22452",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Debt dynamics and credit risk",
+  "date": "2023-07-14",
+  "venue": "Journal of Financial Economics",
+  "doi": "10.1016/j.jfineco.2023.06.007",
+  "abstract": "We investigate how the dynamics of corporate debt policy affect the pricing of corporate bonds. We find empirically that debt issuance has a significant stochastic component that is imperfectly correlated with shocks to asset value. As a consequence, the volatility of leverage is significantly higher than asset volatility over short horizons. At long horizons, the relation between leverage and asset volatility is reversed due to mean reversion in leverage. We incorporate these stochastic debt dynamics into structural models of credit risk, both standard diffusion models as well as newer models with stochastic volatility and jumps. Including stochastic debt gives more accurate predictions of credit spreads in both the cross-section and the time series.",
+  "authors": "Peter Feldh\u00fctter, Stephen M. Schaefer",
+  "cited": 17,
+  "oa": "https://doi.org/10.1016/j.jfineco.2023.06.007",
+  "type": "article",
+  "key": "10.1016/j.jfineco.2023.06.007",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Limited Arbitrage betw"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Stock price informativeness and credit default swap trading",
+  "date": "2023-04-09",
+  "venue": "International Journal of Finance & Economics",
+  "doi": "10.1002/ijfe.2813",
+  "abstract": "Abstract This study develops a difference\u2010in\u2010differences analysis to assess whether trading onset of credit default swaps (CDS) on a firm's debt improves price informativeness in the stock market. Price informativeness is measured by the future earnings response coefficient, which captures the amount of information about future earnings conveyed in stock returns. Our sample comprises U.S. firms (firms experiencing CDS trading on their debt and a group of control firms) and covers the period 1997\u20132015. The results indicate that CDS hinder stock price informativeness, and thus the ability of prices to track long\u2010term fundamentals, especially before the arrival of negative information about the obligor. The identified impact is stronger when CDS are first traded, becoming less pervasive with the passage of time. Finally, the results indicate that effects were residual during the early stages of CDS market development and peaked during the period 2004\u20132008. The impact of CDS introduction weakened after new regulation and ISDA protocols entry into force in 2009. This empirical analysis contributes to the literature by improving knowledge on the consequences of CDS trading on economic and financial outcomes. It points out a negative effect on price informativeness in the stock market and indicates that it was smoothed by regulatory measures designed to improve market infrastructure and transparency.",
+  "authors": "Paulo Pereira da Silva, Isabel Viegas Vieira",
+  "cited": 1,
+  "oa": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/ijfe.2813",
+  "type": "article",
+  "key": "10.1002/ijfe.2813",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B",
+   "How Profitable Is Capi",
+   "Limited Arbitrage betw",
+   "The Cross-Section of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Price convergence between credit default swap and put option: New evidence",
+  "date": "2023-03-07",
+  "venue": "Journal of Empirical Finance",
+  "doi": "10.1016/j.jempfin.2023.03.008",
+  "abstract": "Credit default swaps and deep out-of-the-money put options can be used for credit protection, but these markets are not perfectly integrated, leading to different implied hazard rates. The differences in the implied hazard rates are linked to deviations between consensus rating-based hazard rate curves in the two markets, and a residual component related to market frictions. We show that both components diminish over time, but their convergence is asynchronous. A trading strategy based on a joint signal from the curve and residual differences outperforms a conventional trading approach that relies on the absolute differences between the implied hazard rates. Hedge funds are likely to exploit within-market inefficiencies and deviations from rating-based curve, but they do not seem to profit from market segmentation.",
+  "authors": "Ka Kei Chan, Olga Kolokolova, Ming\u2010Tsung Lin, Ser\u2010Huang Poon",
+  "oa": "https://doi.org/10.1016/j.jempfin.2023.03.008",
+  "type": "article",
+  "key": "10.1016/j.jempfin.2023.03.008",
+  "nseeds": 4
+ },
+ {
+  "seeds": [
+   "Limited Arbitrage betw"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Withholding Bad News in the Face of Credit Default Swap Trading: Evidence from Stock Price Crash Risk",
+  "date": "2023-02-14",
+  "venue": "Journal of Financial and Quantitative Analysis",
+  "doi": "10.1017/s002210902300008x",
+  "abstract": "Abstract Credit default swaps (CDSs) are a major financial innovation related to debt contracting. Because CDS markets facilitate bad news being incorporated into equity prices via cross-market information spillover, CDS availability may curb firms\u2019 information hoarding. We find that CDS trading on a firm\u2019s debt reduces the future stock price crash risk. This effect is stronger in active CDS markets, when the main lenders are CDS market dealers with securities trading subsidiaries, or when managers have more motivation to hoard information. Our findings suggest that debt market financial innovations curtail the negative equity market effects of firms withholding bad news.",
+  "authors": "Jinyu Liu, Jeffrey Ng, Dragon Yongjun Tang, Rui Zhong",
+  "cited": 29,
+  "oa": "https://doi.org/10.1017/s002210902300008x",
+  "type": "article",
+  "key": "10.1017/s002210902300008x",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Quantifying Systemic Risk in the Presence of Unlisted Banks: Application to the European Banking Sector",
+  "date": "2023-01-01",
+  "venue": "SSRN Electronic Journal",
+  "doi": "10.2139/ssrn.4382033",
+  "authors": "Daniel Dimitrov, Sweder J. G. van Wijnbergen",
+  "cited": 3,
+  "oa": "https://doi.org/10.2139/ssrn.4382033",
+  "type": "preprint",
+  "abstract": "We propose a credit portfolio approach for evaluating systemic risk and attributing it across institutions. We construct a model that can be estimated from high-frequency CDS data. This captures risks from publicly traded banks, privately held institutions, and co\u00f6perative banks, extending approaches that rely on information from the public equity market only. We account for correlated losses between the institutions, overcoming a modeling weakness in earlier studies. We also offer a modeling extension to account for fat tails and skewness of asset returns. The model is applied to a universe of banks where we find discrepancies between the capital adequacy of the largest contributors to systemic risk relative to less systemically important banks on a European scale.",
+  "key": "10.2139/ssrn.4382033",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Limited Arbitrage betw",
+   "The Cross-Section of C"
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "Predictive Information in Corporate Bonds for the Equity Premium",
+  "date": "2023-01-01",
+  "venue": "SSRN Electronic Journal",
+  "doi": "10.2139/ssrn.4374753",
+  "authors": "Sophia Zhengzi Li, Peixuan Yuan, Guofu Zhou",
+  "oa": "https://doi.org/10.2139/ssrn.4374753",
+  "type": "preprint",
+  "key": "10.2139/ssrn.4374753",
+  "nseeds": 2
+ },
+ {
+  "seeds": [
+   "Structural Models of C"
+  ],
+  "src": [
+   "S2"
+  ],
+  "title": "The Long-term Interest Rate and Corporate Bond Credit Spreads",
+  "date": "2023",
+  "venue": "Social Science Research Network",
+  "doi": "10.2139/ssrn.4465485",
+  "abstract": "I document a major shift in the comovement between the long-term interest rate and corporate bond credit spreads. Before the Great Financial Crisis, there was no apparent correlation between the 10-year Treasury yield and bond credit spreads. However, after the Financial Crisis, corporate bond credit spreads counterintuitively rose when the 10-year Treasury yield was low, particularly for lower credit ratings. Next, I demonstrate that this new comovement is closely linked to life insurers\u2019 duration mismatch and bond holdings. After increases in the 10-year Treasury yield, the credit spreads on bonds with greater life insurance ownership decrease by more. This relationship was absent before the Financial Crisis when life insurers were hedged against interest rate risk but became pronounced afterward when life insurers faced severe duration mismatch. I then propose an intermediary asset pricing model to explain these findings. In this model, life insurers\u2019 liabilities have a longer duration than their assets. As the long-term interest rate declines, insurers incur equity losses. Consequently, their effective risk aversion rises, leading to higher equilibrium credit spreads. *I am grateful to Markus Brunnermeier, Moritz Lenel, Jonathan Payne, Motohiro Yogo, and Wei Xiong for their guidance and support. I also thank Joseph Abadi, Nicholas Hommel, Nobuhiro Kiyotaki, Ricardo Lagos, Seung Joo Lee, Sebastian Merkel, Don Noh, Yucheng Yang, Haonan Zhou, and many seminar participants for constructive feedback. \u2020Department of Economics and the Bendheim Center for Finance. Email: ziang.li@princeton.edu.",
+  "authors": "Ziang Li",
+  "oa": "https://doi.org/10.2139/ssrn.4465485",
+  "key": "10.2139/ssrn.4465485",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Equity Volatility and ",
+   "Individual Stock-Optio",
+   "Structural GARCH: The "
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Credit default swaps, the leverage effect, and cross-sectional predictability of equity and firm asset volatility",
+  "date": "2022-12-27",
+  "venue": "Journal of Corporate Finance",
+  "doi": "10.1016/j.jcorpfin.2022.102347",
+  "abstract": "We investigate the informational content of credit default swap (CDS) spreads for future volatility of (firm) assets and equity. In the cross-section, CDS spreads are significantly more informative about future asset than equity volatility. The informational content of historical and option implied volatilities is generally lower than that of CDS implied volatilities but exhibits the same pattern. We argue both theoretically and empirically that this common pattern reflects a fundamental difference in the cross-sectional predictability of asset and equity volatility. This difference lies in the leverage effect component in equity volatility, and the interconnection between leverage and asset volatility.",
+  "authors": "Santiago Forte, Lidija Lovreta",
+  "cited": 5,
+  "oa": "https://doi.org/10.1016/j.jcorpfin.2022.102347",
+  "type": "article",
+  "key": "10.1016/j.jcorpfin.2022.102347",
+  "nseeds": 3
+ },
+ {
+  "seeds": [
+   "Equity Volatility and ",
+   "The Cross-Section of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Small Business Equity Returns: Empirical Evidence from the Business Credit Card Securitization Market",
+  "date": "2022-12-20",
+  "venue": "The Journal of Finance",
+  "doi": "10.1111/jofi.13200",
+  "abstract": "ABSTRACT We present a new approach for estimating small business equity returns. This approach applies the Merton (1974) credit model to the returns on entrepreneurial business credit card debt securitizations and solves for the implied equity returns for the small businesses owned by the cardholders. The estimated small business equity premium is 10.74%. The standard deviation of small business equity returns is 56.37%. We validate the methodology by applying it to investment\u2010grade corporate bonds and recovering a public equity premium of 6.17%.",
+  "authors": "Matthias Fleckenstein, Francis A. Longstaff",
+  "cited": 4,
+  "type": "article",
+  "key": "10.1111/jofi.13200",
+  "nseeds": 2
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "S2"
+  ],
+  "title": "Executive pay disparity and cost of debt financing",
+  "date": "2022-12-05",
+  "venue": "International Journal of Managerial Finance",
+  "doi": "10.1108/ijmf-04-2022-0192",
+  "abstract": "PurposeThis paper aims to examine the relationship between executive pay disparity and the cost of debt.Design/methodology/approachThe authors use a sample of syndicated bank loans granted to United States (US) listed firms from 1992 to 2014 and adopt the loan yield spread (Chief Executive Officer (CEO) pay slice) as the main proxy for the cost of debt (executive pay disparity). The authors also use the Heckman two-stage model to address the sample selection bias and the two-stage least squares and propensity score matching methods to control the potential endogeneity issues. To test different views about executive pay disparity, the authors adopt the cash-to-stock ratio to proxy for managerial risk-shifting incentives.FindingsThe authors find that the cost of debt is significantly higher for firms with larger executive pay disparity, which is robust to sample selection bias, endogeneity concerns, alternative measures and various controls. This positive relationship increases with the risk-shifting incentives of CEOs instead of other top executives, which supports the managerial power view, and is stronger for firms with higher levels of financial distress. The findings suggest that creditors view executive pay disparity are associated with higher credit risk and CEO entrenchment.Originality/valueThis paper reveals one \u201cdark\u201d side of executive pay disparity: it increases the cost of debt and identifies a significant role played by CEOs' risk-shifting incentives. The authors provide direct evidence of the relevance of pay differential to corporate credit analysis.",
+  "authors": "Hsin-I Chou, Xiao-Fei Pan, Jing Zhao",
+  "cited": 6,
+  "key": "10.1108/ijmf-04-2022-0192",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Individual Stock-Optio",
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "Finance and Economics Discussion Series",
+  "date": "2022-11-17",
+  "venue": "Finance and Economics Discussion Series",
+  "doi": "10.17016/feds",
+  "abstract": "A structural model with stochastic volatility and jumps implies specific relationships between observed equity returns and credit spreads. This paper explores such effects in the credit default swap (CDS) market. We use a novel approach to identify the realized jumps of individual equities from high frequency data. Our empirical results suggest that volatility risk alone predicts 50 percent of the variation in CDS spreads, while jump risk alone forecasts 19 percent. After controlling for credit ratings, macroeconomic conditions, and firms\u2019 balance sheet information, we can explain 77 percent of the total variation. Moreover, the pricing effects of volatility and jump measures vary consistently across investment-grade and high-yield entities. The estimated nonlinear effects of volatility and jumps are in line with the model-implied relationships between equity returns and credit spreads. JEL Classification Numbers: G12, G13, C14.",
+  "cited": 609,
+  "oa": "https://doi.org/10.17016/feds",
+  "type": "paratext",
+  "key": "10.17016/feds",
+  "nseeds": 2
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B"
+  ],
+  "src": [
+   "S2"
+  ],
+  "title": "Persistent Crises and Levered Asset Prices",
+  "date": "2022-10-25",
+  "venue": "Social Science Research Network",
+  "doi": "10.2139/ssrn.3733255",
+  "abstract": "\n This paper shows that standard disaster risk models are inconsistent with movements in stock market volatility and credit spreads during disasters. We resolve this shortcoming by incorporating persistent macroeconomic crises into a structural credit risk model. The model successfully captures the joint dynamics of aggregate consumption, financial leverage, and asset market risks, both unconditionally and during crises. Leverage strongly amplifies fundamental shocks by continuing to rise while crises endure. We structurally estimate the model and show that it replicates the firm-level implied volatility curve and its cross-sectional relation with observable proxies of default risk.",
+  "authors": "Lars-Alexander Kuehn, David Schreindorfer, Florian Schulz",
+  "cited": 2,
+  "key": "10.2139/ssrn.3733255",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "S2"
+  ],
+  "title": "Pension plans\u2019 funded status volatility and corporate credit risk",
+  "date": "2022-10-03",
+  "venue": "Accounting and Business Research",
+  "doi": "10.1080/00014788.2022.2113757",
+  "abstract": "We investigate whether and how U.S. pension plans\u2019 funded status volatility affects firm credit risk. We first show that a firm's funded status volatility is positively related to its bond yield spread. We then find that the adoption of SFAS No.158 (2006) requiring the recognition of pension funding status on the statement of financial position renders the pension plan information more value-relevant, thereby increasing the effect of funded status volatility on bond yield spread. Furthermore, the predictions that funded status volatility affects asset value volatility and incomplete accounting information, which in turn affects corporate credit risk, are empirically supported. Our findings reinforce the need for firms to disclose reliable information about funded status volatility\u2014a major pension plan risk\u2014to external investors.",
+  "authors": "Tsung-Kang Chen, Yi-Jie Tseng, Ruey-Ching Lin",
+  "cited": 5,
+  "key": "10.1080/00014788.2022.2113757",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B",
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "Credit Spreads, Leverage and Volatility: A Cointegration Approach",
+  "date": "2022-09-05",
+  "venue": "Computation",
+  "doi": "10.3390/computation10090155",
+  "abstract": "This work documents the existence of a cointegration relationship between credit spreads, leverage and equity volatility for a large set of US companies. It is shown that accounting for the long-run equilibrium dynamic between these variables is essential to correctly explain credit spread changes. Using a novel structural model in which equity is modeled as a compound option on the firm\u2019s assets, a new methodology for estimating the unobservable market value of the firm\u2019s assets and volatility is developed. The proposed model allows to significantly reduce the pricing errors in predicting credit spreads when compared with several structural models. In terms of correlation analysis, it is shown that not accounting for the long-run equilibrium equation embedded in an error correction mechanism (ECM) results into a misspecification problem when regressing a set of explanatory variables onto the spread changes. Once credit spreads, leverage and volatility are correctly modeled, thus allowing for a long-run equilibrium, the fit of the regressions sensibly increases if compared to the results of previous research. It is further shown that most of the cross-sectional variation of the spreads appears to be more driven by firm-specific characteristics rather than systematic factors.",
+  "authors": "Federico Maglione",
+  "cited": 4,
+  "oa": "https://dx.doi.org/10.3390/computation10090155",
+  "type": "article",
+  "key": "10.3390/computation10090155",
+  "nseeds": 2
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B",
+   "Anchoring Credit Defau",
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "Decoding Default Risk: A Review of Modeling Approaches, Findings, and Estimation Methods",
+  "date": "2022-08-17",
+  "venue": "Annual Review of Financial Economics",
+  "doi": "10.1146/annurev-financial-111720-090709",
+  "abstract": "Default risk permeates the behavior of corporate bond returns and spreads, credit default swap spreads, estimation of default probabilities, and loss in default. Pertinent to this review are salient empirical findings and implications of default process estimation from 1974 to 2021. Both structural and reduced-form models are covered. In structural models, default occurs if the value of assets falls below some threshold obligation. The reduced-form models involve assumptions about the default process combined with recovery in default. Default process estimation and measurements of default probability have improved by exploiting data on defaultable bonds, credit default swaps, tally of default realizations, and options on individual equities. Empirical investigations continue to address the relevance of stochastic asset volatility, jumps in asset values, and modeling of default boundary and firm leverage process.",
+  "authors": "Gurdip Bakshi, Xiaohui Gao, Zhaodong Zhong",
+  "cited": 12,
+  "type": "review",
+  "key": "10.1146/annurev-financial-111720-090709",
+  "nseeds": 3
+ },
+ {
+  "seeds": [
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "What can we learn about credit risk from debt valuation adjustments?",
+  "date": "2022-07-26",
+  "venue": "Review of Accounting Studies",
+  "doi": "10.1007/s11142-022-09705-0",
+  "abstract": "Abstract Motivated by the debate about the introduction of the fair value option for (financial) liabilities (FVOL) and the requirement to recognize and separately disclose in financial statements debt valuation adjustments (DVAs), this study explores what we can learn about a firm\u2019s credit risk from DVAs. Using a sample of US bank holding companies that elect the FVOL, we show that DVAs generally cannot be explained by the same factors that explain contemporaneous changes in bank\u2019s credit quality. We further find that DVAs can explain future changes in credit risk when the fair value of liabilities is based on managerial inputs (Level 3). Overall our results suggest that managers have an information advantage in estimating credit risk and that DVAs provide inside information to the market.",
+  "authors": "Wen C. Lin, Argyro Panaretou, Grzegorz Pawlina, Catherine M. Shakespeare",
+  "cited": 10,
+  "oa": "https://link.springer.com/content/pdf/10.1007/s11142-022-09705-0.pdf",
+  "type": "article",
+  "key": "10.1007/s11142-022-09705-0",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "S2"
+  ],
+  "title": "The Credit Risk of Sustainable Firms during the Pandemic",
+  "date": "2022-07-25",
+  "venue": "Global Business Review",
+  "doi": "10.1177/09721509221114679",
+  "abstract": "This study investigates how the credit risk of more sustainability-oriented firms changes when national governments intervene in their economies to counterbalance the COVID-19 pandemic. For this reason, we examine how the credit default swap spread changes on a database of all listed firms\u2014for which a credit default swaps (CDS) contract is available\u2014in Europe and the United Kingdom during the whole year of 2020. We find that when national governments intervene in the local economies, the CDS spreads for these firms decrease more than for other firms. Furthermore, the CDS spread changes are more sensitive to those policies aimed at supporting household and business income during the pandemic rather than those policies related to stay-at-home measures and investments in healthcare. Our results corroborate previous theories linking firm sustainability, equity and credit risk.",
+  "authors": "Giovanni Cardillo, Helen Chiappini",
+  "cited": 9,
+  "oa": "https://cris.unibo.it/bitstream/11585/891330/6/The_credit_risk.pdf",
+  "key": "10.1177/09721509221114679",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B",
+   "The Cross-Section of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "The information content of CDS implied volatility and associated trading strategies",
+  "date": "2022-07-11",
+  "venue": "International Review of Financial Analysis",
+  "doi": "10.1016/j.irfa.2022.102295",
+  "authors": "Yukun Shi, Ding Chen, Biao Guo, Yaofei Xu",
+  "cited": 3,
+  "oa": "https://www.sciencedirect.com/science/article/pii/S1057521922002502",
+  "type": "article",
+  "key": "10.1016/j.irfa.2022.102295",
+  "nseeds": 2
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Stock price default boundary: A Black-Cox model approach",
+  "date": "2022-07-03",
+  "venue": "International Review of Financial Analysis",
+  "doi": "10.1016/j.irfa.2022.102284",
+  "authors": "Yunkun Shi, Charalampos Stasinakis, Yaofei Xu, Cheng Yan",
+  "oa": "https://www.sciencedirect.com/science/article/pii/S105752192200240X",
+  "type": "article",
+  "abstract": "In this paper, we incorporate the information from Credit Default Swap (CDS) and options markets to extract the relative default boundary at the stock price level. We propose a reduced-form Black-Cox Model (BCM) with a Deterministic Linear Function (DLF) to extract default information from the CDS and options market to gauge the default boundaries. Using S&P 500 index, CDS, and options data from 2002 to 2017, we extract default boundaries for S&P 500 index via the Unscented Kalman Filter (UKF). Our results suggest that our method performs well when compared with the historical mean relative default boundaries and the recent Unit Recovery Claim (URC)-based default boundaries.",
+  "key": "10.1016/j.irfa.2022.102284",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "S2"
+  ],
+  "title": "Do bond market participants care about directors\u2019 and officers\u2019 liability insurance?\u2014\u2014Empirical evidence based on the pricing of corporate bonds",
+  "date": "2022-07-03",
+  "venue": "China Journal of Accounting Studies",
+  "doi": "10.1080/21697213.2022.2143679",
+  "abstract": "ABSTRACT Based on the risk hedging perspective, this paper examines the impact of directors\u2019 and officers\u2019 liability insurance (hereafter referred to as D&O liability insurance) on the pricing of corporate bonds. We find that the purchase of D&O liability insurance can effectively reduce corporate bond insurance pricing. The path test shows that the purchase of D&O liability insurance can reduce the bond insurance pricing by improving the quality of company\u2019s internal control. Furthermore, the paper finds that when management power is greater, investor protection is poor or financial risk is high,the impact of the D&O liability insurance is stronger. After purchasing D&O liability insurance, creditors will reduce the use of corporate governance contractual terms, but will set more investments and financing as well as option contractual terms. In addition, companies that purchase D&O liability insurance issue bonds with higher credit ratings and longer bond maturities.",
+  "authors": "Yu Wang, Jia-Wei Lu, Xun Zhao",
+  "oa": "https://doi.org/10.1080/21697213.2022.2143679",
+  "key": "10.1080/21697213.2022.2143679",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "The Liquidity Premium in China\u2019s Corporate Bond Market: A Stochastic Liquidity Discount Approach",
+  "date": "2022-06-21",
+  "venue": "Risks",
+  "doi": "10.3390/risks10070130",
+  "abstract": "China\u2019s bond market has been ranked third globally; however, China\u2019s corporate bonds are significantly less liquid than its stocks. Liquidity risk is an important component in China\u2019s corporate bond spreads. In this paper, we propose a stochastic liquidity discount factor model to evaluate the liquidity risk premium and its term structure in China\u2019s corporate bond market. The Monte Carlo simulation technique is used to quantify the impact on the liquidity premium of various liquidity factors: the liquidity level, liquidity volatility, liquidity shock, and the liquidity elasticity. Our findings conclude that the liquidity level is the most significant component of a liquidity premium. The impact on the liquidity premium of other liquidity factors is all conditional on the liquidity level. In addition, the impact of liquidity shocks and volatility is also subject to the market\u2019s equilibrium mechanism. Further, the term of a bond affects the premium both directly and indirectly through its influence on a bond\u2019s liquidity.",
+  "authors": "Min Xiao-ping, Min Ji",
+  "oa": "https://www.mdpi.com/2227-9091/10/7/130/pdf?version=1655827706",
+  "type": "article",
+  "key": "10.3390/risks10070130",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B",
+   "Equity Volatility and "
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Market co-movement between credit default swap curves and option volatility surfaces",
+  "date": "2022-04-26",
+  "venue": "International Review of Financial Analysis",
+  "doi": "10.1016/j.irfa.2022.102192",
+  "authors": "Yukun Shi, Charalampos Stasinakis, Yaofei Xu, Cheng Yan",
+  "cited": 3,
+  "oa": "http://eprints.gla.ac.uk/view/author/45661.html>",
+  "type": "article",
+  "abstract": "We analyze the co-movement between the Credit Default Index (CDX) curve and the S&P 500 index\u2019s option volatility surface. We connect the reduced-form no-arbitrage model with the Nelson-Siegel (N-S) model on hazard rate implied from the CDX curve and confirm its rationality. We also use a Deterministic Linear Function (DLF) to model the volatility surface, while applying the N-S model. The level, slope, and curvature among the two markets are hidden states extracted by the Unscented Kalman Filter (UKF). We find that the changes in the level, slope, and curvature in the CDX curve and those in the volatility surface are correlated due to the bridge of the S&P 500 index return. Finally, the co-movement between the CDX curve and S&P 500 index\u2019s volatility surface is improved after the 2008 financial crisis.",
+  "key": "10.1016/j.irfa.2022.102192",
+  "nseeds": 2
+ },
+ {
+  "seeds": [
+   "Limited Arbitrage betw"
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "THE NEXUS BETWEEN COVID-19 AND STOCK RETURNS: EVIDENCE FROM SELECTED MENA COUNTRIES",
+  "date": "2022-04-03",
+  "venue": "Muhasebe Bilim D\u00fcnyas\u0131 Dergisi",
+  "doi": "10.31460/mbdd.1033349",
+  "abstract": "This study investigates the relationship between COVID-19 measured by growth in number of weekly confirmed new cases and stock returns of the major indices in selected Middle East and North Africa (MENA) countries. To test the influence of COVID-19 on stock returns, this study uses panel data methodology using weekly data between 19 March 2020 and 31 December 2020. Contrary to expectations, our findings fail to demonstrate a significant link between stock market index returns and COVID-19, which is proxied by the growth in weekly confirmed new cases. Additionally, regarding the control variables, whereas no relationship is documented between Chicago Board Options Exchange Volatility Index (VIX) and selected countries\u2019 stock index returns, 5-year Sovereign Credit Default Swap (CDS) figures of the selected countries are found to be negatively and significantly related with the main variable of interest.",
+  "authors": "Mehtap \u00d6ner, Asl\u0131 Aybars",
+  "cited": 1,
+  "oa": "https://doi.org/10.31460/mbdd.1033349",
+  "type": "article",
+  "key": "10.31460/mbdd.1033349",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Individual Stock-Optio"
+  ],
+  "src": [
+   "S2"
+  ],
+  "title": "Jump and volatility risk in the cross-section of corporate bond returns",
+  "date": "2022-04-01",
+  "venue": "Journal of financial markets",
+  "doi": "10.1016/j.finmar.2022.100733",
+  "authors": "Xi Chen, Jun-Bo L. Wang, Chun-Chi Wu",
+  "cited": 10,
+  "key": "10.1016/j.finmar.2022.100733",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Equity Volatility and "
+  ],
+  "src": [
+   "S2"
+  ],
+  "title": "Real asset liquidity, cash holdings, and the cost of corporate debt",
+  "date": "2022-04-01",
+  "venue": "Global Finance Journal",
+  "doi": "10.1016/j.gfj.2022.100720",
+  "abstract": "We show analytically that there exists a nonlinear (U-shaped) relationship between credit spreads and the liquidity of the market for a firm\u2019s real assets. We empirically verify that indeed there is an interior optimum level of market liquidity at which credit spreads are at their lowest. Our results are particularly pronounced for highly leveraged firms and firms with large growth options. We further find that cash holdings affect the influence of real asset liquidity on credit spreads. However, this interaction between cash holdings and real asset liquidity is only significant in circumstances in which real asset",
+  "authors": "A. Nejadmalayeri, Adam Usman",
+  "cited": 10,
+  "key": "10.1016/j.gfj.2022.100720",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Risk and Return in Fix",
+   "The Cross-Section of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Stocks versus corporate bonds: A cross-sectional puzzle",
+  "date": "2022-02-28",
+  "venue": "Journal of Banking & Finance",
+  "doi": "10.1016/j.jbankfin.2022.106447",
+  "abstract": "We study the cross-sectional relation between stock and corporate bond markets. By correcting credit spreads of corporate bonds for expected default losses and by using equity-bond elasticities, we obtain a firm\u2019s expected bond-implied stock return, which we then compare to its realized stock return. We find, surprisingly, a strong negative cross-sectional relation between these expected and realized stock returns. We show that this effect is not simply a restatement of the distress risk puzzle or other well-known anomalies in stock and corporate bond markets. This negative cross-sectional relation is strongest for high-risk firms and for liquid stocks.",
+  "authors": "Jeroen van Zundert, Joost Driessen",
+  "cited": 5,
+  "oa": "https://www.sciencedirect.com/science/article/pii/S0378426622000474/pdf",
+  "type": "article",
+  "key": "10.1016/j.jbankfin.2022.106447",
+  "nseeds": 2
+ },
+ {
+  "seeds": [
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "Estimating actual probability of default from structural models",
+  "date": "2022-02-17",
+  "venue": "International Journal of Financial Engineering",
+  "doi": "10.1142/s2424786321500456",
+  "abstract": "In this paper, we study the probability of default, the credit default swap (CDS) implied probability of default, and the estimated actual probability of default from the structural models. We first show that the conditional risk-neutral probability of default is totally different from the CDS implied probability of default, and the CDS implied probability of default provides biased estimation of a corporation\u2019s actual probability of default. Hence, the common belief that the CDS implied probability of default gives unbiased (or reliable) estimations of the firm\u2019s probability of default is false. Furthermore, we use the credit spread risk premium as the difference of the physical measure and the risk-neutral measure of the credit spread to estimate the actual bond spread, and relate the credit spread risk premium in terms of the market price of risk and the credit spread volatility. Using the credit spread volatility and the risk-neutral credit spread and the market price of risk in hybrid HPD model, we obtain the estimated actual probability of default in a structural model. The estimated actual probability of default would be useful for credit rating agencies, investors, credit risk managers and regulators.",
+  "authors": "Lin Zou, Weiping Li",
+  "cited": 1,
+  "type": "article",
+  "key": "10.1142/s2424786321500456",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Synthetic Options and Implied Volatility for the Corporate Bond Market",
+  "date": "2022-02-15",
+  "venue": "Journal of Financial and Quantitative Analysis",
+  "doi": "10.1017/s0022109022000096",
+  "abstract": "Abstract We synthetically create option contracts on a corporate bond index using CDX swaptions, overcoming the limitations that stem from the lack of traded corporate bond options. Our approach allows us to estimate forward-looking moments concerning the corporate bond market in a model-free manner. By constructing an aggregate volatility measure and the associated variance risk premium, we examine the role of volatility risk in the corporate bond market. We highlight that the ex ante conditional second and higher moments we estimate from synthetic corporate bond options carry important implications for credit risk models, providing an extra basis for testing their validity.",
+  "authors": "Steven Shu-Hsiu Chen, Hitesh Doshi, Sang Byung Seo",
+  "cited": 7,
+  "oa": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/C8B5C6D55574BDD82BCD762F460D928A/S0022109022000096a.pdf/div-class-title-synthetic-options-and-implied-volatility-for-the-corporate-bond-market-div.pdf",
+  "type": "article",
+  "key": "10.1017/s0022109022000096",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Informed trading in the CDS and OTM put option markets",
+  "date": "2022-02-14",
+  "venue": "International Review of Economics & Finance",
+  "doi": "10.1016/j.iref.2022.02.030",
+  "authors": "May Hu, Paresh Kumar Narayan, Jason Park, Peter Verhoeven",
+  "cited": 6,
+  "type": "article",
+  "key": "10.1016/j.iref.2022.02.030",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Anchoring Credit Defau",
+   "Equity Volatility and "
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "ESG and corporate credit spreads",
+  "date": "2022-02-01",
+  "venue": "The Journal of Risk Finance",
+  "doi": "10.1108/jrf-03-2021-0045",
+  "abstract": "Purpose The authors investigate the implications of environmental, social and governance (ESG) practices of firms for the pricing of their credit default swaps (CDS). In doing so, the authors compare European and US firms and consider nonlinear and indirect effects. This complements the previous literature focusing on linear and direct effects using bond yields and credit ratings of US firms. Design/methodology/approach For this purpose, the authors apply fixed effects regressions on a comprehensive panel data set of US and European firms. Further, nonlinear and indirect effects are investigated utilizing quantile regressions and a path analysis. Findings The evidence indicates that higher ESG ratings mitigate credit risks of US and European firms from 2007 to 2019. The risk mitigation effect is U-shaped across ESG quantiles, which is consistent with opposing effects of growing stakeholder influence capacity and diminishing marginal returns on ESG investments. The authors further reveal a mediating indirect volatility channel that substantially amplifies the direct effect of ESG on credit risk. A one-standard-deviation improvement in ESG ratings is estimated to reduce CDS spreads of low, medium and high ESG firms by approximately 4%, 8% and 3%, respectively. Originality/value This is the first study to examine whether credit markets reflect regional differences between Europe and the US with regard to the ESG-CDS-relationship. In addition, this paper contributes to the existing literature by investigating differences in the response of CDS spreads across ESG quantiles and to study potential indirect channels connecting ESG and CDS spreads using structural credit risk variables.",
+  "authors": "Florian Barth, Benjamin H\u00fcbel, Hendrik Scholz",
+  "cited": 110,
+  "type": "article",
+  "key": "10.1108/jrf-03-2021-0045",
+  "nseeds": 2
+ },
+ {
+  "seeds": [
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "Capital Structure Priority Effects in Durations, Stock-Bond Comovements, and Factor Pricing Models",
+  "date": "2022-01-25",
+  "venue": "The Review of Asset Pricing Studies",
+  "doi": "10.1093/rapstu/raac003",
+  "abstract": "Abstract We show theoretically and empirically that the durations of corporate securities are monotonically related to their capital structure priority, with equity often having a negative duration. The magnitude of this effect increases with firm leverage. We use these insights to challenge existing results on stock-bond comovements and factor pricing. For example, though overlooked, higher leverage and lower priority reduce the correlation between corporate security and government bond returns, and these variables explain time-series and cross-sectional variation in correlations; traditional market model regressions significantly understate corporate bond betas; and regressions on standard term and default factors dramatically overstate interest rate and default risk. (JEL G12, G13)",
+  "authors": "Jaewon Choi, Matthew P. Richardson, Robert Whitelaw",
+  "cited": 9,
+  "type": "article",
+  "key": "10.1093/rapstu/raac003",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Credit Risk in G20 Nations: A Comparative Analysis in International Finance Using Option-Adjusted-Spreads",
+  "date": "2022-01-10",
+  "venue": "Journal of risk and financial management",
+  "doi": "10.3390/jrfm15010025",
+  "abstract": "Corporate bond yields are the manifestation of the cost of financing for private firms, and if properly evaluated, they provide researchers with valuable risk information. Within this context, this work is the first study producing corporate yield spreads for all S&P-rated bonds of G20 nations to explain their comparative riskiness. The option-adjusted spread analysis is an advanced method that enables us to compare the bonds with embedded options and different cash flow characteristics. For securities with embedded options, the volatility in the interest rates plays a role in ascertaining whether the option is going to be invoked or not. Therefore, researchers need a spread that, when added to all the forward rates on the tree, will make the theoretical value equal to the market price. The spread that satisfies this condition is called the option-adjusted spread, since it considers the option embedded into the issue. Ultimately, this work investigates the credit risk differentials of S&P rated outstanding bonds issued by the G20 nations to provide international finance professionals with option-adjusted corporate yield spreads showing the credit risk attributable to debt instruments. Detailed results computed using OAS methodology are presented in tables and used to answer the six vital credit-risk-related questions introduced in the introduction.",
+  "authors": "Natalia Boliari, Kudret Topyan",
+  "cited": 2,
+  "oa": "https://www.mdpi.com/1911-8074/15/1/25/pdf?version=1641799309",
+  "type": "article",
+  "key": "10.3390/jrfm15010025",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B",
+   "Individual Stock-Optio",
+   "The Cross-Section of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "Understanding the Cross-Section of CDS Returns Using Equity Options",
+  "date": "2022-01-01",
+  "venue": "The Journal of Financial Research",
+  "doi": "10.1111/jfir.12446",
+  "authors": "Diep Duong, Sunjin Park",
+  "oa": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/jfir.12446",
+  "type": "article",
+  "abstract": "We examine the cross\u2010section of credit default swap (CDS) returns by forming CDS portfolios based on the implied volatility curves of equity options. We document that CDS protection sellers earn higher average returns for: (1) firms with higher at\u2010the\u2010money implied volatility and (2) firms with steeper volatility skew when conditioning on high implied volatility. We find that, relative to bond returns, CDS returns are better explained by our proposed measures interacted with standard credit determinants. Our reasoning is that the large degree of informed trading in the CDS market makes it more in sync with the equity options market, which is also known to attract informed traders.",
+  "key": "10.1111/jfir.12446",
+  "nseeds": 3
+ },
+ {
+  "seeds": [
+   "The Cross-Section of C"
+  ],
+  "src": [
+   "OA"
+  ],
+  "title": "A Credit Risk Explanation of the Correlation between Corporate Bonds and Stocks",
+  "date": "2022-01-01",
+  "venue": "SSRN Electronic Journal",
+  "doi": "10.2139/ssrn.4138544",
+  "authors": "Alexander Dickerson, Mathieu Fournier, Alexandre Jeanneret, Philippe Mueller",
+  "cited": 2,
+  "oa": "https://doi.org/10.2139/ssrn.4138544",
+  "type": "preprint",
+  "key": "10.2139/ssrn.4138544",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "Structural Models of C"
+  ],
+  "src": [
+   "OA",
+   "S2"
+  ],
+  "title": "An Overview of Bond Pricing Models and Duration of Bonds",
+  "date": "2022-01-01",
+  "venue": "Advances in economics, business and management research/Advances in Economics, Business and Management Research",
+  "doi": "10.2991/aebmr.k.220307.378",
+  "abstract": "This paper presents and compares different bond pricing models, points out whether these models work well and if there are any limitations of these models, this paper concludes models for corporate bonds, convertible bonds, and zerocoupon bonds.Besides, this paper introduces Macaulay duration and Modified duration, evaluates how duration could affect the bond's sensitivity to interest rates, and the usefulness of duration in the bond pricing process.Considering bonds are such an important element of the capital markets, investors and analysts would like to know how the many characteristics of a bond combine to determine its intrinsic value.The value of a bond, like the value of a stock, decides whether it is a good investment for a portfolio and is thus an important stage in bond investing.Calculating the present value of a bond's estimated future coupon payments is what bond valuation is all about.The premise of using this article is under the International Financial Reporting Standards (IFRS). Keywords: Bond pricing model,",
+  "authors": "Jieyi Chen",
+  "cited": 4,
+  "oa": "https://www.atlantis-press.com/article/125971700.pdf",
+  "type": "conference-paper",
+  "key": "10.2991/aebmr.k.220307.378",
+  "nseeds": 1
+ },
+ {
+  "seeds": [
+   "A Simple Robust Link B"
+  ],
+  "src": [
+   "S2"
+  ],
+  "title": "Volatility Information Difference between CDS and Option markets and the Cross Section of Option Returns",
+  "date": "2022",
+  "authors": "Biao Guo, Yu-Kun Shi, Yaofei Xu",
+  "key": "volatilityinformationdifferencebetweencdsandoptionmarketsandthecrosssectionofopt",
+  "nseeds": 1
+ }
+]
