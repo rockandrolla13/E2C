@@ -14,6 +14,8 @@ Every branch has one checkout under `worktrees/` (not tracked), so they can be o
 
 `evidence/` and `ssrn-687436.pdf` stay local and untracked. They include former-employer files and third-party research. The `method/workbook` branch also holds a data panel derived from those files. This repo is public, so check your rights to that panel.
 
+For what each method does, in plain English and in technical detail, read [`notes/e2c_explained.pdf`](notes/e2c_explained.pdf).
+
 ## Run on your production machine
 
 Nothing here has run on real data. The first real results come from these steps. All commands start in the repo root.
