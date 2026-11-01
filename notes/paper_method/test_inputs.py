@@ -734,3 +734,42 @@ def test_factors_do_not_read_past_decision_time(tables):
 @pytest.mark.parametrize("a,b,want", [("2004-02-27", "2010-06-15", 2268 / 360), ("2004-01-31", "2004-02-15", 15 / 360)])
 def test_years_30_360(a, b, want):
     assert years_30_360(pd.Series([pd.Timestamp(a)]), pd.Series([pd.Timestamp(b)])).iloc[0] == pytest.approx(want)
+
+
+# ---- closing the mutation survivors
+
+
+def test_a_spike_that_reverts_the_same_day_is_flagged_out(tables):
+    base = at(build(tables), DAY, "clean")
+    _extra_trade(tables, "B0031", "2005-06-15 09:30", "2005-06-15 09:45", base * 100 + 45, size=5e7)
+    assert at(build(tables), DAY, "clean") == pytest.approx(base)
+
+
+def test_round_trip_pools_twenty_days(tables):
+    base = at(build(tables), DAY, "round_trip")
+    t = tables["bond_trades"]
+    t.loc[t.bond_id.eq("B0031") & t.execution_time.dt.normalize().eq(pd.Timestamp("2005-06-10")) & t.is_customer_buy, "price"] += 3.0
+    assert at(build(tables), DAY, "round_trip") > base
+    assert at(build(tables), "2005-07-15", "round_trip") == pytest.approx(0.005)
+
+
+def test_small_prints_do_not_count_for_liquidity(tables):
+    t = tables["bond_trades"]
+    t.loc[t.bond_id.eq("B0031"), "size"] = 50_000.0
+    b = build(tables)
+    assert b.report["screens_failed"]["liquidity"] == b.report["rows"]
+
+
+def test_a_negative_measured_round_trip_falls_back_to_planning(tables):
+    t = tables["bond_trades"]
+    t.loc[t.bond_id.eq("B0031"), "is_customer_buy"] = ~t.loc[t.bond_id.eq("B0031"), "is_customer_buy"].astype(bool)
+    b = build(tables)
+    assert b.report["round_trip"]["measured"] == 0 and b.report["round_trip"]["planning"] > 0 and at(b, DAY, "round_trip") == pytest.approx(0.005)
+
+
+def test_a_long_gap_in_trades_carries_the_last_round_trip_and_counts_it(tables):
+    t = tables["bond_trades"]
+    day = t.execution_time.dt.normalize()
+    tables["bond_trades"] = t[~(t.bond_id.eq("B0031") & (day >= pd.Timestamp("2005-06-01")) & (day <= pd.Timestamp("2005-07-15")))]
+    b = build(tables)
+    assert b.report["round_trip"]["carried"] > 0 and at(b, "2005-07-05", "round_trip") == pytest.approx(0.005)
