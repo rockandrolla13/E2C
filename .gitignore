@@ -12,3 +12,5 @@ __pycache__/
 b.log
 # Checked-out branches
 worktrees/
+# Derived from former-employer files. Local only
+master_panel.csv.gz

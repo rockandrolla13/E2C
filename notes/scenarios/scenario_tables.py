@@ -167,6 +167,8 @@ def table_1c() -> pd.DataFrame:
 # ------------------------------------------------------------------- Real CDS panel, shared set-up
 
 def load_panel() -> pd.DataFrame:
+    if not (HERE.parent / "own_models" / "master_panel.csv.gz").exists():
+        raise FileNotFoundError("master_panel.csv.gz is local only and is not in the repo. Put it in notes/own_models")
     d = pd.read_csv(HERE.parent / "own_models" / "master_panel.csv.gz", parse_dates=["date", "next_date"])
     d = d.sort_values(["ticker", "date"]).reset_index(drop=True)
     d["r"] = d.swap_5y_pct / 100

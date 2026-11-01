@@ -38,6 +38,8 @@ def test_hedge_pnl_adds_up():
 
 
 def test_equity_vol_delta_formula_matches_workbook_when_vol_is_held():
+    if not (s.HERE.parent / "own_models" / "master_panel.csv.gz").exists():
+        pytest.skip("master_panel.csv.gz is local only and is not in the repo")
     d = s.load_panel().dropna(subset=["iv", "wb_delta"]).head(2000)
     g = s.w.cds_greeks(5.0, d.price.to_numpy(), d.wb_dps.to_numpy(), d.iv.to_numpy(), d.spread_bp.to_numpy(), r=d.r.to_numpy())
     assert np.nanmax(np.abs(g["delta"] - d.wb_delta.to_numpy())) < 1e-6

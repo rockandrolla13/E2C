@@ -8,7 +8,7 @@ This is the user's own method as a pipeline. Each step gives its inputs, formula
 
 ```python
 import pandas as pd, e2c_model as m
-panel = pd.read_csv("master_panel.csv.gz")     # or your own table with the raw input columns
+panel = pd.read_csv("master_panel.csv.gz")     # local only, not in the repo. Or your own table with the raw input columns
 out = m.run_pipeline(panel, m.MASTER_PARAMS)
 print(out["summary"])          # also out["names"], out["weeks"], out["unsolved"]
 ```
