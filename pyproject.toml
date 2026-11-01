@@ -7,7 +7,8 @@ name = "e2c-data"
 version = "0.1.0"
 description = "Point-in-time data layer for the E2C methods. No data and no production adapter live here."
 requires-python = ">=3.10"
-dependencies = ["numpy", "pandas"]
+# pandas 3 breaks the method code: mixed datetime units fail merges. Tested on 2.2 and 2.3.
+dependencies = ["numpy", "pandas>=2.2,<3"]
 
 [project.optional-dependencies]
 parquet = ["pyarrow"]

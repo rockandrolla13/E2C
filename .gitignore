@@ -13,3 +13,9 @@ b.log
 # Checked-out branches
 worktrees/
 results/
+# Local environments and LaTeX build files
+.venv/
+*.egg-info/
+*.fls
+*.fdb_latexmk
+*.toc
