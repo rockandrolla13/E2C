@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "e2c-data"
+version = "0.1.0"
+description = "Point-in-time data layer for the E2C methods. No data and no production adapter live here."
+requires-python = ">=3.10"
+dependencies = ["numpy", "pandas"]
+
+[project.optional-dependencies]
+parquet = ["pyarrow"]
+test = ["pytest"]
+
+[tool.setuptools]
+packages = ["e2c_data"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
