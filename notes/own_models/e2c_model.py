@@ -93,6 +93,9 @@ class Params:
     ec_confidence: float = 0.999
     target_vol: float = 0.10
     bid_offer: float = 0.05
+    # Additions. No workbook has these, and None keeps MASTER's weekly rebuild. See S11a in 05_io_spec.md
+    exit_trigger: float | None = None  # Hold a trade until the residual falls to this level
+    max_per_side: int | None = None    # Most names held long and most held short, new names ranked by gain_per_cost
 
 
 MASTER_PARAMS = Params()
@@ -302,6 +305,66 @@ def trade_signal(residual, spread_bp, params: Params = MASTER_PARAMS) -> dict:
                 short_flag=((residual < -params.short_trigger) & ok) * 1)
 
 
+def gain_per_cost(residual, vega, implied, annuity, spread_bp, params: Params = MASTER_PARAMS):
+    """S11a, an addition. Expected gain if the residual closes, per $ of round-trip cost. Notional cancels."""
+    scale = 1.0 if params.ref_trigger == 0 else np.asarray(implied, float) / params.ref_trigger
+    gain = np.abs(np.asarray(vega, float)) * scale * np.abs(np.asarray(residual, float))
+    cost = np.asarray(annuity, float) * np.asarray(spread_bp, float) / 1e4 * params.bid_offer
+    with np.errstate(divide="ignore", invalid="ignore"):
+        return gain / cost
+
+
+def held_signal(dates, tickers, residual, rank, spread_bp, params: Params = MASTER_PARAMS) -> dict:
+    """S11a, an addition. Same flags as S11, but a trade stays on until the residual falls to exit_trigger.
+
+    A week with no row keeps the position, and it still uses a slot. A blank residual or a spread out of range closes it.
+    max_per_side limits names per side. Held names keep their slots, and new names fill the rest, highest rank first.
+    Reads only each week's own row, so next-week values cannot affect it.
+    """
+    p = params
+    if p.exit_trigger is not None and not 0 <= p.exit_trigger <= min(p.long_trigger, p.short_trigger):
+        raise ValueError(f"exit_trigger must be from 0 to the triggers: {p.exit_trigger}")
+    if p.max_per_side is not None and p.max_per_side < 1:
+        raise ValueError(f"max_per_side must be at least 1: {p.max_per_side}")
+    entry = {1: p.long_trigger, -1: p.short_trigger}
+    exits = {side: (level if p.exit_trigger is None else p.exit_trigger) for side, level in entry.items()}
+    frame = pd.DataFrame(dict(date=pd.to_datetime(np.asarray(dates)), ticker=np.asarray(tickers),
+                              residual=np.asarray(residual, float), rank=np.asarray(rank, float),
+                              spread_bp=np.asarray(spread_bp, float)))
+    frame["ok"] = (p.spread_floor <= frame.spread_bp) & (frame.spread_bp <= p.spread_cap)
+    side_of_row = np.zeros(len(frame), dtype=int)
+    held: dict = {}
+    for _, week in frame.groupby("date", sort=True):
+        rows = week.set_index("ticker")
+        now = {}
+        for name, side in held.items():
+            if name not in rows.index:
+                now[name] = side
+            elif rows.ok[name] and side * rows.residual[name] > exits[side]:
+                now[name] = side
+        for side, level in entry.items():
+            new = week[week.ok & (side * week.residual > level) & ~week.ticker.isin(now)]
+            new = new.sort_values(["rank", "ticker"], ascending=[False, True], na_position="last").ticker
+            if p.max_per_side is not None:
+                new = new.iloc[:max(0, p.max_per_side - sum(s == side for s in now.values()))]
+            now.update(dict.fromkeys(new, side))
+        side_of_row[week.index.to_numpy()] = week.ticker.map(now).fillna(0).astype(int).to_numpy()
+        held = now
+    return dict(long_flag=(side_of_row == 1) * 1, short_flag=(side_of_row == -1) * 1)
+
+
+def trading_cost(names: pd.DataFrame, round_trip: float = 0.05) -> pd.Series:
+    """An addition. CDS cost by date in $ thousands: half the round trip, as a share of spread, on each size change.
+
+    Stock trading costs are not included. A position still open at the last date pays no exit cost.
+    """
+    x = names.sort_values(["ticker", "date"])
+    signed = x.size_long - x.size_short
+    change = (signed - signed.groupby(x.ticker).shift(1).fillna(0.0)).abs()
+    cost = change * 1000 * x.annuity.fillna(0.0) * x.spread_bp.fillna(0.0) / 1e4 * round_trip / 2
+    return cost.groupby(x.date).sum()
+
+
 def cds_greeks(T, S, D, asset_vol, spread_bp, L=0.5, lam=0.3, R=0.4, r=0.045) -> dict:
     """S12. CDS struck at the market spread. Pasted in MASTER E2C Data!AR, AS, AT, AV.
 
@@ -506,6 +569,9 @@ def run_pipeline(inputs: pd.DataFrame, params: Params = MASTER_PARAMS) -> dict:
 
     # S11, S13, S14, S15
     signal = trade_signal(x.residual, x.spread_bp, p)
+    if p.exit_trigger is not None or p.max_per_side is not None:
+        x["gain_per_cost"] = gain_per_cost(x.residual, x.vega, x.implied, x.annuity, x.spread_bp, p)
+        signal = held_signal(x.date, x.ticker, x.residual, x.gain_per_cost, x.spread_bp, p)
     x["long_flag"], x["short_flag"] = signal["long_flag"], signal["short_flag"]
     size = trade_size(x.long_flag, x.short_flag, x.vega, x.implied, p)
     x["target"], x["size_long"], x["size_short"] = size["target"], size["size_long"], size["size_short"]

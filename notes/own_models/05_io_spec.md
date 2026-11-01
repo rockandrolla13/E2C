@@ -609,6 +609,23 @@ Source: `E2C Data!AP2, AQ2`. Status: PROVED. Long flag means sell protection and
 | residual | 9.523903 |
 | **long_flag, short_flag** (`AP, AQ`) | 1, 0 |
 
+### S11a `held_signal`, `gain_per_cost`, `trading_cost` (additions, in no workbook)
+
+Off by default. `Params(exit_trigger=3.0, max_per_side=20)` turns them on. With both left as `None`, `run_pipeline` gives the MASTER numbers.
+
+```
+enter long   if residual >  long_trigger,  and short if residual < -short_trigger
+stay on      while side * residual > exit_trigger
+gain_per_cost = |vega| * implied / ref_trigger * |residual| / (annuity * spread_bp / 1e4 * bid_offer)
+```
+
+- A week with no row keeps the position and its slot.
+- A blank residual or a spread out of range closes the position.
+- `max_per_side` never replaces a held name. New names fill free slots, highest `gain_per_cost` first.
+- `trading_cost(names, round_trip)` is CDS only. It has no stock cost, no execution lag and no exit cost at the last date.
+
+The ranking lowers cost. On the panel it does not predict next-week P&L. All results for these options are in-sample on a survivors-only panel.
+
 ### S12 `cds_greeks`
 
 Sensitivities of a CDS struck at the market spread, at the implied vol.
