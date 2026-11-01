@@ -475,6 +475,79 @@ def test_a_survivors_only_panel_stops_the_run(tmp_path):
         run_folder(tmp_path, make_tables(signal_paths(months), months, dead=False), end=pd.Timestamp("2007-12-31"))
 
 
+def tiny_tables(**over):
+    months = pd.period_range("2007-01", periods=12, freq="M")
+    t = make_tables(signal_paths(months), months, dead_day="2007-06-29")
+    t.update(over)
+    return t
+
+
+def tiny_vintage(tmp_path, tables):
+    return r.vintage_inputs(r.TableSource(_write(tables, tmp_path)), pd.Timestamp("2007-01-01"), pd.Timestamp("2007-12-31"), pd.Timestamp("2008-01-01"))
+
+
+def test_screen_rows_hold_prices_per_1(tmp_path):
+    t = tiny_tables()
+    rows = tiny_vintage(tmp_path, t).screen_rows
+    assert rows.clean_price.iloc[0] == pytest.approx(t["bond_prices"].sort_values("date").clean_price.iloc[0] / 100, rel=.2)
+    assert rows.clean_price.max() < 2.0
+
+
+def test_a_terms_column_nobody_fills_counts_as_absent(tmp_path):
+    t = tiny_tables()
+    t["bond_terms"] = t["bond_terms"].assign(is_convertible=np.nan)
+    rows = tiny_vintage(tmp_path, t).screen_rows
+    assert "is_convertible" not in rows and "is_putable" in rows
+
+
+def test_financing_of_a_stock_is_keyed_by_issuer_and_of_a_bond_by_bond(tmp_path):
+    day = pd.Timestamp("2007-03-30")
+    money = pd.DataFrame(dict(date=day, instrument_id=["E03", "B03"], repo_rate=[np.nan, .03], bond_fee=[np.nan, .01], stock_fee=[.02, np.nan], available_at=day + CLOSE))
+    fin = tiny_vintage(tmp_path, tiny_tables(financing=money)).financing.set_index("asset_id")
+    assert fin.stock_fee["I03"] == pytest.approx(.02)
+    assert fin.bond_fee["B03"] == pytest.approx(.01)
+    assert fin.month["I03"] == pd.Period("2007-03")
+
+
+def test_all_bonds_screened_out_leaves_nothing_to_judge(tmp_path):
+    t = tiny_tables()
+    t["bond_terms"] = t["bond_terms"].assign(is_convertible=True)
+    report = run_folder(tmp_path, t, end=pd.Timestamp("2007-12-31"))
+    assert report.runs["continuous"].months == 0 and report.overall == f.NOT_JUDGED
+    screens = pd.read_csv(tmp_path / "out" / "screens.csv").set_index("screen")
+    assert screens.removed["terms"] == screens.tested["terms"] > 0
+
+
+def test_the_verdict_reads_the_value_weighted_one_month_row(planted):
+    report, *_, out = planted
+    rows = pd.read_csv(out / "summary_table.csv")
+    rows = rows[(rows.compounding == "continuous") & (rows.leg == "bond") & (rows.hold == 1) & (rows["sample"] == "published window")].set_index("weighting")
+    assert report.runs["continuous"].premium == pytest.approx(rows.gross_annual["value"])
+    assert rows.gross_annual["value"] != pytest.approx(rows.gross_annual["equal"], abs=1e-6)
+
+
+def test_the_two_compoundings_are_really_different_runs(planted):
+    profile = pd.read_csv(planted[3] / "quintile_profile.csv")
+    top = profile[profile.quintile == 5].set_index("compounding").des_bp
+    assert top["continuous"] != pytest.approx(top["semiannual"], abs=1e-3)
+
+
+def test_legs_long_top_bonds_and_bottom_stocks(monkeypatch):
+    empty = pd.DataFrame()
+    monkeypatch.setattr(f, "holdings_from_study", lambda study: (empty, empty))
+    monkeypatch.setattr(r.fd, "bond_month_returns", lambda b: empty)
+    monkeypatch.setattr(r.fd, "stock_month_returns", lambda p, lag: empty)
+    legs = r._leg_tables(None, empty, empty, r.fd.DesConfig())
+    assert legs["bond"][2:] == (5, 1) and legs["stock"][2:] == (1, 5)
+
+
+def test_stock_cash_rate_is_the_one_known_at_the_fee_date():
+    financing = pd.DataFrame(dict(month=[pd.Period("2010-01")], asset_id=["F"], repo_rate=[np.nan], bond_fee=[np.nan], stock_fee=[.02]))
+    hedges = pd.DataFrame(dict(month=[pd.Period("2010-01"), pd.Period("2010-02")], hedge_return=[0.0, 0.0], hedge_duration=[4.0, 4.0], repo=[.09, .03]))
+    got = r._financing_rates(financing, hedges, "stock")
+    assert got.repo.iloc[0] == pytest.approx(.03) and got.fee.iloc[0] == pytest.approx(.02)
+
+
 def bad_tables():
     months = pd.period_range("2007-01", periods=12, freq="M")
     t = make_tables(signal_paths(months), months, dead=False)
