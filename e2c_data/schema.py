@@ -44,6 +44,7 @@ _FLAG = _c("bool", "flag")
 _VOL = _c("float", _DECIMAL)
 _MONEY = _c("float", "USD")
 _PER_100 = _c("float", "per 100 face")
+_TRAILING = _c("float", "USD, trailing 12 months, not year to date")
 
 COLUMNS: dict[str, Column] = {
     # identity
@@ -68,9 +69,9 @@ COLUMNS: dict[str, Column] = {
     # accounts
     "period_end": _c("date", "date"), "form": _c("text", "10-Q, 10-K or other"), "total_liabilities": _MONEY,
     "st_debt": _MONEY, "lt_debt": _MONEY, "other_st_liab": _MONEY, "other_lt_liab": _MONEY, "minority_int": _MONEY,
-    "pfd_equity": _MONEY, "dividends": _MONEY, "interest": _MONEY, "repurchases": _MONEY,
+    "pfd_equity": _MONEY, "dividends": _TRAILING, "interest": _TRAILING, "repurchases": _TRAILING,
     # rates and financing
-    "curve": _c("text", "treasury_par, swap or cash"), "tenor": _c("float", "years"), "rate": _c("float", _DECIMAL),
+    "curve": _c("text", "treasury_par (semiannual par yield), swap or cash"), "tenor": _c("float", "years"), "rate": _c("float", _DECIMAL),
     "price": _c("float", "per 100 face"), "repo_rate": _c("float", _DECIMAL), "bond_fee": _c("float", _DECIMAL),
     "stock_fee": _c("float", _DECIMAL), "hard_to_borrow": _FLAG,
     # credit
