@@ -12,7 +12,7 @@ from e2c_data.schema import KINDS, all_columns
 
 _START, _END = pd.Timestamp("2003-01-01"), pd.Timestamp("2005-12-30")
 _LISTED = pd.Timestamp("2000-01-03")
-_CLOSE = pd.Timedelta(hours=17)
+_CLOSE = pd.Timedelta(17, "h")
 _N = 8
 _DEFAULTED, _MERGED, _ACQUIRER = 7, 8, 1
 _ENDS = {_DEFAULTED: pd.Timestamp("2003-11-14"), _MERGED: pd.Timestamp("2004-03-19")}
@@ -81,7 +81,7 @@ def _security_map(names) -> pd.DataFrame:
         add(_equity(i), "equity", i, _LISTED, _ENDS.get(i), f"TK{i}")
         for b in _bonds(i):
             add(b, "bond", i, _LISTED, _ENDS.get(i))
-    moved_on = _ENDS[_MERGED] + pd.Timedelta(days=1)
+    moved_on = _ENDS[_MERGED] + pd.Timedelta(1, "D")
     for b in _bonds(_MERGED):
         add(b, "bond", _ACQUIRER, moved_on)
     return pd.DataFrame(rows)
@@ -136,9 +136,9 @@ def _corporate_actions(names, dates) -> pd.DataFrame:
     for i in names:
         for ex in _alive(i, dates)[::63]:
             rows.append(dict(equity_id=_equity(i), ex_date=ex, action_type="cash_dividend", cash_amount=0.1,
-                             split_factor=np.nan, price_after=np.nan, available_at=ex - pd.Timedelta(days=14)))
+                             split_factor=np.nan, price_after=np.nan, available_at=ex - pd.Timedelta(14, "D")))
     rows.append(dict(equity_id=_equity(_SPLIT_NAME), ex_date=_SPLIT_DATE, action_type="split", cash_amount=np.nan,
-                     split_factor=2.0, price_after=np.nan, available_at=_SPLIT_DATE - pd.Timedelta(days=21)))
+                     split_factor=2.0, price_after=np.nan, available_at=_SPLIT_DATE - pd.Timedelta(21, "D")))
     return pd.DataFrame(rows)
 
 
@@ -148,7 +148,7 @@ def _accounts(rng, names) -> pd.DataFrame:
     for i in names:
         level = rng.uniform(1e9, 2e10)
         for q in quarters:
-            at = q + pd.Timedelta(days=45)
+            at = q + pd.Timedelta(45, "D")
             if i in _ENDS and at > _ENDS[i]:
                 break
             tl = level * rng.uniform(0.95, 1.05)
@@ -233,14 +233,14 @@ def _bond_trades(rng, bonds: pd.DataFrame) -> pd.DataFrame:
     rows, seq = [], 0
     for b, day, price in zip(weekly.bond_id, weekly.date, weekly.clean_price):
         seq += 1
-        when = day + pd.Timedelta(hours=10)
+        when = day + pd.Timedelta(10, "h")
         base = dict(bond_id=b, msg_seq=seq, execution_time=when, price=price, size=float(rng.choice([1e5, 1e6, 5e6])),
                     orig_msg_seq=np.nan, action="new", is_duplicate_side=False, is_customer_buy=bool(rng.integers(2)),
-                    report_time=when + pd.Timedelta(minutes=15), available_at=when + pd.Timedelta(minutes=15))
+                    report_time=when + pd.Timedelta(15, "min"), available_at=when + pd.Timedelta(15, "min"))
         rows.append(base)
         if seq % 20 == 0:
             seq += 1
-            later = when + pd.Timedelta(hours=2)
+            later = when + pd.Timedelta(2, "h")
             rows.append({**base, "msg_seq": seq, "orig_msg_seq": base["msg_seq"], "action": "correct",
                          "price": price + 0.25, "report_time": later, "available_at": later})
     return pd.DataFrame(rows)
@@ -251,7 +251,7 @@ def _option_quotes(rng, equity: pd.DataFrame) -> pd.DataFrame:
     rows = []
     for e, day, s, iv in zip(month_ends.equity_id, month_ends.date, month_ends.stock_close, month_ends.atm_iv_12m):
         for days in (91, 182):
-            expiry = day + pd.Timedelta(days=days)
+            expiry = day + pd.Timedelta(days, "D")
             for moneyness in (0.8, 1.0, 1.2):
                 strike = round(s * moneyness, 2)
                 for right in "CP":
@@ -259,7 +259,7 @@ def _option_quotes(rng, equity: pd.DataFrame) -> pd.DataFrame:
                     mid = intrinsic + 0.4 * s * iv * np.sqrt(days / 365) * np.exp(-abs(moneyness - 1) * 5)
                     rows.append(dict(date=day, option_id=f"{e}-{expiry:%Y%m%d}-{strike}-{right}", equity_id=e, expiry=expiry,
                                      strike=strike, right=right, bid=max(mid - 0.05, 0.0), ask=mid + 0.05,
-                                     quote_time=day + pd.Timedelta(hours=16), volume=float(rng.integers(0, 500)),
+                                     quote_time=day + pd.Timedelta(16, "h"), volume=float(rng.integers(0, 500)),
                                      open_interest=float(rng.integers(0, 5000)), exercise_style="American", multiplier=100.0,
                                      vendor_iv=iv, vendor_delta=np.nan, available_at=day + _CLOSE))
     return pd.DataFrame(rows)

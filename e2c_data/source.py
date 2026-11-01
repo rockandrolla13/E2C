@@ -36,7 +36,7 @@ def restrict(df: pd.DataFrame, spec: KindSpec, start: date | None, end: date | N
         if start is not None:
             df = df[df[spec.date_column] >= pd.Timestamp(start).normalize()]
         if end is not None:
-            df = df[df[spec.date_column] < pd.Timestamp(end).normalize() + pd.Timedelta(days=1)]
+            df = df[df[spec.date_column] < pd.Timestamp(end).normalize() + pd.Timedelta(1, "D")]
     if ids is not None:
         df = df[df[spec.id_column].isin(list(ids))]
     return df

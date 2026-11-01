@@ -18,3 +18,11 @@ packages = ["e2c_data"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
+# pandas 2.2.3 with NumPy 2.5 warns on pd.Timedelta(days=1) and pd.Timedelta("1D"), and not on pd.Timedelta(1, "D").
+# Code in this package and its tests must use the form that does not warn. fk_des.py keeps its own call, unchanged.
+filterwarnings = [
+    "error:The 'generic' unit for NumPy timedelta:DeprecationWarning:e2c_data",
+    "error:The 'generic' unit for NumPy timedelta:DeprecationWarning:test_(schema|tables|view|factory|contract|synthetic|inputs)$",
+    "error:The 'generic' unit for NumPy timedelta:DeprecationWarning:inputs$",
+]

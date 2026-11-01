@@ -68,7 +68,7 @@ def test_amounts_in_millions_instead_of_usd(tables):
 
 def test_available_before_the_event_date(tables):
     a = tables["accounts"]
-    a.loc[a.index[0], "available_at"] = a.period_end.iloc[0] - pd.Timedelta(days=30)
+    a.loc[a.index[0], "available_at"] = a.period_end.iloc[0] - pd.Timedelta(30, "D")
     assert ("look_ahead", "accounts") in failed(tables)
 
 
@@ -81,7 +81,7 @@ def test_blank_available_at(tables):
 
 def test_early_announcement_is_allowed_for_events(tables):
     e = tables["events"]
-    e["available_at"] = e.event_date - pd.Timedelta(days=30)
+    e["available_at"] = e.event_date - pd.Timedelta(30, "D")
     assert failed(tables) == set()
 
 
