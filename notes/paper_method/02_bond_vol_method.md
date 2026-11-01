@@ -51,6 +51,8 @@ Settings such as `alpha` and `capital` are not data. They are in `BacktestConfig
 
 ---
 
+**Plugging in other data.** `inputs.py` builds the panels from the `e2c_data` layer, which is not on this branch: install it with `pip install "git+https://github.com/rockandrolla13/E2C@<tag>"` (no tag exists yet).
+
 ## What this file is
 
 **Status: this is a method, not a result.** Nothing here has been run on real data. Yu never tested a bond trade. He says so: "this paper does not consider bond-equity or bond-CDS trading strategies" (PDF p. 6). So every bond number below is mine, and none of it is Yu's result.
