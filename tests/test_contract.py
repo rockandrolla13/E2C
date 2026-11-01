@@ -192,6 +192,69 @@ def test_factor_returns_in_percent_is_caught(tables):
     assert ("units", "factor_returns") in failed(tables)
 
 
+# ---- hindsight: a warning, never a failure
+
+
+def hindsight(tables, kind, when=WHEN):
+    report = check_source(Mem(tables), when)
+    row = report[(report.check == "hindsight") & (report.kind == kind)].iloc[0]
+    return row, report
+
+
+@pytest.mark.parametrize("kind", ["universe", "security_map"])
+def test_clean_tables_give_no_hindsight_warning(tables, kind):
+    row, _ = hindsight(tables, kind)
+    assert row.level == "warn" and row.passed and row["count"] == 0
+
+
+@pytest.mark.parametrize("kind,end", [("universe", "end_date"), ("security_map", "valid_to")])
+def test_end_date_visible_before_it_happened_warns(tables, kind, end):
+    t = tables[kind]
+    rows = t.index[t[end].notna()]
+    t.loc[rows, "available_at"] = t.loc[rows, end] - pd.Timedelta(400, "D")
+    row, report = hindsight(tables, kind)
+    assert row.level == "warn" and not row.passed and row["count"] == len(rows)
+    assert not failures(report).check.eq("hindsight").any()
+    assert failures(report, "warn").check.eq("hindsight").any()
+
+
+def test_hindsight_counts_only_the_early_rows(tables):
+    t = tables["universe"]
+    rows = t.index[t.end_date.notna()][:1]
+    t.loc[rows, "available_at"] = t.loc[rows, "end_date"] - pd.Timedelta(1, "D")
+    assert hindsight(tables, "universe")[0]["count"] == 1
+
+
+def test_one_snapshot_date_gives_no_evidence(tables):
+    tables["universe"]["available_at"] = pd.Timestamp("2006-01-02")
+    row, report = hindsight(tables, "universe")
+    assert not row.passed and "no evidence" in row.note and row["count"] == tables["universe"].end_date.notna().sum()
+    assert not failures(report).check.eq("hindsight").any()
+
+
+def test_blank_available_at_on_an_ended_row_gives_no_evidence(tables):
+    t = tables["security_map"]
+    rows = t.index[t.valid_to.notna()][:2]
+    t.loc[rows, "available_at"] = pd.NaT
+    row, _ = hindsight(tables, "security_map")
+    assert not row.passed and row["count"] == 2 and "no evidence" in row.note
+
+
+def test_no_available_at_column_gives_no_evidence(tables):
+    tables["universe"] = tables["universe"].drop(columns="available_at")
+    row, report = hindsight(tables, "universe")
+    assert row.level == "warn" and not row.passed and "no evidence" in row.note
+    assert ("columns", "universe") in set(zip(failures(report).check, failures(report).kind))
+
+
+def test_hindsight_report_has_counts_not_rows(tables):
+    t = tables["universe"]
+    t.loc[t.end_date.notna(), "available_at"] = pd.Timestamp("2000-01-03")
+    text = hindsight(tables, "universe")[1].query("check == 'hindsight'").to_string()
+    for secret in ("I007", "I008", "2003-11-14", "2004-03-19"):
+        assert secret not in text
+
+
 # ---- the report
 
 

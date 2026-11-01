@@ -2,6 +2,7 @@
 
 Run `failures(check_source(source, decision_time))`. An empty result means no check found a problem. It does not
 mean the data is right: these checks see missing kinds, wrong units, look-ahead, broken links and missing dead names.
+A hindsight row has level warn, so `failures` leaves it out by default. Read it with `failures(report, "warn")`.
 """
 from __future__ import annotations
 
@@ -21,6 +22,7 @@ MIN_DAYS_TO_JUDGE = 365
 _LINKED = {"equity_prices": "equity_id", "bond_prices": "bond_id", "bond_trades": "bond_id", "bond_terms": "bond_id",
            "option_quotes": "equity_id"}
 _ISSUER_KINDS = ("issuer_attributes", "accounts", "cds_quotes")
+_END_COLUMNS = {"universe": "end_date", "security_map": "valid_to"}
 
 
 def _row(check: str, kind: str, count: int, note: str = "", level: str = "required") -> dict:
@@ -179,7 +181,35 @@ def _check_survivorship(raw: _Raw) -> list[dict]:
     return [_row("survivorship", "universe", names if dead == 0 else 0, "no name ever ended" if dead == 0 else "")]
 
 
-CHECKS = (_check_present, _check_columns, _check_keys, _check_units, _check_look_ahead, _check_links, _check_survivorship)
+def _check_hindsight(raw: _Raw) -> list[dict]:
+    """A warning, never a failure. An end date seen before it happened may be an announcement, or a vendor's hindsight."""
+    rows = []
+    for kind, end in _END_COLUMNS.items():
+        if kind not in raw.tables or end not in raw.tables[kind].columns:
+            continue
+        df = raw.tables[kind]
+        ended = df[df[end].notna()]
+        rows.append(_hindsight_row(kind, df, ended, end))
+    return rows
+
+
+def _hindsight_row(kind: str, df: pd.DataFrame, ended: pd.DataFrame, end: str) -> dict:
+    if ended.empty:
+        return _row("hindsight", kind, 0, level="warn")
+    if "available_at" not in df.columns:
+        return _row("hindsight", kind, len(ended), "no evidence: no available_at column", "warn")
+    if pd.to_datetime(df["available_at"]).nunique() <= 1:
+        return _row("hindsight", kind, len(ended), "no evidence: one available_at on every row", "warn")
+    at, when = pd.to_datetime(ended["available_at"]), pd.to_datetime(ended[end])
+    blank, early = int(at.isna().sum()), int((at < when).sum())
+    notes = ["no evidence: blank available_at"] if blank else []
+    if early:
+        notes.append(f"{end} visible before it happened")
+    return _row("hindsight", kind, blank + early, ", ".join(notes), "warn")
+
+
+CHECKS = (_check_present, _check_columns, _check_keys, _check_units, _check_look_ahead, _check_links, _check_survivorship,
+          _check_hindsight)
 
 
 def check_source(source: Source, decision_time: datetime) -> pd.DataFrame:
