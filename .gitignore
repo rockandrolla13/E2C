@@ -14,3 +14,5 @@ b.log
 worktrees/
 # Runner output
 results/
+# Derived from former-employer files. Local only
+master_panel.csv.gz

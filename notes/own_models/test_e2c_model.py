@@ -292,6 +292,8 @@ _CACHE: dict = {}
 
 def _master():
     if "master" not in _CACHE:
+        if not (HERE / "master_panel.csv.gz").exists():
+            raise unittest.SkipTest("master_panel.csv.gz is local only and is not in the repo")
         panel = pd.read_csv(HERE / "master_panel.csv.gz", low_memory=False)
         _CACHE["master"] = (panel, m.run_pipeline(panel, m.MASTER_PARAMS))
     return _CACHE["master"]

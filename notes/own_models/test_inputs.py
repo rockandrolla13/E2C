@@ -76,6 +76,8 @@ def panel_to_tables(panel: pd.DataFrame) -> dict:
 
 @pytest.fixture(scope="module")
 def real(tmp_path_factory):
+    if not (HERE / "master_panel.csv.gz").exists():
+        pytest.skip("master_panel.csv.gz is local only and is not in the repo")
     panel = pd.read_csv(HERE / "master_panel.csv.gz", low_memory=False)
     panel["date"] = pd.to_datetime(panel["date"])
     panel["next_date"] = pd.to_datetime(panel["next_date"])

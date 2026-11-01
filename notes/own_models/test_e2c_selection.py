@@ -117,6 +117,8 @@ def test_trading_cost_charges_a_flip_twice_and_skips_a_week_with_no_row():
 
 @pytest.fixture(scope="module")
 def panel():
+    if not (HERE / "master_panel.csv.gz").exists():
+        pytest.skip("master_panel.csv.gz is local only and is not in the repo")
     return pd.read_csv(HERE / "master_panel.csv.gz", parse_dates=["date", "next_date"])
 
 
