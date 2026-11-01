@@ -98,6 +98,8 @@ COLUMNS: dict[str, Column] = {
     "event_date": _c("date", "date"),
     "event_type": _c("text", "merger, tender, call, default or delist"),
     "realised_recovery": _PER_100, "delisting_return": _c("float", "decimal"),
+    # market factors
+    "factor": _c("text"), "excess_return": _c("float", "decimal per month"),
 }
 
 _AT = "available_at"
@@ -138,6 +140,7 @@ KINDS: dict[str, KindSpec] = {s.name: s for s in (
              ("quote_time", "volume", "open_interest", "exercise_style", "multiplier", "vendor_iv", "vendor_delta")),
     KindSpec("events", "event_date", "issuer_id", ("issuer_id", "event_date", "event_type"),
              ("issuer_id", "event_date", "event_type", _AT), ("instrument_id", "realised_recovery", "delisting_return")),
+    KindSpec("factor_returns", "date", "factor", ("date", "factor"), ("date", "factor", "excess_return", _AT)),
 )}
 
 # Every method needs these. The others depend on the method, so a source may leave them out.
@@ -166,7 +169,7 @@ RANGES: dict[str, Range] = {
     "put_iv_24m": _VOL_RANGE, "atm_iv_12m": _VOL_RANGE,
     "clean_price": _PRICE_RANGE, "full_price": _PRICE_RANGE, "entry_price": _PRICE_RANGE, "price": _PRICE_RANGE,
     "next_call_price": _PRICE_RANGE, "realised_recovery": Range(0.0, 150.0, 0.0, 150.0),
-    "total_return": Range(-1.0, 5.0, -0.1, 0.1), "delisting_return": Range(-1.0, 5.0, -1.0, 5.0),
+    "total_return": Range(-1.0, 5.0, -0.1, 0.1), "excess_return": Range(-1.0, 5.0, -0.2, 0.2), "delisting_return": Range(-1.0, 5.0, -1.0, 5.0),
     "tenor": Range(0.0, 100.0, 0.0, 100.0), "strike": Range(0.0, _INF, 0.0, _INF),
     "stock_close": Range(0.0, _INF, 0.0, _INF), "split_factor": Range(0.0, _INF, 0.0, _INF),
     "total_liabilities": _AMOUNT_RANGE, "mkt_cap": _AMOUNT_RANGE, "amount_out": _AMOUNT_RANGE,

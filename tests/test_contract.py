@@ -182,6 +182,16 @@ def test_duplicate_version(tables):
     assert ("keys", "rates") in failed(tables)
 
 
+def test_factor_returns_missing_is_optional(tables):
+    del tables["factor_returns"]
+    assert failed(tables) == set()
+
+
+def test_factor_returns_in_percent_is_caught(tables):
+    tables["factor_returns"]["excess_return"] *= 100
+    assert ("units", "factor_returns") in failed(tables)
+
+
 # ---- the report
 
 

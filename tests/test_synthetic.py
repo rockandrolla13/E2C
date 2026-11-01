@@ -50,6 +50,20 @@ def test_holds_the_hard_cases_the_view_and_contract_need():
     assert t["bond_trades"].action.isin(["correct", "cancel"]).any()
 
 
+def test_factor_returns_are_monthly():
+    f = make_synthetic_tables()["factor_returns"]
+    assert f.factor.nunique() >= 2
+    assert not f.duplicated(["date", "factor"]).any()
+    assert f.groupby("factor").date.apply(lambda d: d.dt.to_period("M").is_unique).all()
+
+
+def test_end_dates_only_appear_in_versions_public_on_or_after_them():
+    t = make_synthetic_tables()
+    for kind, end in (("universe", "end_date"), ("security_map", "valid_to")):
+        rows = t[kind].dropna(subset=[end])
+        assert len(rows) and (rows.available_at >= rows[end]).all(), kind
+
+
 def test_dead_name_stops_trading():
     t = make_synthetic_tables()
     dead = t["universe"].dropna(subset=["end_date"]).iloc[0]

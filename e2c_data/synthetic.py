@@ -59,6 +59,7 @@ def make_synthetic_tables(seed: int = 0) -> dict[str, pd.DataFrame]:
         "bond_trades": _bond_trades(rng, bonds),
         "option_quotes": _option_quotes(rng, equity),
         "events": _events(),
+        "factor_returns": _factor_returns(rng, dates),
     }
     return {kind: _shaped(kind, df) for kind, df in tables.items()}
 
@@ -272,3 +273,11 @@ def _events() -> pd.DataFrame:
         dict(issuer_id=_issuer(_MERGED), event_date=_ENDS[_MERGED], event_type="merger", instrument_id=None,
              realised_recovery=np.nan, delisting_return=0.2, available_at=_ENDS[_MERGED] + _CLOSE),
     ])
+
+
+def _factor_returns(rng, dates) -> pd.DataFrame:
+    months = dates.to_series().groupby(dates.to_period("M")).last()
+    frames = [pd.DataFrame({"date": months.to_numpy(), "factor": factor, "excess_return": rng.normal(0.005, 0.03, len(months)),
+                            "available_at": months.to_numpy() + np.timedelta64(17, "h")})
+              for factor in ("stock_market", "bond_baa", "bond_ba", "fixed_income_arbitrage")]
+    return pd.concat(frames, ignore_index=True)

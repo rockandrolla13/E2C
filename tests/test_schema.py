@@ -1,4 +1,4 @@
-"""The schema: 14 kinds, one table of columns, and every method input placed or listed as not placed."""
+"""The schema: 15 kinds, one table of columns, and every method input placed or listed as not placed."""
 from e2c_data import schema
 from e2c_data.schema import COLUMNS, KINDS, RANGES, REQUIRED_KINDS, KindSpec, all_columns, kind_spec
 
@@ -46,8 +46,8 @@ YU = {
     "hedge_repo": ("financing", "repo_rate"), "cash_rate": ("rates", "rate"), "bond_fee": ("financing", "bond_fee"),
     "stock_fee": ("financing", "stock_fee"), "cds_market": ("cds_quotes", "spread"),
     "implied_vol": ("equity_prices", "atm_iv_12m"), "forced_event": ("events", "event_type"),
+    "factors": ("factor_returns", "excess_return"),
 }
-YU_NOT_PLACED = {"factors"}  # monthly market factor returns are not issuer data and no approved kind holds them
 
 FINKELSTEIN = {
     "stock_close": ("equity_prices", "stock_close"), "split_factor": ("corporate_actions", "split_factor"),
@@ -99,7 +99,8 @@ def test_every_method_field_has_a_home(name, table):
 def test_exactly_the_approved_kinds():
     assert set(KINDS) == {"security_map", "universe", "issuer_attributes", "equity_prices", "corporate_actions",
                           "accounts", "rates", "financing", "cds_quotes", "bond_terms", "bond_prices", "bond_trades",
-                          "option_quotes", "events"}
+                          "option_quotes", "events", "factor_returns"}
+    assert len(KINDS) == 15
     assert all(isinstance(s, KindSpec) for s in KINDS.values())
     assert REQUIRED_KINDS <= set(KINDS)
 
@@ -124,6 +125,12 @@ def test_ranges_only_name_real_float_or_int_columns():
     assert all(COLUMNS[c].type in {"float", "int"} for c in RANGES)
     for c in ("rate", "spread", "coupon", "vendor_iv", "clean_price", "total_liabilities"):
         assert c in RANGES
+
+
+def test_factor_returns_is_optional_monthly_decimal():
+    assert "factor_returns" not in REQUIRED_KINDS
+    assert KINDS["factor_returns"].key == ("date", "factor") and COLUMNS["excess_return"].unit == "decimal per month"
+    assert "excess_return" in RANGES
 
 
 def test_documented_conventions():
