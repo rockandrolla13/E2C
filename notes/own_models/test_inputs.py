@@ -464,3 +464,37 @@ def test_put_vols_are_never_derived(tables):
 def test_a_derived_run_goes_through_run_pipeline(tables):
     f = build(_no_vendor(tables, VENDOR_REALISED + PUT), date(2005, 1, 1), date(2005, 12, 30), derive_vols=True)
     assert len(m.run_pipeline(f, m.MASTER_PARAMS)["names"]) > 0
+
+
+# ---- closing the mutation survivors
+
+
+def test_a_longer_cds_tenor_is_not_taken_for_the_five_year(tables):
+    c = tables["cds_quotes"]
+    tables["cds_quotes"] = pd.concat([c, c[c.tenor.eq(5.0)].assign(tenor=10.0, spread=0.0999)], ignore_index=True)
+    assert build(tables).spread_bp.lt(999.0).all()
+
+
+def test_a_longer_swap_tenor_is_not_taken_for_the_five_year(tables):
+    r = tables["rates"]
+    tables["rates"] = pd.concat([r, r[r.curve.eq("swap")].assign(tenor=10.0, rate=0.0999)], ignore_index=True)
+    assert build(tables).swap_5y_pct.lt(9.99).all()
+
+
+def test_a_name_with_no_cds_leaves_and_is_counted(tables):
+    c = tables["cds_quotes"]
+    tables["cds_quotes"] = c[c.issuer_id != "I003"]
+    f = build(tables)
+    assert "TK3" not in set(f.ticker) and f.attrs["e2c_report"]["left_out"]["no_cds"] > 0
+
+
+def test_a_link_with_no_ticker_uses_the_equity_id(tables):
+    tables["security_map"] = tables["security_map"].drop(columns="ticker")
+    assert "E003" in set(build(tables).ticker)
+
+
+def test_two_stocks_with_one_ticker_is_an_error(tables):
+    s = tables["security_map"]
+    s.loc[s.instrument_id.eq("E004"), "ticker"] = "TK3"
+    with pytest.raises(ValueError, match="one ticker"):
+        build(tables)
