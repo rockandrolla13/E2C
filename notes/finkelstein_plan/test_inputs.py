@@ -277,7 +277,7 @@ def test_perpetual_bond_has_nan_maturity(tables):
 
 
 @pytest.mark.parametrize("a,b,want", [("2004-02-27", "2010-06-15", 2268 / 360), ("2004-01-31", "2004-03-31", 60 / 360),
-                                      ("2004-06-15", "2004-06-15", 0.0)])
+                                      ("2004-06-15", "2004-06-15", 0.0), ("2004-01-31", "2004-02-15", 15 / 360)])
 def test_years_30_360(a, b, want):
     got = years_30_360(pd.Series([pd.Timestamp(a)]), pd.Series([pd.Timestamp(b)]))
     assert got.iloc[0] == pytest.approx(want)
@@ -295,3 +295,10 @@ def test_a_mid_month_start_still_counts_the_whole_month_of_coupon(tables):
     _set(p, p.bond_id.eq("B0011") & p.date.eq(pd.Timestamp("2004-02-03")), coupon_paid=2.75)
     b = build(tables, date(2004, 2, 20), date(2004, 2, 27)).bonds
     assert b[b.bond_id.eq("B0011")].coupon_paid.iloc[0] == pytest.approx(0.0275)
+
+
+def test_a_split_with_no_factor_stays_nan(tables):
+    ca = tables["corporate_actions"]
+    ca.loc[ca.action_type.eq("split"), "split_factor"] = np.nan
+    e = build(tables, date(2004, 9, 1), date(2004, 9, 30)).equities
+    assert np.isnan(e[e.firm_id.eq("I002") & e.date.eq(pd.Timestamp("2004-09-15"))].split_factor.iloc[0])
