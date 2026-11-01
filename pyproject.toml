@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "e2c-data"
+version = "0.1.0"
+description = "Point-in-time data layer for the E2C methods. No data and no production adapter live here."
+requires-python = ">=3.10"
+dependencies = ["numpy", "pandas"]
+
+[project.optional-dependencies]
+parquet = ["pyarrow"]
+test = ["pytest"]
+
+[tool.setuptools]
+packages = ["e2c_data"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+# pandas 2.2.3 with NumPy 2.5 warns on pd.Timedelta(days=1) and pd.Timedelta("1D"), and not on pd.Timedelta(1, "D").
+# Code in this package and its tests must use the form that does not warn. fk_des.py keeps its own call, unchanged.
+filterwarnings = [
+    "error:The 'generic' unit for NumPy timedelta:DeprecationWarning:e2c_data",
+    "error:The 'generic' unit for NumPy timedelta:DeprecationWarning:test_(schema|tables|view|factory|contract|synthetic|inputs)$",
+    "error:The 'generic' unit for NumPy timedelta:DeprecationWarning:inputs$",
+]
