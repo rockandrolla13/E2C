@@ -13,6 +13,8 @@ out = m.run_pipeline(panel, m.MASTER_PARAMS)
 print(out["summary"])          # also out["names"], out["weeks"], out["unsolved"]
 ```
 
+**Plugging in other data.** `inputs.py` builds this table from the `e2c_data` layer, which is not on this branch: install it with `pip install "git+https://github.com/rockandrolla13/E2C@<tag>"` (no tag exists yet).
+
 **Marks used below.**
 
 - **PROVED**: a workbook formula says it, or a recompute matches cached values.
