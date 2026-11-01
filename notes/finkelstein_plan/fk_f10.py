@@ -111,7 +111,8 @@ def _column(rows: pd.DataFrame, name: str, default, absent: list) -> pd.Series:
 def _terms_pass(rows: pd.DataFrame, absent: list) -> pd.Series:
     fields = {name: _column(rows, name, default, absent) for name, default in _TERM_DEFAULTS.items()}
     table = pd.DataFrame(fields)
-    ok = [not any(pd.isna(v) for v in row) and e2c.bond_terms_are_eligible(*row) for row in table[list(_TERM_DEFAULTS)].itertuples(index=False)]
+    ok = [e2c.bond_terms_are_eligible(*row) for row in   # a blank fails: NaN is no match, and a blank flag counts as true
+          table[list(_TERM_DEFAULTS)].itertuples(index=False)]
     return pd.Series(ok, index=rows.index)
 
 

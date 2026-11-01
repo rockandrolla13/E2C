@@ -172,6 +172,16 @@ def test_each_screen_removes_the_right_bond(over, screen):
     assert funnel.removed.sum() == 1
 
 
+def test_a_bond_failing_two_screens_counts_once_at_the_first():
+    funnel = f.screen_bonds(screen_rows(is_convertible=True, amount_out=100.0))[1].set_index("screen")
+    assert funnel.removed["terms"] == 1 and funnel.removed["age_size"] == 0 and funnel.tested["age_size"] == 0
+
+
+def test_a_blank_in_any_terms_field_fails():
+    for field in ("seniority", "currency", "coupon_type", "call_type", "is_putable"):
+        assert not f.screen_bonds(screen_rows(**{field: np.nan}))[0].iloc[0], field
+
+
 def test_a_clean_bond_passes_every_screen():
     keep, funnel = f.screen_bonds(screen_rows())
     assert keep.iloc[0] and funnel.removed.sum() == 0 and not funnel.not_applied.any()
