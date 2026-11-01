@@ -693,7 +693,7 @@ def _two_priced_bonds(tables, second_maturity="2010-06-15"):
     a.loc[a.issuer_id.isin(["I003", "I004"]), "rating"] = "BBB"
     terms = tables["bond_terms"]
     terms.loc[terms.bond_id.eq("B0031"), "maturity_date"] = pd.Timestamp("2010-06-15")
-    terms.loc[terms.bond_id.eq("B0041"), "maturity_date"] = pd.Timestamp(second_maturity)
+    terms.loc[terms.bond_id.isin(["B0041", "B0042"]), "maturity_date"] = pd.Timestamp(second_maturity)  # B0042 too, or it would be a core bond
     for b in names:
         model_priced(tables, b, 0.01, date(2005, 3, 1), date(2005, 8, 31))
     return names
@@ -710,7 +710,7 @@ def test_other_rating_is_not_a_peer(tables):
 def test_other_maturity_bucket_is_not_a_peer(tables):
     names = _two_priced_bonds(tables, "2013-06-15")  # 5 years and 8 years, both priced, so the second has a real gap
     built = [build(tables, b) for b in names]
-    assert m.run_bond_backtest(built[1].panel, replace(m.BacktestConfig(), peer_adjust=False)).status != "reject"
+    assert m.run_bond_backtest(built[1].panel, replace(m.BacktestConfig(), peer_adjust=False)).status == "ok"
     assert (with_peer_gaps(built, m.BacktestConfig())[0].panel.peer_gap == 0.0).all()
 
 
