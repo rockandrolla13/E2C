@@ -12,7 +12,7 @@
 
 Every branch has one checkout under `worktrees/` (not tracked), so they can be open side by side.
 
-`evidence/` and `ssrn-687436.pdf` stay local and untracked. They include former-employer files and third-party research. The `method/workbook` branch also holds a data panel derived from those files. This repo is public, so check your rights to that panel.
+`evidence/` and `ssrn-687436.pdf` stay local and untracked. They include former-employer files and third-party research. `master_panel.csv.gz`, derived from those files, is local only as well, and tests that need it skip without it. `sample_panel.csv.gz` and the test vectors on `method/workbook` still hold cached workbook cells. This repo is public, so check your rights to them.
 
 For what each method does, in plain English and in technical detail, read [`notes/e2c_explained.pdf`](notes/e2c_explained.pdf).
 

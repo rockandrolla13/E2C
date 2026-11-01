@@ -19,3 +19,5 @@ results/
 *.fls
 *.fdb_latexmk
 *.toc
+# Derived from former-employer files. Local only
+master_panel.csv.gz
