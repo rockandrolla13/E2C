@@ -687,16 +687,29 @@ def test_peer_gap_is_the_median_of_same_rating_same_bucket_after_each_peers_fit(
     assert (filled[0].panel.peer_gap[built[0].dates <= built[1].dates[fit[-1]]] == 0.0).all(), "a peer counts only after its own fit ended"
 
 
-def test_other_rating_or_bucket_are_not_peers(tables):
+def _two_priced_bonds(tables):
     names = ["B0031", "B0041"]
-    t = tables["issuer_attributes"]
-    t.loc[t.issuer_id.eq("I004"), "rating"] = "BB"
+    a = tables["issuer_attributes"]
+    a.loc[a.issuer_id.isin(["I003", "I004"]), "rating"] = "BBB"
+    terms = tables["bond_terms"]
+    terms.loc[terms.bond_id.isin(names), "maturity_date"] = pd.Timestamp("2010-06-15")
+    for b in names:
+        model_priced(tables, b, 0.01, date(2005, 3, 1), date(2005, 8, 31))
+    return names
+
+
+def test_other_rating_is_not_a_peer(tables):
+    names = _two_priced_bonds(tables)
+    assert (with_peer_gaps([build(tables, b) for b in names], m.BacktestConfig())[0].panel.peer_gap != 0.0).any()
+    a = tables["issuer_attributes"]
+    a.loc[a.issuer_id.eq("I004"), "rating"] = "BB"
     assert (with_peer_gaps([build(tables, b) for b in names], m.BacktestConfig())[0].panel.peer_gap == 0.0).all()
-    t.loc[t.issuer_id.eq("I004"), "rating"] = "BBB"
-    t.loc[t.issuer_id.eq("I003"), "rating"] = "BBB"
-    tt = tables["bond_terms"]
-    tt.loc[tt.bond_id.eq("B0031"), "maturity_date"] = pd.Timestamp("2010-06-15")
-    tt.loc[tt.bond_id.eq("B0041"), "maturity_date"] = pd.Timestamp("2014-06-15")
+
+
+def test_other_maturity_bucket_is_not_a_peer(tables):
+    names = _two_priced_bonds(tables)
+    t = tables["bond_terms"]
+    t.loc[t.bond_id.eq("B0041"), "maturity_date"] = pd.Timestamp("2014-06-15")
     assert (with_peer_gaps([build(tables, b) for b in names], m.BacktestConfig())[0].panel.peer_gap == 0.0).all()
 
 
