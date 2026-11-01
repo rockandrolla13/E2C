@@ -1,6 +1,6 @@
 """Tests of fk_des.py, work package WP6a. E3 and F10 of finkelstein_replication_plan.pdf, Section 9, then synthetic data.
 
-E3's expected values come from the plan's table. F10 needs real data, so it is skipped and nothing here reproduces it.
+E3's expected values come from the plan's table. F10 is in test_fk_f10.py. It runs only on real data, and nothing here reproduces it.
 Every panel below is made up by make_panel. Those tests check the logic, and they say nothing about any market.
 """
 from datetime import date
@@ -138,7 +138,7 @@ def no_gap():
     return panel, run(panel, CONFIG)
 
 
-# ---------------------------------------------------------------- E3 and F10
+# ---------------------------------------------------------------- E3
 
 def gx():
     d0, maturity = date(2001, 6, 14), date(2009, 11, 15)
@@ -161,12 +161,6 @@ def test_e3_values_depend_on_yield_compounding(payout, gap_bp):
     """E3's numbers were made with Z-spreads. A continuous yield equals them on a flat curve, and a semiannual yield does not."""
     bond, full = gx()
     assert fd.bond_des(full, bond, 10.5, 14.2, .822, payout, FLAT, yield_freq=2).des_bp == pytest.approx(gap_bp, abs=1)
-
-
-@pytest.mark.skip(reason="F10 needs real bond, stock and accounts data, which this machine does not have. "
-                         "It is not reproduced here, and that includes the published 3.24% a year.")
-def test_f10_replicate_chen_chen_li():
-    raise AssertionError("Plug in production data and write this test against the plan's F10 row.")
 
 
 # ---------------------------------------------------------------- Yields, spreads, one bond

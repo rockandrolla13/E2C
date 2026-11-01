@@ -11,14 +11,20 @@ apply the plan's screens to the table first if a run needs them.
 Accounts come from view.versions, so a restatement stays a separate row and fk_des picks the one usable on each date.
 Prices, terms, actions and links come from view.read: the latest version known at the view's decision time.
 Dividend and split_factor default to fk_des's 0.0 and 1.0 only on a day with no action. A missing amount stays NaN.
+
+build_vintage_inputs is for a backtest over many dates. It takes each month's rows as known at the end of that month, so a
+later price correction or link fix cannot reach an earlier sort. build_des_inputs, read from one late view, can let it.
 """
 import logging
 from datetime import date
-from typing import NamedTuple
+from typing import NamedTuple, Sequence
 
 import numpy as np
 import pandas as pd
 
+from e2c_data.schema import kind_spec
+from e2c_data.source import DataUnavailable, restrict
+from e2c_data.view import PointInTimeView
 from fk_des import ACCOUNT_COLUMNS, BOND_COLUMNS, EQUITY_COLUMNS, RATE_COLUMNS
 
 log = logging.getLogger("inputs")
@@ -87,18 +93,22 @@ def _bonds(view, start: date, end: date, links: pd.DataFrame) -> pd.DataFrame:
     return b[columns].reset_index(drop=True)
 
 
-def _equities(view, start: date, end: date, links: pd.DataFrame, lookback_years: int) -> pd.DataFrame:
+def _equities(view, start: date, end: date, links: pd.DataFrame, lookback_years: int, actions_required: bool = True) -> pd.DataFrame:
     first = (pd.Timestamp(start) - pd.DateOffset(years=lookback_years)).date()
     q = view.read("equity_prices", first, end).reindex(columns=["date", "equity_id", "stock_close", "shares_out", "mkt_cap"])
     q = q.assign(shares_out=q.shares_out.where(q.shares_out.notna(), q.mkt_cap / q.stock_close))
-    q = q.merge(_actions_by_price_day(view, first, end, q), on=["equity_id", "date"], how="left")
+    q = q.merge(_actions_by_price_day(view, first, end, q, actions_required), on=["equity_id", "date"], how="left")
     q = q.assign(dividend=q.dividend.where(q._action.notna(), 0.0), split_factor=q.split_factor.where(q._action.notna(), 1.0))
     return _with_firm(q, "equity_id", links, "equities")[list(EQUITY_COLUMNS)].sort_values(["firm_id", "date"]).reset_index(drop=True)
 
 
-def _actions_by_price_day(view, first: date, end: date, prices: pd.DataFrame) -> pd.DataFrame:
+def _actions_by_price_day(view, first: date, end: date, prices: pd.DataFrame, required: bool = True) -> pd.DataFrame:
     """Dividend and split per stock per price day. An ex-date with no price moves to the next price of that stock."""
-    a = view.read("corporate_actions", first, end).reindex(columns=["equity_id", "ex_date", "action_type", "cash_amount", "split_factor"])
+    a = view.read("corporate_actions", first, end) if required else _optional(view, "corporate_actions", first, end)
+    if a is None or a.empty:
+        return pd.DataFrame({"equity_id": pd.Series(dtype=object), "date": pd.Series(dtype="datetime64[ns]"), "dividend": pd.Series(dtype=float),
+                             "split_factor": pd.Series(dtype=float), "_action": pd.Series(dtype=float)})
+    a = a.reindex(columns=["equity_id", "ex_date", "action_type", "cash_amount", "split_factor"])
     shares_only = a.action_type.isin(_SHARE_ACTIONS)
     a = a.assign(cash_amount=a.cash_amount.where(a.cash_amount.notna() | ~shares_only, 0.0),
                  split_factor=a.split_factor.where(a.split_factor.notna() | shares_only, 1.0))
@@ -124,3 +134,127 @@ def _rates(view, start: date, end: date, lookback_days: int) -> pd.DataFrame:
     first = (pd.Timestamp(start) - pd.Timedelta(lookback_days, "D")).date()
     r = view.read("rates", first, end, ids=[PAR_CURVE]).rename(columns={"rate": "par_yield"})
     return r[list(RATE_COLUMNS)].reset_index(drop=True)
+
+
+# ---------------------------------------------------------------- One read per month, as known at that month's end
+
+_BIG_CUSTOMER_TRADE = 100_000.0
+_TRADE_WINDOW_DAYS = 7     # calendar days that hold the screen's last five business days
+_SCREEN_TERMS = ["bond_id", "issue_date", "seniority", "currency", "coupon_type", "call_type", "is_convertible", "is_putable", "is_sinking",
+                 "is_perpetual", "is_pik"]
+
+
+class VintageInputs(NamedTuple):
+    inputs: DesInputs
+    screen_rows: pd.DataFrame    # one row per bond per month: fk_f10.screen_bonds's fields
+    financing: pd.DataFrame      # month, asset_id (bond_id or firm_id), repo_rate, bond_fee, stock_fee
+    day_costs: pd.DataFrame      # the month's customer trades, for fk_f10.bond_day_costs. Empty if none were read
+    stock_half_spread: float     # median known half spread, NaN if none
+    months: int
+
+
+class WholeTables:
+    """Each kind is read once and kept, so that a monthly loop does not reload a file. bond_trades stays uncached."""
+
+    def __init__(self, source) -> None:
+        self.source = source
+        self._tables: dict = {}
+
+    def read(self, kind: str, start=None, end=None, ids: Sequence[str] | None = None) -> pd.DataFrame:
+        if kind == "bond_trades":
+            return self.source.read(kind, start, end, ids)
+        if kind not in self._tables:
+            self._tables[kind] = self.source.read(kind)
+        return restrict(self._tables[kind], kind_spec(kind), start, end, ids)
+
+
+def _optional(view, kind: str, start=None, end=None) -> pd.DataFrame | None:
+    try:
+        return view.read(kind, start, end)
+    except DataUnavailable:
+        return None
+
+
+def _month_screen_rows(view, first: date, last: date, bonds: pd.DataFrame) -> pd.DataFrame:
+    prices = view.read("bond_prices", first, last).sort_values("date").groupby("bond_id").tail(1)
+    known = [c for c in ("bond_id", "clean_price", "next_call_price") if c in prices]
+    rows = bonds[["date", "bond_id", "firm_id", "maturity_years", "amount_out"]].merge(prices[known], on="bond_id", how="left")
+    rows["clean_price"] = rows.clean_price * PER_100_TO_PER_1
+    if "next_call_price" in rows:
+        rows["next_call_price"] = rows.next_call_price * PER_100_TO_PER_1
+    terms = view.read("bond_terms")
+    rows = rows.merge(terms[[c for c in _SCREEN_TERMS if c in terms]], on="bond_id", how="left")
+    rows["years_since_issue"] = years_30_360(rows.issue_date, rows.date)
+    attrs = _optional(view, "issuer_attributes", None, last)
+    if attrs is not None and not attrs.empty:
+        attrs = attrs.sort_values("date").groupby("issuer_id").tail(1).rename(columns={"issuer_id": "firm_id"})
+        rows = rows.merge(attrs[[c for c in ("firm_id", "sector", "has_listed_equity") if c in attrs]], on="firm_id", how="left")
+    return rows.drop(columns=["issue_date"])
+
+
+def _month_financing(view, first: date, last: date, links: pd.DataFrame) -> pd.DataFrame | None:
+    f = _optional(view, "financing", first, last)
+    if f is None or f.empty:
+        return None
+    f = f.sort_values("date").groupby("instrument_id").tail(1)
+    firm = links[links.instrument_type == "equity"].drop_duplicates("instrument_id", keep="last").set_index("instrument_id").issuer_id
+    columns = {c: f[c] if c in f else np.nan for c in ("repo_rate", "bond_fee", "stock_fee")}
+    return pd.DataFrame(dict(month=pd.Timestamp(last).to_period("M"), asset_id=f.instrument_id.map(firm).fillna(f.instrument_id), **columns))
+
+
+def _month_trades(view, first: date, last: date) -> tuple:
+    """Big trades in the month's last days per bond, and customer buy and sell prices per bond per day."""
+    t = _optional(view, "bond_trades", first, last)
+    if t is None or t.empty:
+        return None, None
+    since = pd.Timestamp(last) - pd.Timedelta(_TRADE_WINDOW_DAYS, "D")
+    counts = t[(t.execution_time > since) & (t["size"] >= _BIG_CUSTOMER_TRADE)].groupby("bond_id").size().rename("trades_5d")
+    return counts, t[[c for c in ("bond_id", "execution_time", "price", "size", "is_customer_buy") if c in t]]
+
+
+def build_vintage_inputs(source, start: date, end: date, decision_time, liquidity: bool = True, equity_lookback_years: int = 3) -> VintageInputs:
+    """Each month's rows as known at the end of that month. Accounts keep every version, as fk_des picks by date."""
+    cached = WholeTables(source)
+    decision = pd.Timestamp(decision_time)
+    parts: dict = {k: [] for k in ("bonds", "equities", "rates", "screen", "financing", "trades")}
+    months = pd.period_range(pd.Timestamp(start), pd.Timestamp(end), freq="M")
+    spreads, used = [], 0
+    for k, month in enumerate(months):
+        first, last = max(month.start_time, pd.Timestamp(start)).date(), min(month.end_time.normalize(), pd.Timestamp(end).normalize(), decision.normalize()).date()
+        if pd.Timestamp(first) > decision:
+            break
+        view = PointInTimeView(cached, min(month.end_time, decision))
+        used += 1
+        links = view.read("security_map")
+        if not view.read("equity_prices", first, last).empty or k == 0:
+            years = equity_lookback_years if k == 0 else 0
+            parts["equities"].append(_equities(view, first, last, links, years, actions_required=False))   # run_f10 flags an absent table
+            quotes = view.read("equity_prices", first, last)
+            if "half_spread" in quotes:
+                spreads.append(quotes.half_spread.dropna())
+        parts["rates"].append(_rates(view, first, last, 14 if k == 0 else 0))
+        if view.read("bond_prices", first, last).empty:
+            continue
+        bonds = _bonds(view, first, last, links)
+        rows = _month_screen_rows(view, first, last, bonds)
+        if liquidity:
+            counts, trades = _month_trades(view, first, last)
+            if counts is not None:
+                rows = rows.merge(counts, how="left", left_on="bond_id", right_index=True).assign(trades_5d=lambda d: d.trades_5d.fillna(0))
+                parts["trades"].append(trades)
+        parts["bonds"].append(bonds)
+        parts["screen"].append(rows)
+        money = _month_financing(view, first, last, links)
+        if money is not None:
+            parts["financing"].append(money)
+    final = PointInTimeView(cached, decision)
+    end_day = min(pd.Timestamp(end).normalize(), decision.normalize()).date()
+    equities = pd.concat(parts["equities"], ignore_index=True).drop_duplicates(["firm_id", "date"]).sort_values(["firm_id", "date"]).reset_index(drop=True)
+    rates = pd.concat(parts["rates"], ignore_index=True).drop_duplicates(["date", "tenor"]).reset_index(drop=True)
+    bonds = pd.concat(parts["bonds"], ignore_index=True) if parts["bonds"] else pd.DataFrame(columns=list(BOND_COLUMNS))
+    screen = pd.concat(parts["screen"], ignore_index=True) if parts["screen"] else pd.DataFrame()
+    screen = screen.loc[:, screen.notna().any()] if not screen.empty else screen   # a column nobody fills is an absent column
+    financing = pd.concat(parts["financing"], ignore_index=True) if parts["financing"] else pd.DataFrame(columns=["month", "asset_id", "repo_rate", "bond_fee", "stock_fee"])
+    trades = pd.concat(parts["trades"], ignore_index=True) if parts["trades"] else pd.DataFrame()
+    half = float(pd.concat(spreads).median()) if spreads and sum(len(s) for s in spreads) else float("nan")
+    return VintageInputs(DesInputs(bonds, equities, _accounts(final, end_day), rates), screen, financing, trades, half, used)
